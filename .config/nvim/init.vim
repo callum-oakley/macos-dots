@@ -97,7 +97,7 @@ nnoremap <leader><c-down> ddGp
 nnoremap <leader><c-up> ddggP
 nnoremap <leader><tab> :b#<cr>
 nnoremap <leader>= <c-w>=
-nnoremap <leader>D /<<<<<<<\\|=======\\|>>>>>>><cr>
+nnoremap <leader>d /<<<<<<<\\|=======\\|>>>>>>><cr>
 nnoremap <leader>E :e 
 nnoremap <leader>N :bp<cr>
 nnoremap <leader>O O<esc>O
