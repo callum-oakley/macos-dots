@@ -1,0 +1,15 @@
+[user]
+    name = Callum Oakley
+    email = c.oakley108@gmail.com
+
+[push]
+    default = current
+
+[alias]
+    graph = log --graph --decorate --oneline -10
+    ignore = "!f() { curl -L -s https://www.gitignore.io/api/$@; }; f"
+    hash = "!f() { git log -1 | awk 'NR == 1 { print $2 }'; }; f"
+    lcm = "!f() { echo $(git log -1 | tail -1); }; f"
+
+[core]
+    pager = less -x1,5
