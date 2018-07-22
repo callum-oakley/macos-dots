@@ -3,6 +3,7 @@ alias ghci='stack exec -- ghci'
 alias git='hub'
 alias gup='gup -t $GUP_TOKEN'
 alias ls='ls -G'
+alias py='python3'
 alias tree='tree -C'
 alias vi='nvim'
 
