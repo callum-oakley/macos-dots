@@ -38,10 +38,8 @@ set tabstop=2
 " filetype specific settings
 autocmd FileType c setlocal shiftwidth=4 tabstop=4
 autocmd FileType go setlocal noexpandtab shiftwidth=4 tabstop=4 listchars=tab:\ \ ,trail:·
-autocmd FileType lhaskell setlocal fo+=ro
-autocmd FileType markdown let g:AutoPairs = {}
+autocmd FileType markdown let g:AutoPairs = {}| setlocal fo+=a
 autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'}
-autocmd FileType rust setlocal tw=80
 autocmd FileType swift setlocal shiftwidth=4 tabstop=4
 
 set t_Co=256   " This is may or may not needed.
@@ -81,6 +79,7 @@ let g:fzf_layout = { 'down': '~16' }
 inoremap <home> <esc>I
 
 nmap <leader>c gc
+nmap <leader>j Go<cr>## <esc><leader>tso<cr>
 
 nnoremap * *N
 nnoremap <PageDown> 9<down>
