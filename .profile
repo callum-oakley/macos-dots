@@ -6,7 +6,6 @@ alias ls='ls -G'
 alias py='python3'
 alias tree='tree -C'
 alias vi='nvim'
-alias nv='/usr/local/bin/n'
 
 # kubectl goodness
 alias kc='kubectl -n chatkit'
