@@ -1,0 +1,4 @@
+#! /bin/bash
+
+b="$(git branch | awk '/\*/ { print $2 }')"
+git branch --set-upstream-to=origin/$b $b
