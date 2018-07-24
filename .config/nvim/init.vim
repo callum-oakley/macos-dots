@@ -1,4 +1,5 @@
 call plug#begin('~/.config/nvim/plugged')
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'fatih/vim-go'
 Plug 'gutenye/json5.vim'
 Plug 'jiangmiao/auto-pairs'
@@ -6,13 +7,11 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'rust-lang/rust.vim'
-Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tsiemens/vim-aftercolors'
 Plug 'wellle/targets.vim'
-Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
 
 set breakindent
@@ -97,12 +96,12 @@ nnoremap <leader><c-down> ddGp
 nnoremap <leader><c-up> ddggP
 nnoremap <leader><tab> :b#<cr>
 nnoremap <leader>= <c-w>=
-nnoremap <leader>d /<<<<<<<\\|=======\\|>>>>>>><cr>
 nnoremap <leader>E :e 
 nnoremap <leader>N :bp<cr>
 nnoremap <leader>O O<esc>O
 nnoremap <leader>a <nop>
 nnoremap <leader>b :Buffer<cr>
+nnoremap <leader>d /<<<<<<<\\|=======\\|>>>>>>><cr>
 nnoremap <leader>e :Files<cr>
 nnoremap <leader>f gq
 nnoremap <leader>ff gqq
