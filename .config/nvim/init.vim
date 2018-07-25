@@ -38,7 +38,7 @@ set tabstop=2
 " filetype specific settings
 autocmd FileType c setlocal shiftwidth=4 tabstop=4
 autocmd FileType go setlocal noexpandtab shiftwidth=4 tabstop=4 listchars=tab:\ \ ,trail:·
-autocmd FileType markdown let g:AutoPairs = {}| setlocal fo+=a
+autocmd FileType markdown let g:AutoPairs = {} | setlocal fo+=a
 autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'}
 autocmd FileType swift setlocal shiftwidth=4 tabstop=4
 
