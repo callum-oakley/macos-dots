@@ -122,6 +122,7 @@ nnoremap <leader>ts mt:r !date<cr>D"_dd`tp
 nnoremap <leader>v <c-v>
 nnoremap <leader>w :bd<cr>
 nnoremap U <c-r>
+nnoremap Y y$
 nnoremap c "_c
 nnoremap x "_x
 nnoremap ~~ ~<right>
