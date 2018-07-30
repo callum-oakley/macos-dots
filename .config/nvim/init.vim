@@ -38,7 +38,7 @@ set tabstop=2
 " filetype specific settings
 autocmd FileType c setlocal shiftwidth=4 tabstop=4
 autocmd FileType go setlocal noexpandtab shiftwidth=4 tabstop=4 listchars=tab:\ \ ,trail:·
-autocmd FileType markdown let g:AutoPairs = {} | setlocal fo+=a
+autocmd FileType markdown let g:AutoPairs = {}
 autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'}
 autocmd FileType swift setlocal shiftwidth=4 tabstop=4
 
@@ -79,7 +79,7 @@ let g:fzf_layout = { 'down': '~16' }
 inoremap <home> <esc>I
 
 nmap <leader>c gc
-nmap <leader>j Go<cr>## <esc><leader>tso<cr>
+nmap <leader>j :setlocal fo+=a<cr>Go<cr>## <esc><leader>tso<cr>
 
 nnoremap * *N
 nnoremap <PageDown> 9<down>
@@ -105,6 +105,8 @@ nnoremap <leader>b :Buffer<cr>
 nnoremap <leader>d /<<<<<<<\\|=======\\|>>>>>>><cr>
 nnoremap <leader>e :Files<cr>
 nnoremap <leader>f gq
+nnoremap <leader>fa :setlocal fo+=a<cr>
+nnoremap <leader>fm :setlocal fo-=a<cr>
 nnoremap <leader>ff gqq
 nnoremap <leader>hq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 nnoremap <leader>i :BLines<cr>
