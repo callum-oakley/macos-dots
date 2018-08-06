@@ -6,6 +6,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'keith/swift.vim'
+Plug 'mindriot101/vim-yapf'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'rust-lang/rust.vim'
@@ -41,6 +42,7 @@ autocmd FileType go setlocal noexpandtab shiftwidth=4 tabstop=4 listchars=tab:\ 
 autocmd FileType markdown let g:AutoPairs = {}
 autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'}
 autocmd FileType swift setlocal shiftwidth=4 tabstop=4
+autocmd BufWritePre *.py :Yapf
 
 set t_Co=256   " This is may or may not needed.
 
