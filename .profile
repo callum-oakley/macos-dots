@@ -1,4 +1,5 @@
 alias b='git checkout $(git branch | awk '\''!/\*/'\''| fzf)'
+alias diff='colordiff -u'
 alias ghci='stack exec -- ghci'
 alias git='hub'
 alias gup='gup -t $GUP_TOKEN'
