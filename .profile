@@ -15,6 +15,10 @@ alias kci='kc --context integration1 -n $(kc --context integration1 get ns | awk
 alias kcm='kc --context minikube -n chatkit-acceptance'
 alias kcp='kc --context us1'
 alias kcs='kc --context us1-staging'
+alias kp='kubectl -n platform'
+alias kpd='kc --context deneb'
+alias kpp='kc --context us1'
+alias kps='kc --context us1-staging'
 
 cd() {
   builtin cd "$@" && ls -A
