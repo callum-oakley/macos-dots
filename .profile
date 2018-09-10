@@ -7,7 +7,7 @@ alias ls='ls -G'
 alias py='python3'
 alias tree='tree -C'
 alias vi='nvim'
-alias bat='bat --theme=GitHub -p'
+alias cat='bat --theme=GitHub -p'
 
 # kubectl goodness
 alias kd='kubectl --context deneb'
