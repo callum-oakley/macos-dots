@@ -6,6 +6,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'keith/swift.vim'
+Plug 'leafgarland/typescript-vim'
 Plug 'mindriot101/vim-yapf'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
@@ -15,6 +16,9 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tsiemens/vim-aftercolors'
 Plug 'wellle/targets.vim'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'vue'] }
 call plug#end()
 
 set breakindent
@@ -43,6 +47,10 @@ autocmd FileType markdown let g:AutoPairs = {}
 autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'}
 autocmd FileType swift setlocal shiftwidth=4 tabstop=4
 autocmd BufWritePre *.py :Yapf
+
+" uncomment for format of all files on save
+" let g:prettier#autoformat = 0
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue PrettierAsync
 
 set t_Co=256   " This is may or may not needed.
 
@@ -76,6 +84,13 @@ command! -bang -nargs=* Rg
 let g:rustfmt_autosave = 1
 let g:haskell_indent_disable = 1
 let g:fzf_layout = { 'down': '~16' }
+let g:prettier#config#semi = 'false'
+let g:prettier#config#single_quote = 'false'
+let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#jsx_bracket_same_line = 'false'
+let g:prettier#config#arrow_parens = 'avoid'
+let g:prettier#config#trailing_comma = 'all'
+let g:prettier#config#parser = 'babylon'
 
 " keymaps
 inoremap <home> <esc>I
