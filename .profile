@@ -12,6 +12,7 @@ alias cat='bat --theme=GitHub -p'
 # kubectl goodness
 alias kd='kubectl --context deneb'
 alias kda='kd -n analytics'
+alias kdac='kd -n analytics-chatkit'
 alias kdc='kd -n chatkit'
 alias kdf='kd -n feeds'
 alias kdp='kd -n platform'
@@ -22,12 +23,14 @@ alias km='kubectl --context minikube'
 alias kmc='km -n chatkit-acceptance'
 alias kp='kubectl --context us1'
 alias kpa='kp -n analytics'
+alias kpac='kp -n analytics-chatkit'
 alias kpc='kp -n chatkit'
 alias kpf='kp -n feeds'
 alias kpp='kp -n platform'
 alias kpv='kp -n vs'
 alias ks='kubectl --context us1-staging'
 alias ksa='ks -n analytics'
+alias ksac='ks -n analytics-chatkit'
 alias ksc='ks -n chatkit'
 alias ksf='ks -n feeds'
 alias ksp='ks -n platform'
@@ -35,20 +38,6 @@ alias ksv='ks -n vs'
 
 cd() {
   builtin cd "$@" && ls -A
-}
-
-n() {
-  if [[ $1 == pull ]]; then
-    cd $HOME/notes
-    git pull
-  elif [[ $1 == push ]]; then
-    cd $HOME/notes
-    git add .
-    git commit -m "$(date)"
-    git push
-  elif [[ $1 == '' ]]; then
-    cd $HOME/notes
-  fi
 }
 
 branch() {

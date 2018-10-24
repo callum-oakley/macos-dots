@@ -32,7 +32,6 @@ set relativenumber
 set ruler
 set scrolloff=99
 set showcmd
-set tildeop
 
 " tabs
 set expandtab
@@ -147,7 +146,6 @@ nnoremap c "_c
 nnoremap k "_d
 nnoremap kk "_dd
 nnoremap x "_x
-nnoremap ~~ ~<right>
 
 vnoremap <PageDown> 9<down>
 vnoremap <PageUp> 9<up>
