@@ -6,5 +6,5 @@ highlight Todo ctermbg=None cterm=bold
 highlight Underlined cterm=italic
 highlight htmlBold cterm=bold
 highlight htmlItalic cterm=italic
-highlight Special cterm=italic
+highlight SpecialComment ctermfg=DarkMagenta cterm=italic
 highlight pythonString cterm=italic
