@@ -41,7 +41,11 @@ cd() {
 }
 
 branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+ps1_colour() {
+  echo $PS1_COLOUR
 }
 
 set -o vi
@@ -67,11 +71,12 @@ export PROMPT_COMMAND="$PROMPT_COMMAND; history -a"
 export VISUAL='nvim'
 export EDITOR="$VISUAL"
 
+export PS1_COLOUR='31'
 export FZF_DEFAULT_COMMAND='fd -t f'
 export FZF_DEFAULT_OPTS='--reverse --height 16 --color light'
 export GOPATH="$HOME/code/go"
 export PASSWORD_STORE_DIR="$HOME/.password-store"
-export PS1="\n\[\033[0;31m\]\W\$(branch) $\[\033[0m\] "
+export PS1="\n\[\033[0;\$(ps1_colour)m\]\W\$(branch) $\[\033[0m\] "
 export VAULT_ADDR='https://vault.pusherplatform.io:8200'
 
 export PATH="$HOME/bin:$HOME/.cargo/bin:$GOPATH/bin:$PATH"
