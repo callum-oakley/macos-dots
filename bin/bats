@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-from re import sub
+from re import findall
 
 
 def byte_array_to_string(a):
@@ -8,7 +8,7 @@ def byte_array_to_string(a):
 
 
 def read_byte_array(s):
-    return [int(n) for n in sub("[^\d]", " ", s).split()]
+    return [int(n) for n in findall("\d+", s)]
 
 
 print(byte_array_to_string(read_byte_array(input())))
