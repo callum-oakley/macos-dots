@@ -1,0 +1,14 @@
+#! /usr/bin/env python3
+
+from re import sub
+
+
+def byte_array_to_string(a):
+    return "".join(chr(b) for b in a)
+
+
+def read_byte_array(s):
+    return [int(n) for n in sub("[^\d]", " ", s).split()]
+
+
+print(byte_array_to_string(read_byte_array(input())))
