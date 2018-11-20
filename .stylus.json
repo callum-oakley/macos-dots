@@ -1,0 +1,62 @@
+[
+	{
+		"installDate": 1537174725078,
+		"enabled": true,
+		"updateUrl": null,
+		"md5Url": null,
+		"url": null,
+		"originalMd5": null,
+		"name": "wikipedia.org",
+		"sections": [
+			{
+				"code": "#bodyContent {\n  max-width: 40rem;\n  margin: auto;\n}\n\n#bodyContent img {\n  max-width: 40rem;\n  height: auto;\n}",
+				"urls": [],
+				"urlPrefixes": [],
+				"domains": [
+					"wikipedia.org"
+				],
+				"regexps": []
+			}
+		],
+		"id": 1
+	},
+	{
+		"installDate": 1538478791972,
+		"enabled": true,
+		"updateUrl": null,
+		"md5Url": null,
+		"url": null,
+		"originalMd5": null,
+		"name": "postgresql.org",
+		"sections": [
+			{
+				"code": "#docContent {\n  max-width: 40rem;\n  margin: auto;\n}",
+				"urls": [],
+				"urlPrefixes": [],
+				"domains": [
+					"postgresql.org"
+				],
+				"regexps": []
+			}
+		],
+		"id": 2
+	},
+	{
+		"installDate": 1538647420598,
+		"enabled": true,
+		"updateUrl": null,
+		"md5Url": null,
+		"url": null,
+		"originalMd5": null,
+		"name": "github.com",
+		"sections": [
+			{
+				"code": ".tab-size {\n  tab-size: 4 !important;\n}\n\n.discussion-item-head_ref_force_pushed {\n  display: none;\n}",
+				"domains": [
+					"github.com"
+				]
+			}
+		],
+		"id": 3
+	}
+]
