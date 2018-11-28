@@ -1,4 +1,4 @@
-gettime = require("socket").gettime
+local gettime = require("socket").gettime
 
 hs.application.enableSpotlightForNameSearches(true)
 hs.grid.setGrid("12x12").setMargins("11x11")
@@ -18,7 +18,7 @@ hs.hotkey.bind({ "ctrl", "cmd" }, "i", function() openForSpace("iA Writer", "New
 -- |    | 46 | 45 | 31 | 35 | 12 |
 -- +-----------------------------+
 
-windowHotkeys = {
+local windowHotkeys = {
   ["1,0 4x12"]={ keyCode=11, mods={ ctrl=true, alt=true, cmd=false, shift=false } },
   ["0,0 4x12"]={ keyCode=8,  mods={ ctrl=true, alt=true, cmd=false, shift=false } },
   ["4,0 4x12"]={ keyCode=2,  mods={ ctrl=true, alt=true, cmd=false, shift=false } },
@@ -62,7 +62,7 @@ windowHotkeys = {
   ["1,1 10x10"]={ keyCode=5, mods={ ctrl=true, alt=true, cmd=false, shift=true } },
 }
 
-keyDownTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function (e)
+local keyDownTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function (e)
   local mods = hs.eventtap.checkKeyboardModifiers()
   local keyCode = e:getKeyCode()
 
@@ -80,7 +80,7 @@ keyDownTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function (e)
   end
 end):start()
 
-mouseMovedTap = hs.eventtap.new({hs.eventtap.event.types.mouseMoved}, function(e)
+local mouseMovedTap = hs.eventtap.new({hs.eventtap.event.types.mouseMoved}, function(e)
   local mods = hs.eventtap.checkKeyboardModifiers()
 
   if mods["cmd"] then
@@ -92,7 +92,7 @@ mouseMovedTap = hs.eventtap.new({hs.eventtap.event.types.mouseMoved}, function(e
   end
 end):start()
 
-leftMouseDownTap = hs.eventtap.new({hs.eventtap.event.types.leftMouseDown}, function(e)
+local leftMouseDownTap = hs.eventtap.new({hs.eventtap.event.types.leftMouseDown}, function(e)
   if stickyScroll then
     stickyScroll = false
     return true
@@ -105,7 +105,7 @@ leftMouseDownTap = hs.eventtap.new({hs.eventtap.event.types.leftMouseDown}, func
   end
 end):start()
 
-rightMouseDownTap = hs.eventtap.new({hs.eventtap.event.types.rightMouseDown}, function(e)
+local rightMouseDownTap = hs.eventtap.new({hs.eventtap.event.types.rightMouseDown}, function(e)
   if stickyScroll then
     stickyScroll = false
     return true
@@ -118,7 +118,7 @@ rightMouseDownTap = hs.eventtap.new({hs.eventtap.event.types.rightMouseDown}, fu
   end
 end):start()
 
-middleMouseDownTap = hs.eventtap.new({hs.eventtap.event.types.middleMouseDown}, function(e)
+local middleMouseDownTap = hs.eventtap.new({hs.eventtap.event.types.middleMouseDown}, function(e)
   stickyScroll = false
 
   local mods = hs.eventtap.checkKeyboardModifiers()
@@ -134,11 +134,11 @@ middleMouseDownTap = hs.eventtap.new({hs.eventtap.event.types.middleMouseDown}, 
   end
 end):start()
 
-stickyScroll = false
-stickyScrollLockX = false
-bufferedX = 0
-bufferedY = 0
-lastScrollEventTS = 0
+local stickyScroll = false
+local stickyScrollLockX = false
+local bufferedX = 0
+local bufferedY = 0
+local lastScrollEventTS = 0
 
 function scroll(e, lockX)
   local speed = 4
@@ -203,4 +203,4 @@ function openForSpace(name, menuItem)
 end
 
 hs.loadSpoon("ReloadConfiguration")
-spoon.ReloadConfiguration:start()
+local configReload = spoon.ReloadConfiguration:start()
