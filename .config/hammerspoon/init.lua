@@ -1,5 +1,9 @@
+hs.application.enableSpotlightForNameSearches(true)
 hs.grid.setGrid("12x12").setMargins("11x11")
 hs.window.animationDuration = 0
+
+hs.hotkey.bind({ "ctrl", "cmd" }, "n", function() newWindow("iTerm") end)
+hs.hotkey.bind({ "ctrl", "cmd" }, "e", function() newWindow("Google Chrome") end)
 
 -- macro pad keycodes
 --
@@ -174,6 +178,11 @@ function moveRightSpace()
     'tell application "System Events" to key code 124 using {control down}'
   )
   return true
+end
+
+function newWindow(name)
+  hs.application.launchOrFocus(name)
+  hs.application.find(name):selectMenuItem("New Window")
 end
 
 hs.loadSpoon("ReloadConfiguration")
