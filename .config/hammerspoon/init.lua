@@ -2,9 +2,9 @@ hs.application.enableSpotlightForNameSearches(true)
 hs.grid.setGrid("12x12").setMargins("11x11")
 hs.window.animationDuration = 0
 
-hs.hotkey.bind({ "ctrl", "cmd" }, "n", function() newWindow("iTerm", "New Window") end)
-hs.hotkey.bind({ "ctrl", "cmd" }, "e", function() newWindow("Google Chrome", "New Window") end)
-hs.hotkey.bind({ "ctrl", "cmd" }, "i", function() newWindow("iA Writer", "New in Library") end)
+hs.hotkey.bind({ "ctrl", "cmd" }, "n", function() openForSpace("iTerm", "New Window") end)
+hs.hotkey.bind({ "ctrl", "cmd" }, "e", function() openForSpace("Google Chrome", "New Window") end)
+hs.hotkey.bind({ "ctrl", "cmd" }, "i", function() openForSpace("iA Writer", "New in Library") end)
 
 -- macro pad keycodes
 --
@@ -181,9 +181,17 @@ function moveRightSpace()
   return true
 end
 
-function newWindow(name, menuItem)
+function openForSpace(name, menuItem)
+  local app = hs.application.find(name)
+  local initiallyVisible = #app:visibleWindows()
+
   hs.application.launchOrFocus(name)
-  hs.application.find(name):selectMenuItem(menuItem)
+
+  -- sometimes launching or focussing opens a new window for us, in which case
+  -- we needn't bother
+  if #app:visibleWindows() == initiallyVisible then
+    app:selectMenuItem(menuItem)
+  end
 end
 
 hs.loadSpoon("ReloadConfiguration")
