@@ -147,12 +147,12 @@ function scroll(e, lockX)
   local dx = e:getProperty(hs.eventtap.event.properties["mouseEventDeltaX"])
   local dy = e:getProperty(hs.eventtap.event.properties["mouseEventDeltaY"])
 
-  bufferedX = bufferedX + dx
-  bufferedY = bufferedY + dy
-
   if lockX then
     dx = 0
   end
+
+  bufferedX = bufferedX + dx
+  bufferedY = bufferedY + dy
 
   -- throttle actual scroll events to no more than 60 a second because mouse
   -- events are significantly more frequent than scrollwheel events, and if you
