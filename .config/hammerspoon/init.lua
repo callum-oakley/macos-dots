@@ -1,3 +1,5 @@
+gettime = require("socket").gettime
+
 hs.application.enableSpotlightForNameSearches(true)
 hs.grid.setGrid("12x12").setMargins("11x11")
 hs.window.animationDuration = 0
@@ -134,32 +136,38 @@ end):start()
 
 stickyScroll = false
 stickyScrollLockX = false
-scrollEvents = 0
+bufferedX = 0
+bufferedY = 0
+lastScrollEventTS = 0
 
 function scroll(e, lockX)
-  local scrollSpeed = 20
-  local sampleRate = 5
+  local speed = 4
 
   local oldMousePosition = hs.mouse.getAbsolutePosition()
   local dx = e:getProperty(hs.eventtap.event.properties["mouseEventDeltaX"])
   local dy = e:getProperty(hs.eventtap.event.properties["mouseEventDeltaY"])
 
+  bufferedX = bufferedX + dx
+  bufferedY = bufferedY + dy
+
   if lockX then
     dx = 0
   end
 
-  -- mouse events are much more frequent than scroll events, so only send an
-  -- actual scroll event every `sampleRate` mouse events to avoid laggy
-  -- scrolling!
-  scrollEvents = scrollEvents + 1
-  if scrollEvents == sampleRate then
-    scrollEvents = 0
-
+  -- throttle actual scroll events to no more than 60 a second because mouse
+  -- events are significantly more frequent than scrollwheel events, and if you
+  -- send too many scroll events things start to get laggy...
+  local ts = gettime()
+  if ts - lastScrollEventTS > 1 / 60 then
     local scroll = hs.eventtap.event.newScrollEvent(
-      {dx * scrollSpeed, dy * scrollSpeed},
+      {bufferedX * speed, bufferedY * speed},
       {},
       "pixel"
     ):post()
+
+    lastScrollEventTS = ts
+    bufferedX = 0
+    bufferedY = 0
   end
 
   hs.mouse.setAbsolutePosition(oldMousePosition)
