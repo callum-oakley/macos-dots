@@ -2,8 +2,9 @@ hs.application.enableSpotlightForNameSearches(true)
 hs.grid.setGrid("12x12").setMargins("11x11")
 hs.window.animationDuration = 0
 
-hs.hotkey.bind({ "ctrl", "cmd" }, "n", function() newWindow("iTerm") end)
-hs.hotkey.bind({ "ctrl", "cmd" }, "e", function() newWindow("Google Chrome") end)
+hs.hotkey.bind({ "ctrl", "cmd" }, "n", function() newWindow("iTerm", "New Window") end)
+hs.hotkey.bind({ "ctrl", "cmd" }, "e", function() newWindow("Google Chrome", "New Window") end)
+hs.hotkey.bind({ "ctrl", "cmd" }, "i", function() newWindow("iA Writer", "New in Library") end)
 
 -- macro pad keycodes
 --
@@ -180,9 +181,9 @@ function moveRightSpace()
   return true
 end
 
-function newWindow(name)
+function newWindow(name, menuItem)
   hs.application.launchOrFocus(name)
-  hs.application.find(name):selectMenuItem("New Window")
+  hs.application.find(name):selectMenuItem(menuItem)
 end
 
 hs.loadSpoon("ReloadConfiguration")
