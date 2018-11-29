@@ -112,9 +112,14 @@ rightMouseDownTap = hs.eventtap.new({hs.eventtap.event.types.rightMouseDown}, fu
   end
 
   local mods = hs.eventtap.checkKeyboardModifiers()
+  local buttons = hs.mouse.getButtons()
 
   if mods["ctrl"] then
     return moveRightSpace()
+  elseif buttons["left"] then
+    stickyScroll = true
+    stickyScrollLockX = false
+    return true
   end
 end):start()
 
@@ -122,12 +127,17 @@ middleMouseDownTap = hs.eventtap.new({hs.eventtap.event.types.middleMouseDown}, 
   stickyScroll = false
 
   local mods = hs.eventtap.checkKeyboardModifiers()
+  local buttons = hs.mouse.getButtons()
 
   if mods["cmd"] then
     stickyScroll = true
     stickyScrollLockX = false
     return true
   elseif mods["alt"] then
+    stickyScroll = true
+    stickyScrollLockX = true
+    return true
+  elseif buttons["left"] then
     stickyScroll = true
     stickyScrollLockX = true
     return true
