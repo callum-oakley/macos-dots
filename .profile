@@ -51,7 +51,7 @@ h() {
 }
 
 b() {
-  branch=$(git branch | awk "'"!/\*/"'"| fzf)
+  branch=$(git branch | awk '!/\*/'| fzf)
   git checkout $branch
 }
 
