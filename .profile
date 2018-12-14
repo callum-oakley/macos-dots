@@ -1,10 +1,10 @@
-alias b='git checkout $(git branch | awk '\''!/\*/'\''| fzf)'
+#! /bin/bash
+
 alias cat='bat --theme=GitHub -p'
 alias diff='colordiff -u'
 alias ghci='stack exec -- ghci'
 alias git='hub'
 alias gup='gup -t $GUP_TOKEN'
-alias h='cd ~/$(cat ~/.dir-history | fzf)'
 alias ls='ls -G'
 alias py='python3'
 alias tree='tree -C'
@@ -41,8 +41,20 @@ cd() {
   builtin cd "$@" &&
     ls -A &&
     pwd | rg -q '^/Users/callum/' &&
-    { pwd | sed -e s:/Users/callum/::; cat ~/.dir-history; } | sponge ~/.dir-history
+    { pwd | sed -e s:/Users/callum/::; cat ~/.dir-history; } | sponge ~/.dir-history &&
+    uniq ~/.dir-history | sponge ~/.dir-history
 }
+
+h() {
+  dir=$(cat ~/.dir-history | fzf) &&
+  cd ~/"$dir"
+}
+
+b() {
+  branch=$(git branch | awk "'"!/\*/"'"| fzf)
+  git checkout $branch
+}
+
 
 branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
