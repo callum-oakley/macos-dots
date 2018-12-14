@@ -1,13 +1,14 @@
 alias b='git checkout $(git branch | awk '\''!/\*/'\''| fzf)'
+alias cat='bat --theme=GitHub -p'
 alias diff='colordiff -u'
 alias ghci='stack exec -- ghci'
 alias git='hub'
 alias gup='gup -t $GUP_TOKEN'
+alias h='cd ~/$(cat ~/.dir-history | fzf)'
 alias ls='ls -G'
 alias py='python3'
 alias tree='tree -C'
 alias vi='nvim'
-alias cat='bat --theme=GitHub -p'
 
 # kubectl goodness
 alias kd='kubectl --context deneb'
@@ -37,7 +38,10 @@ alias ksp='ks -n platform'
 alias ksv='ks -n vs'
 
 cd() {
-  builtin cd "$@" && ls -A
+  builtin cd "$@" &&
+    ls -A &&
+    pwd | rg -q '^/Users/callum/' &&
+    { pwd | sed -e s:/Users/callum/::; cat ~/.dir-history; } | sponge ~/.dir-history
 }
 
 branch() {
@@ -78,5 +82,12 @@ export GOPATH="$HOME/code/go"
 export PASSWORD_STORE_DIR="$HOME/.password-store"
 export PS1="\n\[\033[0;\$(ps1_colour)m\]\W\$(branch) $\[\033[0m\] "
 export VAULT_ADDR='https://vault.pusherplatform.io:8200'
+
+# android
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 export PATH="$HOME/bin:$HOME/.cargo/bin:$GOPATH/bin:$PATH"
