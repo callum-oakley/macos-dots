@@ -122,12 +122,13 @@ nnoremap <leader>d /<<<<<<<\\|=======\\|>>>>>>><cr>
 nnoremap <leader>e :Files<cr>
 nnoremap <leader>f gq
 nnoremap <leader>fa :setlocal fo+=a<cr>
-nnoremap <leader>fm :setlocal fo-=a<cr>
 nnoremap <leader>ff gqq
+nnoremap <leader>fm :setlocal fo-=a<cr>
 nnoremap <leader>hq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 nnoremap <leader>i :BLines<cr>
 nnoremap <leader>n :bn<cr>
 nnoremap <leader>o o<esc>O
+nnoremap <leader>p :.! python3 -<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>r :Rg<cr>
 nnoremap <leader>s :w<cr>
@@ -151,5 +152,6 @@ vnoremap <PageDown> 9<down>
 vnoremap <PageUp> 9<up>
 vnoremap <cr> :
 vnoremap <home> ^
+vnoremap <leader>p :! python3 -<cr>
 vnoremap c "_c
 vnoremap x "_x
