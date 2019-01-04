@@ -7,7 +7,7 @@ alias git='hub'
 alias gup='gup -t $GUP_TOKEN'
 alias ls='ls -G'
 alias py='python3'
-alias tree='tree -C'
+alias tree="tree -C -I 'target|node_modules|dist'"
 alias vi='nvim'
 
 # kubectl goodness
@@ -78,6 +78,7 @@ fi
 # history config
 shopt -s histappend
 shopt -s cmdhist
+shopt -s globstar
 export HISTSIZE=1000000
 export HISTFILESIZE="$HISTSIZE"
 export HISTCONTROL=ignoreboth
