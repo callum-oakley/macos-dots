@@ -7,6 +7,7 @@ alias git='hub'
 alias gup='gup -t $GUP_TOKEN'
 alias ls='ls -G'
 alias py='python3'
+alias tclip='tee >(pbcopy)'
 alias tree="tree -C -I 'target|node_modules|dist'"
 alias vi='nvim'
 

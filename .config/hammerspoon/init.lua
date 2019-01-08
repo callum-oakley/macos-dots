@@ -80,7 +80,10 @@ keyDownTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function (e)
   end
 end):start()
 
-mouseMovedTap = hs.eventtap.new({hs.eventtap.event.types.mouseMoved}, function(e)
+mouseMovedTap = hs.eventtap.new({
+  hs.eventtap.event.types.mouseMoved,
+  hs.eventtap.event.types.leftMouseDragged,
+}, function(e)
   local mods = hs.eventtap.checkKeyboardModifiers()
 
   if mods["cmd"] then
