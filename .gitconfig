@@ -9,7 +9,7 @@
     graph = log --graph --decorate --oneline -10
     root = rev-parse --show-toplevel
     ignore = "!f() { curl -L -s https://www.gitignore.io/api/$@; }; f"
-    hash = "!f() { git log -1 | awk 'NR == 1 { print $2 }'; }; f"
+    hash = rev-parse HEAD
     lcm = "!f() { echo $(git log -1 | tail -1); }; f"
 
 [core]
