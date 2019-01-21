@@ -132,6 +132,7 @@ nnoremap <leader>p :.! python3 -<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>r :Rg<cr>
 nnoremap <leader>s :w<cr>
+nnoremap <leader>S :noautocmd w<cr>
 nnoremap <leader>t <nop>
 nnoremap <leader>t2 :set shiftwidth=2<cr>:set tabstop=2<cr>
 nnoremap <leader>t4 :set shiftwidth=4<cr>:set tabstop=4<cr>
