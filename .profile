@@ -2,6 +2,7 @@
 
 alias cat='bat --theme=GitHub -p'
 alias diff='colordiff -u'
+alias disable-prettier="echo '**' > .prettierignore"
 alias ghci='stack exec -- ghci'
 alias git='hub'
 alias gup='gup -t $GUP_TOKEN'

@@ -8,3 +8,4 @@ highlight htmlBold cterm=bold
 highlight htmlItalic cterm=italic
 highlight SpecialComment ctermfg=DarkMagenta cterm=italic
 highlight pythonString cterm=italic
+highlight jsThis ctermfg=DarkMagenta
