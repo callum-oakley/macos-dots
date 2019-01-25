@@ -231,6 +231,8 @@
 	<string>042147C2-2C1B-4883-9CE6-01CE52526B0C</string>
 	<key>DisableWindowSizeSnap</key>
 	<true/>
+	<key>FocusFollowsMouse</key>
+	<false/>
 	<key>GlobalKeyMap</key>
 	<dict>
 		<key>0x19-0x160000</key>
@@ -390,24 +392,26 @@
 	<true/>
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>570 512 745 239 0 0 2560 1440 </string>
+	<key>NSWindow Frame SUStatusFrame</key>
+	<string>1868 1167 400 129 0 0 2560 1440 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>930 613 700 622 0 0 2560 1440 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 126 606 469 0 0 2560 1440 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>226 362 796 486 0 0 1440 900 </string>
+	<string>1621 481 937 514 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>221 6 843 1428 0 0 2560 1440 </string>
+	<string>1712 126 836 1189 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>1283 959 650 475 0 0 2560 1440 </string>
+	<string>218 11 842 1418 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>858 140 842 1172 0 0 2560 1440 </string>
+	<string>218 11 842 1418 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>6 7 842 1427 0 0 2560 1440 </string>
+	<string>11 11 836 1418 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>1708 6 846 1428 0 0 2560 1440 </string>
+	<string>11 11 836 1418 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
-	<string>858 128 843 1184 0 0 2560 1440 </string>
+	<string>858 126 842 1189 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 6</key>
 	<string>511 2 650 475 0 0 2560 1440 </string>
 	<key>New Bookmarks</key>
@@ -992,7 +996,7 @@
 			<key>Screen</key>
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
-			<integer>1000</integer>
+			<integer>0</integer>
 			<key>Selected Text Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -1026,7 +1030,7 @@
 			<key>Transparency</key>
 			<real>0.0</real>
 			<key>Unlimited Scrollback</key>
-			<false/>
+			<true/>
 			<key>Use Bold Font</key>
 			<true/>
 			<key>Use Bright Bold</key>
@@ -1109,7 +1113,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-11-26T18:29:36Z</date>
+	<date>2019-01-23T15:17:04Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>Selection Respects Soft Boundaries</key>
@@ -1117,7 +1121,7 @@
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>StretchTabsToFillBar</key>
 	<true/>
 	<key>TerminalMargin</key>
@@ -1129,10 +1133,10 @@
 	<key>WindowNumber</key>
 	<false/>
 	<key>WordCharacters</key>
-	<string>,</string>
+	<string></string>
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.2.5</string>
+	<string>3.2.6</string>
 </dict>
 </plist>
