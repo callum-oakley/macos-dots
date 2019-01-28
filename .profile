@@ -71,8 +71,7 @@ ps1_colour() {
 fdt() {
   q=$1
   shift
-  fd -t f "$q"
-  tree $(fd -t d "$q") $@
+  (fd -t f "$q"; tree $(fd -t d "$q") $@) | rg "$q|$"
 }
 
 set -o vi
