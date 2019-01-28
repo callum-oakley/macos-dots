@@ -68,6 +68,13 @@ ps1_colour() {
   echo $PS1_COLOUR
 }
 
+fdt() {
+  q=$1
+  shift
+  fd -t f "$q"
+  tree $(fd -t d "$q") $@
+}
+
 set -o vi
 
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
