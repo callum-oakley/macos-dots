@@ -13,29 +13,17 @@ alias tree="tree -C -I 'target|node_modules|dist|vendor'"
 alias vi='nvim'
 
 # kubectl goodness
-alias kd='kubectl --context deneb'
-alias kda='kd -n analytics'
-alias kdac='kd -n analytics-chatkit'
-alias kdc='kd -n chatkit'
-alias kdf='kd -n feeds'
-alias kdp='kd -n platform'
-alias kdw='kd -n webhooks'
+kube_aliases() {
+  alias k$1="kubectl --context $2"
+  for namespace in analytics chatkit feeds platform webhooks; do
+    alias k$1${namespace:0:1}="k$1 -n $namespace"
+  done
+  alias k$1ac="k$1 -n analytics-chatkit"
+}
 
-alias ks='kubectl --context us1-staging'
-alias ksa='ks -n analytics'
-alias ksac='ks -n analytics-chatkit'
-alias ksc='ks -n chatkit'
-alias ksf='ks -n feeds'
-alias ksp='ks -n platform'
-alias ksw='ks -n webhooks'
-
-alias kp='kubectl --context us1'
-alias kpa='kp -n analytics'
-alias kpac='kp -n analytics-chatkit'
-alias kpc='kp -n chatkit'
-alias kpf='kp -n feeds'
-alias kpp='kp -n platform'
-alias kpw='kp -n webhooks'
+kube_aliases d deneb
+kube_aliases s us1-staging
+kube_aliases p us1
 
 alias ki='kubectl --context integration1'
 alias kic='ki -n $(ki get ns | awk "/chatkit/ { print \$1 }")'
