@@ -8,7 +8,7 @@ def byte_array_to_string(a):
 
 
 def read_byte_array(s):
-    return [int(n) for n in findall("\d+", s)]
+    return [int(n, 0) for n in findall("[0-9a-zA-Z]+", s)]
 
 
 print(byte_array_to_string(read_byte_array(input())))
