@@ -10,7 +10,6 @@ alias ls='ls -G'
 alias py='python3'
 alias tclip='tee >(pbcopy)'
 alias tree="tree -C -I 'target|node_modules|dist|vendor'"
-alias v='vi'
 alias vi='nvim'
 
 # kubectl goodness

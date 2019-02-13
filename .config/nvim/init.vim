@@ -47,7 +47,6 @@ autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`'
 autocmd FileType swift setlocal shiftwidth=4 tabstop=4
 autocmd BufWritePre *.py :Yapf
 
-" uncomment to format all js files on save
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue PrettierAsync
 
