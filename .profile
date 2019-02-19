@@ -37,7 +37,7 @@ cd() {
     ls -A &&
     pwd | rg -q '^/Users/callum/' &&
     { pwd | sed -e s:/Users/callum/::; cat ~/.dir-history; } | sponge ~/.dir-history &&
-    uniq ~/.dir-history | sponge ~/.dir-history
+    nub < ~/.dir-history | sponge ~/.dir-history
 }
 
 h() {
@@ -104,4 +104,4 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-export PATH="$HOME/bin:$HOME/.cargo/bin:$GOPATH/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/grep/libexec/gnubin:$PATH"
