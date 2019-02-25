@@ -1,5 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'elixir-editors/vim-elixir'
 Plug 'fatih/vim-go'
 Plug 'gutenye/json5.vim'
 Plug 'jiangmiao/auto-pairs'
@@ -7,6 +8,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'keith/swift.vim'
 Plug 'leafgarland/typescript-vim'
+Plug 'mhinz/vim-mix-format'
 Plug 'mindriot101/vim-yapf'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
@@ -79,16 +81,18 @@ command! -bang -nargs=* Rg
   \   <bang>0)
 
 " plugin options
-let g:rustfmt_autosave = 1
-let g:haskell_indent_disable = 1
 let g:fzf_layout = { 'down': '~16' }
-let g:prettier#config#semi = 'false'
-let g:prettier#config#single_quote = 'false'
+let g:haskell_indent_disable = 1
+let g:mix_format_on_save = 1
+let g:mix_format_silent_errors = 1
+let g:prettier#config#arrow_parens = 'avoid'
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'false'
-let g:prettier#config#arrow_parens = 'avoid'
-let g:prettier#config#trailing_comma = 'all'
 let g:prettier#config#parser = 'babylon'
+let g:prettier#config#semi = 'false'
+let g:prettier#config#single_quote = 'false'
+let g:prettier#config#trailing_comma = 'all'
+let g:rustfmt_autosave = 1
 
 " keymaps
 inoremap <home> <esc>I
