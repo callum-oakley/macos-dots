@@ -206,11 +206,8 @@ function openForSpace(name, menuItem)
   hs.application.launchOrFocus(name)
 
   local app = hs.application.find(name)
-  local initiallyVisible = #app:visibleWindows()
 
-  -- sometimes launching or focussing opens a new window for us, in which case
-  -- we needn't bother
-  if #app:visibleWindows() == initiallyVisible then
+  if #app:visibleWindows() == 0 then
     app:selectMenuItem(menuItem)
   end
 end
