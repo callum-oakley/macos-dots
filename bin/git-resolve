@@ -1,0 +1,3 @@
+#! /bin/bash
+
+$EDITOR $(git status | awk '/both modified/ { print $3 }')
