@@ -80,73 +80,6 @@ keyDownTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function (e)
   end
 end):start()
 
-mouseMovedTap = hs.eventtap.new({
-  hs.eventtap.event.types.mouseMoved,
-  hs.eventtap.event.types.leftMouseDragged,
-}, function(e)
-  local mods = hs.eventtap.checkKeyboardModifiers()
-
-  if mods["cmd"] then
-    return scroll(e, false)
-  elseif mods["alt"] then
-    return scroll(e, true)
-  elseif stickyScroll then
-    return scroll(e, stickyScrollLockX)
-  end
-end):start()
-
-leftMouseDownTap = hs.eventtap.new({hs.eventtap.event.types.leftMouseDown}, function(e)
-  if stickyScroll then
-    stickyScroll = false
-    return true
-  end
-
-  local mods = hs.eventtap.checkKeyboardModifiers()
-
-  if mods["ctrl"] then
-    return moveLeftSpace()
-  end
-end):start()
-
-rightMouseDownTap = hs.eventtap.new({hs.eventtap.event.types.rightMouseDown}, function(e)
-  if stickyScroll then
-    stickyScroll = false
-    return true
-  end
-
-  local mods = hs.eventtap.checkKeyboardModifiers()
-  local buttons = hs.mouse.getButtons()
-
-  if mods["ctrl"] then
-    return moveRightSpace()
-  elseif buttons["left"] then
-    stickyScroll = true
-    stickyScrollLockX = false
-    return true
-  end
-end):start()
-
-middleMouseDownTap = hs.eventtap.new({hs.eventtap.event.types.middleMouseDown}, function(e)
-  stickyScroll = false
-
-  local mods = hs.eventtap.checkKeyboardModifiers()
-  local buttons = hs.mouse.getButtons()
-
-  if mods["cmd"] then
-    stickyScroll = true
-    stickyScrollLockX = false
-    return true
-  elseif mods["alt"] then
-    stickyScroll = true
-    stickyScrollLockX = true
-    return true
-  elseif buttons["left"] then
-    stickyScroll = true
-    stickyScrollLockX = true
-    return true
-  end
-end):start()
-
 otherMouseDownTap = hs.eventtap.new({hs.eventtap.event.types.otherMouseDown}, function(e)
   local buttonNumber = e:getProperty(hs.eventtap.event.properties["mouseEventButtonNumber"])
 
@@ -162,61 +95,6 @@ otherMouseDownTap = hs.eventtap.new({hs.eventtap.event.types.otherMouseDown}, fu
     hs.mouse.setAbsolutePosition(hs.geometry.point(5 * screen.w / 6, screen.h / 2))
   end
 end):start()
-
-stickyScroll = false
-stickyScrollLockX = false
-bufferedX = 0
-bufferedY = 0
-lastScrollEventTS = 0
-
-function scroll(e, lockX)
-  local speed = 4
-
-  local oldMousePosition = hs.mouse.getAbsolutePosition()
-  local dx = e:getProperty(hs.eventtap.event.properties["mouseEventDeltaX"])
-  local dy = e:getProperty(hs.eventtap.event.properties["mouseEventDeltaY"])
-
-  if lockX then
-    dx = 0
-  end
-
-  bufferedX = bufferedX + dx
-  bufferedY = bufferedY + dy
-
-  -- throttle actual scroll events to no more than 60 a second because mouse
-  -- events are significantly more frequent than scrollwheel events, and if you
-  -- send too many scroll events things start to get laggy...
-  local ts = gettime()
-  if ts - lastScrollEventTS > 1 / 60 then
-    local scroll = hs.eventtap.event.newScrollEvent(
-      {bufferedX * speed, bufferedY * speed},
-      {},
-      "pixel"
-    ):post()
-
-    lastScrollEventTS = ts
-    bufferedX = 0
-    bufferedY = 0
-  end
-
-  hs.mouse.setAbsolutePosition(oldMousePosition)
-
-  return true
-end
-
-function moveLeftSpace()
-  hs.osascript.applescript(
-    'tell application "System Events" to key code 123 using {control down}'
-  )
-  return true
-end
-
-function moveRightSpace()
-  hs.osascript.applescript(
-    'tell application "System Events" to key code 124 using {control down}'
-  )
-  return true
-end
 
 function openForSpace(name, menuItem)
   hs.application.launchOrFocus(name)
