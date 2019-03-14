@@ -80,22 +80,6 @@ keyDownTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function (e)
   end
 end):start()
 
-otherMouseDownTap = hs.eventtap.new({hs.eventtap.event.types.otherMouseDown}, function(e)
-  local buttonNumber = e:getProperty(hs.eventtap.event.properties["mouseEventButtonNumber"])
-
-  local mods = hs.eventtap.checkKeyboardModifiers()
-
-  local screen = hs.screen.mainScreen():frame()
-
-  if buttonNumber == 4 then
-    hs.mouse.setAbsolutePosition(hs.geometry.point(1 * screen.w / 6, screen.h / 2))
-  elseif buttonNumber == 3 then
-    hs.mouse.setAbsolutePosition(hs.geometry.point(3 * screen.w / 6, screen.h / 2))
-  elseif buttonNumber == 2 then
-    hs.mouse.setAbsolutePosition(hs.geometry.point(5 * screen.w / 6, screen.h / 2))
-  end
-end):start()
-
 function openForSpace(name, menuItem)
   hs.application.launchOrFocus(name)
 
