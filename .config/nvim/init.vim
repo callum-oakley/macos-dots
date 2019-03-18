@@ -82,6 +82,7 @@ command! -bang -nargs=* Rg
   \   <bang>0)
 
 " plugin options
+let g:go_fmt_command = 'goimports'
 let g:fzf_layout = { 'down': '~16' }
 let g:haskell_indent_disable = 1
 let g:mix_format_on_save = 1
