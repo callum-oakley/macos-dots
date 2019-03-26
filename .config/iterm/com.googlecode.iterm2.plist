@@ -395,23 +395,23 @@
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>1868 1167 400 129 0 0 2560 1440 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>930 613 700 622 0 0 2560 1440 </string>
+	<string>1804 582 700 622 0 0 2560 1440 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 126 606 469 0 0 2560 1440 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>1621 481 937 514 0 0 2560 1440 </string>
+	<string>1621 481 796 486 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1712 126 836 1189 0 0 2560 1440 </string>
+	<string>858 11 842 1418 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>218 11 842 1418 0 0 2560 1440 </string>
+	<string>1285 11 842 1418 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>218 11 842 1418 0 0 2560 1440 </string>
+	<string>432 126 842 1189 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>11 11 836 1418 0 0 2560 1440 </string>
-	<key>NSWindow Frame iTerm Window 4</key>
-	<string>11 11 836 1418 0 0 2560 1440 </string>
-	<key>NSWindow Frame iTerm Window 5</key>
 	<string>858 126 842 1189 0 0 2560 1440 </string>
+	<key>NSWindow Frame iTerm Window 4</key>
+	<string>645 11 1269 1418 0 0 2560 1440 </string>
+	<key>NSWindow Frame iTerm Window 5</key>
+	<string>218 840 650 475 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 6</key>
 	<string>511 2 650 475 0 0 2560 1440 </string>
 	<key>New Bookmarks</key>
@@ -1113,7 +1113,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-01-23T15:17:04Z</date>
+	<date>2019-03-25T16:51:13Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>Selection Respects Soft Boundaries</key>
@@ -1121,7 +1121,7 @@
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<true/>
+	<false/>
 	<key>StretchTabsToFillBar</key>
 	<true/>
 	<key>TerminalMargin</key>
@@ -1137,6 +1137,6 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.2.6</string>
+	<string>3.2.7</string>
 </dict>
 </plist>
