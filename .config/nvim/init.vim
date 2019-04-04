@@ -120,6 +120,7 @@ nnoremap <leader>= <c-w>=
 nnoremap <leader>E :e 
 nnoremap <leader>N :bp<cr>
 nnoremap <leader>O O<esc>O
+nnoremap <leader>S :noautocmd w<cr>
 nnoremap <leader>a <nop>
 nnoremap <leader>b :Buffer<cr>
 nnoremap <leader>d /<<<<<<<\\|=======\\|>>>>>>><cr>
@@ -128,6 +129,7 @@ nnoremap <leader>f gq
 nnoremap <leader>fa :setlocal fo+=a<cr>
 nnoremap <leader>ff gqq
 nnoremap <leader>fm :setlocal fo-=a<cr>
+nnoremap <leader>gi :GoImports<cr>
 nnoremap <leader>hq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 nnoremap <leader>i :BLines<cr>
 nnoremap <leader>n :bn<cr>
@@ -136,7 +138,6 @@ nnoremap <leader>p :.! python3 -<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>r :Rg<cr>
 nnoremap <leader>s :w<cr>
-nnoremap <leader>S :noautocmd w<cr>
 nnoremap <leader>t <nop>
 nnoremap <leader>t2 :set shiftwidth=2<cr>:set tabstop=2<cr>
 nnoremap <leader>t4 :set shiftwidth=4<cr>:set tabstop=4<cr>
