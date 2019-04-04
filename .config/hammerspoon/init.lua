@@ -7,7 +7,7 @@ hs.window.animationDuration = 0
 hs.hotkey.bind({ "ctrl", "cmd" }, "n", function() openForSpace("iTerm", "New Window") end)
 hs.hotkey.bind({ "ctrl", "cmd" }, "e", function() openForSpace("Google Chrome", "New Window") end)
 hs.hotkey.bind({ "ctrl", "cmd" }, "i", function() openForSpace("iA Writer", "New in Library") end)
-hs.hotkey.bind({ "ctrl", "cmd" }, "s", function() openForSpace("Things", "New Things Window") end)
+hs.hotkey.bind({ "ctrl", "cmd" }, "o", function() openForSpace("Things", "New Things Window") end)
 
 -- macro pad keycodes
 --
