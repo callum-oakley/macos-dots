@@ -8,6 +8,11 @@ hs.hotkey.bind({ "ctrl", "cmd" }, "n", function() openForSpace("iTerm", "New Win
 hs.hotkey.bind({ "ctrl", "cmd" }, "e", function() openForSpace("Google Chrome", "New Window") end)
 hs.hotkey.bind({ "ctrl", "cmd" }, "i", function() openForSpace("iA Writer", "New in Library") end)
 hs.hotkey.bind({ "ctrl", "cmd" }, "o", function() openForSpace("Things", "New Things Window") end)
+hs.hotkey.bind({ "alt", }, "q", function() hs.eventtap.keyStrokes(utf8.char(772)) end)
+hs.hotkey.bind({ "alt", }, "w", function() hs.eventtap.keyStrokes(utf8.char(769)) end)
+hs.hotkey.bind({ "alt", }, "f", function() hs.eventtap.keyStrokes(utf8.char(780)) end)
+hs.hotkey.bind({ "alt", }, "p", function() hs.eventtap.keyStrokes(utf8.char(768)) end)
+hs.hotkey.bind({ "alt", }, "u", function() hs.eventtap.keyStrokes(utf8.char(776)) end)
 
 -- macro pad keycodes
 --
