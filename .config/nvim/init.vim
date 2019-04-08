@@ -123,7 +123,7 @@ nnoremap <leader>O O<esc>O
 nnoremap <leader>S :noautocmd w<cr>
 nnoremap <leader>a <nop>
 nnoremap <leader>b :Buffer<cr>
-nnoremap <leader>d /<<<<<<<\\|=======\\|>>>>>>><cr>
+nnoremap <leader>d /<<<<<<<\\|=======\\|\|\|\|\|\|\|\|\\|>>>>>>><cr>
 nnoremap <leader>e :Files<cr>
 nnoremap <leader>f gq
 nnoremap <leader>fa :setlocal fo+=a<cr>

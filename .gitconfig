@@ -15,5 +15,9 @@
 
 [core]
     pager = less -x1,5
+
 [http]
-	cookiefile = /Users/callum/.gitcookies
+    cookiefile = /Users/callum/.gitcookies
+
+[merge]
+    conflictstyle = diff3
