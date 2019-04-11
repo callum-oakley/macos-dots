@@ -107,4 +107,4 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 # opam
 test -r /Users/callum/.opam/opam-init/init.sh && . /Users/callum/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
-export PATH="$HOME/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/grep/libexec/gnubin:$PATH"
+export PATH="$HOME/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:$PATH"
