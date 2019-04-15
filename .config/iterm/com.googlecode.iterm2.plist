@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AboutToPasteTabsWithCancel</key>
+	<true/>
+	<key>AboutToPasteTabsWithCancel_selection</key>
+	<integer>2</integer>
 	<key>AdjustWindowForFontSizeChange</key>
 	<false/>
 	<key>AlternateMouseScroll</key>
@@ -399,17 +403,17 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 126 606 469 0 0 2560 1440 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>1621 481 796 486 0 0 2560 1440 </string>
+	<string>692 576 770 429 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>858 11 842 1418 0 0 2560 1440 </string>
+	<string>218 11 842 1418 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>1285 11 842 1418 0 0 2560 1440 </string>
-	<key>NSWindow Frame iTerm Window 2</key>
-	<string>432 126 842 1189 0 0 2560 1440 </string>
-	<key>NSWindow Frame iTerm Window 3</key>
 	<string>858 126 842 1189 0 0 2560 1440 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
+	<string>858 126 842 1189 0 0 2560 1440 </string>
+	<key>NSWindow Frame iTerm Window 3</key>
+	<string>858 840 650 475 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>645 11 1269 1418 0 0 2560 1440 </string>
+	<string>858 840 650 475 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
 	<string>218 840 650 475 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 6</key>
@@ -1067,6 +1071,8 @@
 	<real>552916671.08241296</real>
 	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
+	<key>PasteTabToStringTabStopSize</key>
+	<integer>4</integer>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -1113,7 +1119,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-03-25T16:51:13Z</date>
+	<date>2019-04-10T07:05:31Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>Selection Respects Soft Boundaries</key>
@@ -1137,6 +1143,6 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.2.7</string>
+	<string>3.2.8</string>
 </dict>
 </plist>
