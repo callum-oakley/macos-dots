@@ -104,6 +104,8 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
+export GPG_TTY=$(tty)
+
 # opam
 test -r /Users/callum/.opam/opam-init/init.sh && . /Users/callum/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
