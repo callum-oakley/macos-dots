@@ -4,68 +4,62 @@ hs.application.enableSpotlightForNameSearches(true)
 hs.grid.setGrid("12x12").setMargins("11x11")
 hs.window.animationDuration = 0
 
-hs.hotkey.bind({ "ctrl", "cmd" }, "n", function() openForSpace("iTerm", "New Window") end)
-hs.hotkey.bind({ "ctrl", "cmd" }, "e", function() openForSpace("Google Chrome", "New Window") end)
-hs.hotkey.bind({ "ctrl", "cmd" }, "i", function() openForSpace("iA Writer", "New in Library") end)
-hs.hotkey.bind({ "ctrl", "cmd" }, "o", function() openForSpace("Things", "New Things Window") end)
+hs.hotkey.bind({ "cmd", "alt" }, "n", function() openForSpace("iTerm", "New Window") end)
+hs.hotkey.bind({ "cmd", "alt" }, "e", function() openForSpace("Google Chrome", "New Window") end)
+hs.hotkey.bind({ "cmd", "alt" }, "i", function() openForSpace("iA Writer", "New in Library") end)
+hs.hotkey.bind({ "cmd", "alt" }, "o", function() openForSpace("Things", "New Things Window") end)
 hs.hotkey.bind({ "alt", }, "q", function() hs.eventtap.keyStrokes(utf8.char(772)) end)
 hs.hotkey.bind({ "alt", }, "w", function() hs.eventtap.keyStrokes(utf8.char(769)) end)
 hs.hotkey.bind({ "alt", }, "f", function() hs.eventtap.keyStrokes(utf8.char(780)) end)
 hs.hotkey.bind({ "alt", }, "p", function() hs.eventtap.keyStrokes(utf8.char(768)) end)
 hs.hotkey.bind({ "alt", }, "u", function() hs.eventtap.keyStrokes(utf8.char(776)) end)
 
--- macro pad keycodes
---
--- +-----------------------------+
--- |  0 | 11 |  8 |  2 | 14 |  3 |
--- +-----------------------------+
--- |  5 |  4 | 34 | 38 | 40 | 37 |
--- +-----------------------------+
--- |    | 46 | 45 | 31 | 35 | 12 |
--- +-----------------------------+
+function windowHotKeyConf(key, short)
+  return { keyCode=hs.keycodes.map[key], mods={ cmd=true, alt=true, ctrl=short, shift=false } }
+end
 
 windowHotkeys = {
-  ["1,0 4x12"]={ keyCode=11, mods={ ctrl=true, alt=true, cmd=false, shift=false } },
-  ["0,0 4x12"]={ keyCode=8,  mods={ ctrl=true, alt=true, cmd=false, shift=false } },
-  ["4,0 4x12"]={ keyCode=2,  mods={ ctrl=true, alt=true, cmd=false, shift=false } },
-  ["8,0 4x12"]={ keyCode=14, mods={ ctrl=true, alt=true, cmd=false, shift=false } },
-  ["7,0 4x12"]={ keyCode=3,  mods={ ctrl=true, alt=true, cmd=false, shift=false } },
+  ["1,0 4x12"]=windowHotKeyConf("q", false),
+  ["0,0 4x12"]=windowHotKeyConf("w", false),
+  ["4,0 4x12"]=windowHotKeyConf("f", false),
+  ["8,0 4x12"]=windowHotKeyConf("p", false),
+  ["7,0 4x12"]=windowHotKeyConf("g", false),
 
-  ["1,0 6x12"]={ keyCode=4,  mods={ ctrl=true, alt=true, cmd=false, shift=false } },
-  ["0,0 6x12"]={ keyCode=34, mods={ ctrl=true, alt=true, cmd=false, shift=false } },
-  ["3,0 6x12"]={ keyCode=38, mods={ ctrl=true, alt=true, cmd=false, shift=false } },
-  ["6,0 6x12"]={ keyCode=40, mods={ ctrl=true, alt=true, cmd=false, shift=false } },
-  ["5,0 6x12"]={ keyCode=37, mods={ ctrl=true, alt=true, cmd=false, shift=false } },
+  ["1,0 6x12"]=windowHotKeyConf("a", false),
+  ["0,0 6x12"]=windowHotKeyConf("r", false),
+  ["3,0 6x12"]=windowHotKeyConf("s", false),
+  ["6,0 6x12"]=windowHotKeyConf("t", false),
+  ["5,0 6x12"]=windowHotKeyConf("d", false),
 
-  ["2,0 4x12"]={ keyCode=46, mods={ ctrl=true, alt=true, cmd=false, shift=false } },
-  ["0,0 8x12"]={ keyCode=45, mods={ ctrl=true, alt=true, cmd=false, shift=false } },
-  ["2,0 8x12"]={ keyCode=31, mods={ ctrl=true, alt=true, cmd=false, shift=false } },
-  ["4,0 8x12"]={ keyCode=35, mods={ ctrl=true, alt=true, cmd=false, shift=false } },
-  ["6,0 4x12"]={ keyCode=12, mods={ ctrl=true, alt=true, cmd=false, shift=false } },
+  ["2,0 4x12"]=windowHotKeyConf("z", false),
+  ["0,0 8x12"]=windowHotKeyConf("x", false),
+  ["2,0 8x12"]=windowHotKeyConf("c", false),
+  ["4,0 8x12"]=windowHotKeyConf("v", false),
+  ["6,0 4x12"]=windowHotKeyConf("b", false),
 
-  ["0,0 12x12"]={ keyCode=0, mods={ ctrl=true, alt=true, cmd=false, shift=false } },
-  ["1,0 10x12"]={ keyCode=5, mods={ ctrl=true, alt=true, cmd=false, shift=false } },
+  ["0,0 12x12"]=windowHotKeyConf("tab", false),
+  ["1,0 10x12"]=windowHotKeyConf("delete", false),
 
-  ["1,1 4x10"]={ keyCode=11, mods={ ctrl=true, alt=true, cmd=false, shift=true } },
-  ["0,1 4x10"]={ keyCode=8,  mods={ ctrl=true, alt=true, cmd=false, shift=true } },
-  ["4,1 4x10"]={ keyCode=2,  mods={ ctrl=true, alt=true, cmd=false, shift=true } },
-  ["8,1 4x10"]={ keyCode=14, mods={ ctrl=true, alt=true, cmd=false, shift=true } },
-  ["7,1 4x10"]={ keyCode=3,  mods={ ctrl=true, alt=true, cmd=false, shift=true } },
+  ["1,1 4x10"]=windowHotKeyConf("q", true),
+  ["0,1 4x10"]=windowHotKeyConf("w", true),
+  ["4,1 4x10"]=windowHotKeyConf("f", true),
+  ["8,1 4x10"]=windowHotKeyConf("p", true),
+  ["7,1 4x10"]=windowHotKeyConf("g", true),
 
-  ["1,1 6x10"]={ keyCode=4,  mods={ ctrl=true, alt=true, cmd=false, shift=true } },
-  ["0,1 6x10"]={ keyCode=34, mods={ ctrl=true, alt=true, cmd=false, shift=true } },
-  ["3,1 6x10"]={ keyCode=38, mods={ ctrl=true, alt=true, cmd=false, shift=true } },
-  ["6,1 6x10"]={ keyCode=40, mods={ ctrl=true, alt=true, cmd=false, shift=true } },
-  ["5,1 6x10"]={ keyCode=37, mods={ ctrl=true, alt=true, cmd=false, shift=true } },
+  ["1,1 6x10"]=windowHotKeyConf("a", true),
+  ["0,1 6x10"]=windowHotKeyConf("r", true),
+  ["3,1 6x10"]=windowHotKeyConf("s", true),
+  ["6,1 6x10"]=windowHotKeyConf("t", true),
+  ["5,1 6x10"]=windowHotKeyConf("d", true),
 
-  ["2,1 4x10"]={ keyCode=46, mods={ ctrl=true, alt=true, cmd=false, shift=true } },
-  ["0,1 8x10"]={ keyCode=45, mods={ ctrl=true, alt=true, cmd=false, shift=true } },
-  ["2,1 8x10"]={ keyCode=31, mods={ ctrl=true, alt=true, cmd=false, shift=true } },
-  ["4,1 8x10"]={ keyCode=35, mods={ ctrl=true, alt=true, cmd=false, shift=true } },
-  ["6,1 4x10"]={ keyCode=12, mods={ ctrl=true, alt=true, cmd=false, shift=true } },
+  ["2,1 4x10"]=windowHotKeyConf("z", true),
+  ["0,1 8x10"]=windowHotKeyConf("x", true),
+  ["2,1 8x10"]=windowHotKeyConf("c", true),
+  ["4,1 8x10"]=windowHotKeyConf("v", true),
+  ["6,1 4x10"]=windowHotKeyConf("b", true),
 
-  ["0,1 12x10"]={ keyCode=0, mods={ ctrl=true, alt=true, cmd=false, shift=true } },
-  ["1,1 10x10"]={ keyCode=5, mods={ ctrl=true, alt=true, cmd=false, shift=true } },
+  ["0,1 12x10"]=windowHotKeyConf("tab", true),
+  ["1,1 10x10"]=windowHotKeyConf("delete", true),
 }
 
 keyDownTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function (e)

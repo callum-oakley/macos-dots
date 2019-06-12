@@ -1,5 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'cespare/vim-toml'
 Plug 'elixir-editors/vim-elixir'
 Plug 'fatih/vim-go'
 Plug 'gutenye/json5.vim'
