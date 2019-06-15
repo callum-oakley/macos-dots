@@ -4,10 +4,10 @@ hs.application.enableSpotlightForNameSearches(true)
 hs.grid.setGrid("12x12").setMargins("11x11")
 hs.window.animationDuration = 0
 
-hs.hotkey.bind({ "cmd", "alt" }, "n", function() openForSpace("iTerm", "New Window") end)
-hs.hotkey.bind({ "cmd", "alt" }, "e", function() openForSpace("Google Chrome", "New Window") end)
-hs.hotkey.bind({ "cmd", "alt" }, "i", function() openForSpace("iA Writer", "New in Library") end)
-hs.hotkey.bind({ "cmd", "alt" }, "o", function() openForSpace("Things", "New Things Window") end)
+hs.hotkey.bind({ "cmd", "ctrl" }, "n", function() openForSpace("iTerm", "New Window") end)
+hs.hotkey.bind({ "cmd", "ctrl" }, "e", function() openForSpace("Google Chrome", "New Window") end)
+hs.hotkey.bind({ "cmd", "ctrl" }, "i", function() openForSpace("iA Writer", "New in Library") end)
+hs.hotkey.bind({ "cmd", "ctrl" }, "o", function() openForSpace("Things", "New Things Window") end)
 hs.hotkey.bind({ "alt", }, "q", function() hs.eventtap.keyStrokes(utf8.char(772)) end)
 hs.hotkey.bind({ "alt", }, "w", function() hs.eventtap.keyStrokes(utf8.char(769)) end)
 hs.hotkey.bind({ "alt", }, "f", function() hs.eventtap.keyStrokes(utf8.char(780)) end)
@@ -15,7 +15,7 @@ hs.hotkey.bind({ "alt", }, "p", function() hs.eventtap.keyStrokes(utf8.char(768)
 hs.hotkey.bind({ "alt", }, "u", function() hs.eventtap.keyStrokes(utf8.char(776)) end)
 
 function windowHotKeyConf(key, short)
-  return { keyCode=hs.keycodes.map[key], mods={ cmd=true, alt=true, ctrl=short, shift=false } }
+  return { keyCode=hs.keycodes.map[key], mods={ cmd=true, alt=short, ctrl=true, shift=false } }
 end
 
 windowHotkeys = {
