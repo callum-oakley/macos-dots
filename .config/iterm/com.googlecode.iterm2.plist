@@ -260,6 +260,13 @@
 			<key>Text</key>
 			<string></string>
 		</dict>
+		<key>0x7f-0x80000</key>
+		<dict>
+			<key>Action</key>
+			<integer>11</integer>
+			<key>Text</key>
+			<string>0x17</string>
+		</dict>
 		<key>0x9-0x140000</key>
 		<dict>
 			<key>Action</key>
@@ -359,6 +366,8 @@
 	<true/>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
+	<key>NSFontPanelAttributes</key>
+	<string>1, 4</string>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/.config/iterm</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
@@ -395,27 +404,27 @@
 	<key>NSTableView Supports v2 KeyBingingTable</key>
 	<true/>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>570 512 745 239 0 0 2560 1440 </string>
+	<string>303 114 745 250 0 0 2560 1440 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>1868 1167 400 129 0 0 2560 1440 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>1804 582 700 622 0 0 2560 1440 </string>
+	<string>930 613 700 622 0 0 2560 1440 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 126 606 469 0 0 2560 1440 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>692 576 770 429 0 0 2560 1440 </string>
+	<string>43 651 796 486 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>218 11 842 1418 0 0 2560 1440 </string>
+	<string>11 126 836 1189 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>858 126 842 1189 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>858 126 842 1189 0 0 2560 1440 </string>
+	<string>11 126 836 1189 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>858 840 650 475 0 0 2560 1440 </string>
+	<string>1285 11 842 1418 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>858 840 650 475 0 0 2560 1440 </string>
+	<string>218 954 650 475 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
-	<string>218 840 650 475 0 0 2560 1440 </string>
+	<string>432 126 842 1189 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 6</key>
 	<string>511 2 650 475 0 0 2560 1440 </string>
 	<key>New Bookmarks</key>
@@ -1119,7 +1128,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-04-10T07:05:31Z</date>
+	<date>2019-06-18T16:18:45Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>Selection Respects Soft Boundaries</key>
@@ -1127,7 +1136,7 @@
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>StretchTabsToFillBar</key>
 	<true/>
 	<key>TerminalMargin</key>
@@ -1143,6 +1152,6 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.2.8</string>
+	<string>3.2.9</string>
 </dict>
 </plist>
