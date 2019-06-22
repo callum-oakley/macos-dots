@@ -15,7 +15,7 @@ hs.hotkey.bind({ "alt", }, "p", function() hs.eventtap.keyStrokes(utf8.char(768)
 hs.hotkey.bind({ "alt", }, "u", function() hs.eventtap.keyStrokes(utf8.char(776)) end)
 
 function windowHotKeyConf(key, short)
-  return { keyCode=hs.keycodes.map[key], mods={ cmd=true, alt=short, ctrl=true, shift=false } }
+  return { keyCode=hs.keycodes.map[key], mods={ cmd=true, alt=false, ctrl=true, shift=short } }
 end
 
 windowHotkeys = {
