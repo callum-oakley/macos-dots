@@ -50,7 +50,6 @@ b() {
   git checkout $branch
 }
 
-
 branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
@@ -64,8 +63,6 @@ fdt() {
   shift
   (fd -t f "$q"; tree $(fd -t d "$q") $@) | rg "$q|$"
 }
-
-set -o vi
 
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
