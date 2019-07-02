@@ -151,6 +151,7 @@ nnoremap <leader>tn :set noexpandtab<cr>
 nnoremap <leader>ts mt:r !date<cr>D"_dd`tp
 nnoremap <leader>v <c-v>
 nnoremap <leader>w :bd<cr>
+nnoremap <leader>l /.\{101,\}<cr>
 nnoremap K "_D
 nnoremap U <c-r>
 nnoremap Y y$

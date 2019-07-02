@@ -1,7 +1,7 @@
 gettime = require("socket").gettime
 
 hs.application.enableSpotlightForNameSearches(true)
-hs.grid.setGrid("12x12").setMargins("11x11")
+hs.grid.setGrid("12x12").setMargins("8x8")
 hs.window.animationDuration = 0
 
 hs.hotkey.bind({"cmd", "ctrl"}, "n",
