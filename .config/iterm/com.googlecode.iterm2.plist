@@ -18,6 +18,8 @@
 	<integer>1</integer>
 	<key>AppleWindowTabbingMode</key>
 	<string>manual</string>
+	<key>AutoHideTmuxClientSession</key>
+	<true/>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>papercolor-light</key>
@@ -366,10 +368,8 @@
 	<true/>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
-	<key>NSFontPanelAttributes</key>
-	<string>1, 4</string>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/.config/iterm</string>
+	<string>~/Documents</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -403,30 +403,10 @@
 	</data>
 	<key>NSTableView Supports v2 KeyBingingTable</key>
 	<true/>
-	<key>NSWindow Frame NSFontPanel</key>
-	<string>303 115 745 116 0 0 2560 1440 </string>
-	<key>NSWindow Frame SUStatusFrame</key>
-	<string>1868 1167 400 129 0 0 2560 1440 </string>
-	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>930 613 700 622 0 0 2560 1440 </string>
-	<key>NSWindow Frame SessionsPreferences</key>
-	<string>269 126 606 469 0 0 2560 1440 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>947 477 796 486 0 0 2560 1440 </string>
+	<string>269 172 918 423 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>218 11 842 1418 0 0 2560 1440 </string>
-	<key>NSWindow Frame iTerm Window 1</key>
-	<string>11 11 836 1418 0 0 2560 1440 </string>
-	<key>NSWindow Frame iTerm Window 2</key>
-	<string>858 11 842 1418 0 0 2560 1440 </string>
-	<key>NSWindow Frame iTerm Window 3</key>
-	<string>1285 11 842 1418 0 0 2560 1440 </string>
-	<key>NSWindow Frame iTerm Window 4</key>
-	<string>218 954 650 475 0 0 2560 1440 </string>
-	<key>NSWindow Frame iTerm Window 5</key>
-	<string>432 126 842 1189 0 0 2560 1440 </string>
-	<key>NSWindow Frame iTerm Window 6</key>
-	<string>511 2 650 475 0 0 2560 1440 </string>
+	<string>8 8 708 884 0 0 1440 900 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1062,22 +1042,16 @@
 			<string>/Users/callum</string>
 		</dict>
 	</array>
-	<key>NoSyncHaveRequestedFullDiskAccess</key>
-	<true/>
-	<key>NoSyncHaveUsedCopyMode</key>
-	<true/>
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
-	<string>302328B4-2342-4A7A-B47A-FE542B182443</string>
+	<string>A4ECB74E-67A9-4916-B4F6-B9ABB3D69995</string>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
 	<integer>0</integer>
-	<key>NoSyncPermissionToShowTip</key>
-	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>552916671.08241296</real>
+	<real>583948686.73528898</real>
 	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
 	<key>PasteTabToStringTabStopSize</key>
@@ -1124,11 +1098,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/final.xml?shard=21</string>
+	<string>https://iterm2.com/appcasts/final.xml?shard=80</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-07-01T14:45:50Z</date>
+	<date>2019-07-04T16:37:20Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>Selection Respects Soft Boundaries</key>

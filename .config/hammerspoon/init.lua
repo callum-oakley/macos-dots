@@ -1,5 +1,3 @@
-gettime = require("socket").gettime
-
 hs.application.enableSpotlightForNameSearches(true)
 hs.grid.setGrid("12x12").setMargins("8x8")
 hs.window.animationDuration = 0

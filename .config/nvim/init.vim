@@ -41,16 +41,14 @@ set showcmd
 
 " tabs
 set expandtab
-set shiftwidth=2
+set shiftwidth=4
 set smarttab
-set tabstop=2
+set tabstop=4
 
 " filetype specific settings
-autocmd FileType c setlocal shiftwidth=4 tabstop=4
-autocmd FileType go setlocal noexpandtab shiftwidth=4 tabstop=4 listchars=tab:\ \ ,trail:·
+autocmd FileType go setlocal noexpandtab listchars=tab:\ \ ,trail:·
 autocmd FileType markdown let g:AutoPairs = {}
 autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'}
-autocmd FileType swift setlocal shiftwidth=4 tabstop=4
 autocmd BufWritePre *.py :Yapf
 
 let g:prettier#autoformat = 0

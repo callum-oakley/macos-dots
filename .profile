@@ -65,9 +65,11 @@ fdt() {
   (fd -t f "$q"; tree $(fd -t d "$q") $@) | rg "$q|$"
 }
 
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f ~/.config/secrets/env ] && source ~/.config/secrets/env
+
+export BASH_COMPLETION_COMPAT_DIR='/usr/local/etc/bash_completion.d'
+[ -f /usr/local/etc/profile.d/bash_completion.sh ] && source /usr/local/etc/profile.d/bash_completion.sh
 
 # put current directory in iterm tab title
 if [ $ITERM_SESSION_ID ]; then
