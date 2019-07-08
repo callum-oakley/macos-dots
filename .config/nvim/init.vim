@@ -50,6 +50,9 @@ autocmd FileType go setlocal noexpandtab listchars=tab:\ \ ,trail:·
 autocmd FileType markdown let g:AutoPairs = {}
 autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'}
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType html.handlebars setlocal shiftwidth=2 tabstop=2
+autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd BufWritePre *.py :Yapf
 
 let g:prettier#autoformat = 0
