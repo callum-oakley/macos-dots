@@ -5,7 +5,7 @@ hs.window.animationDuration = 0
 hs.hotkey.bind({"cmd", "ctrl"}, "n",
                function() openForSpace("iTerm", "New Window") end)
 hs.hotkey.bind({"cmd", "ctrl"}, "e",
-               function() openForSpace("Google Chrome", "New Window") end)
+               function() openForSpace("Safari", "New Window") end)
 hs.hotkey.bind({"cmd", "ctrl"}, "i",
                function() openForSpace("iA Writer", "New in Library") end)
 hs.hotkey.bind({"cmd", "ctrl"}, "o",
