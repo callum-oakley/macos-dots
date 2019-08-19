@@ -24,23 +24,24 @@
                                         "bundle_identifiers": [
                                             "com.googlecode.iterm2"
                                         ],
-                                        "type": "frontmost_application_unless"
+                                        "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "home to cmd-left (except in iTerm)",
+                                "description": "cmd-left to home in iTerm",
                                 "from": {
-                                    "key_code": "home",
+                                    "key_code": "left_arrow",
                                     "modifiers": {
+                                        "mandatory": [
+                                            "command"
+                                        ],
                                         "optional": [
-                                            "left_shift",
-                                            "right_shift"
+                                            "shift"
                                         ]
                                     }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_arrow",
-                                        "modifiers": "left_command"
+                                        "key_code": "home"
                                     }
                                 ],
                                 "type": "basic"
@@ -51,23 +52,24 @@
                                         "bundle_identifiers": [
                                             "com.googlecode.iterm2"
                                         ],
-                                        "type": "frontmost_application_unless"
+                                        "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "end to cmd-right (except in iTerm)",
+                                "description": "cmd-right to end in iTerm",
                                 "from": {
-                                    "key_code": "end",
+                                    "key_code": "right_arrow",
                                     "modifiers": {
+                                        "mandatory": [
+                                            "command"
+                                        ],
                                         "optional": [
-                                            "left_shift",
-                                            "right_shift"
+                                            "shift"
                                         ]
                                     }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "right_arrow",
-                                        "modifiers": "left_command"
+                                        "key_code": "end"
                                     }
                                 ],
                                 "type": "basic"
