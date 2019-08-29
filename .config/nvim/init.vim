@@ -108,6 +108,7 @@ let g:prettier#config#single_quote = 'false'
 let g:prettier#config#trailing_comma = 'all'
 let g:rustfmt_autosave = 1
 let g:ale_fix_on_save = 1
+let g:ale_linters_explicit = 1
 
 " keymaps
 inoremap <home> <esc>I
