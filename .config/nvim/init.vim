@@ -1,6 +1,7 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'cespare/vim-toml'
+Plug 'dense-analysis/ale'
 Plug 'elixir-editors/vim-elixir'
 Plug 'fatih/vim-go'
 Plug 'gutenye/json5.vim'
@@ -56,6 +57,11 @@ autocmd FileType json setlocal shiftwidth=2 tabstop=2
 autocmd FileType markdown let g:AutoPairs = {}
 autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'}
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
+autocmd FileType haskell setlocal shiftwidth=2 tabstop=2
+
+let g:ale_fixers = {
+\   'haskell': ['hfmt'],
+\}
 
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue PrettierAsync
@@ -101,6 +107,7 @@ let g:prettier#config#semi = 'false'
 let g:prettier#config#single_quote = 'false'
 let g:prettier#config#trailing_comma = 'all'
 let g:rustfmt_autosave = 1
+let g:ale_fix_on_save = 1
 
 " keymaps
 inoremap <home> <esc>I
