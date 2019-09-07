@@ -35,7 +35,6 @@ set hidden
 set linebreak
 set list
 set listchars=tab:▸·,trail:·
-set relativenumber
 set ruler
 set scrolloff=99
 set showcmd
