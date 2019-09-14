@@ -424,7 +424,7 @@
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>230 856 592 584 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>20 20 823 1400 0 0 2560 1440 </string>
+	<string>863 370 833 700 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>324 8 632 784 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -999,7 +999,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Nitti-Light 14</string>
+			<string>IBMPlexMono 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -1042,6 +1042,8 @@
 			<array/>
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
+			<key>Thin Strokes</key>
+			<integer>4</integer>
 			<key>Transparency</key>
 			<real>0.0</real>
 			<key>Unlimited Scrollback</key>
@@ -1072,9 +1074,15 @@
 		<string>3.3.0</string>
 		<string>3.3.3</string>
 	</array>
+	<key>NoSyncBFPFavorites</key>
+	<array>
+		<string>Nitti</string>
+		<string>IBM Plex Mono</string>
+	</array>
 	<key>NoSyncBFPRecents</key>
 	<array>
-		<string>Source Code Pro</string>
+		<string>Nitti</string>
+		<string>IBM Plex Mono</string>
 	</array>
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
@@ -1090,7 +1098,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>1FFF35F1-3D65-45F6-BBD2-E06BEC3C7B93</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>14</integer>
+	<integer>16</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1875,7 +1883,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-09-06T19:53:45Z</date>
+	<date>2019-09-14T13:57:28Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateRelaunchingMarker</key>
