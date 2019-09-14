@@ -38,6 +38,7 @@ set listchars=tab:▸·,trail:·
 set ruler
 set scrolloff=99
 set showcmd
+set textwidth=80
 
 " tabs
 set expandtab
@@ -54,7 +55,7 @@ autocmd FileType html.handlebars setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
 autocmd FileType markdown let g:AutoPairs = {}
-autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'}
+autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'} | setlocal textwidth=80
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 autocmd FileType haskell setlocal shiftwidth=2 tabstop=2
 
@@ -163,7 +164,7 @@ nnoremap <leader>tn :set noexpandtab<cr>
 nnoremap <leader>ts mt:r !date<cr>D"_dd`tp
 nnoremap <leader>v <c-v>
 nnoremap <leader>w :bd<cr>
-nnoremap <leader>l /.\{101,\}<cr>
+nnoremap <leader>l /.\{81,\}<cr>
 nnoremap K "_D
 nnoremap U <c-r>
 nnoremap Y y$
@@ -176,6 +177,7 @@ vnoremap <PageDown> 9<down>
 vnoremap <PageUp> 9<up>
 vnoremap <cr> :
 vnoremap <home> ^
+vnoremap <leader>f gq
 vnoremap <leader>p :! python3 -<cr>
 vnoremap c "_c
 vnoremap x "_x
