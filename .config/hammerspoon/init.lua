@@ -1,5 +1,5 @@
 hs.application.enableSpotlightForNameSearches(true)
-hs.grid.setGrid("12x12").setMargins("30x30")
+hs.grid.setGrid("12x12").setMargins("20x20")
 hs.window.animationDuration = 0
 
 hs.hotkey.bind({"cmd", "ctrl"}, "n",

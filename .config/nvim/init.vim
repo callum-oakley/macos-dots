@@ -1,6 +1,7 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'cespare/vim-toml'
+Plug 'chiel92/vim-autoformat'
 Plug 'dense-analysis/ale'
 Plug 'elixir-editors/vim-elixir'
 Plug 'fatih/vim-go'
@@ -11,7 +12,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'keith/swift.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'mhinz/vim-mix-format'
-Plug 'mindriot101/vim-yapf'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
@@ -47,7 +47,6 @@ set smarttab
 set tabstop=4
 
 " filetype specific settings
-autocmd BufWritePre *.py :Yapf
 autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType go setlocal noexpandtab listchars=tab:\ \ ,trail:·
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
@@ -65,6 +64,7 @@ let g:ale_fixers = {
 
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue PrettierAsync
+autocmd BufWritePre *.py :Autoformat
 
 set t_Co=256   " This is may or may not needed.
 
@@ -109,6 +109,7 @@ let g:prettier#config#trailing_comma = 'all'
 let g:rustfmt_autosave = 1
 let g:ale_fix_on_save = 1
 let g:ale_linters_explicit = 1
+let g:formatters_python = ['black']
 
 " keymaps
 inoremap <home> <esc>I
@@ -164,7 +165,7 @@ nnoremap <leader>tn :set noexpandtab<cr>
 nnoremap <leader>ts mt:r !date<cr>D"_dd`tp
 nnoremap <leader>v <c-v>
 nnoremap <leader>w :bd<cr>
-nnoremap <leader>l /.\{81,\}<cr>
+nnoremap <leader>l /.\{101,\}<cr>
 nnoremap K "_D
 nnoremap U <c-r>
 nnoremap Y y$
@@ -180,4 +181,5 @@ vnoremap <home> ^
 vnoremap <leader>f gq
 vnoremap <leader>p :! python3 -<cr>
 vnoremap c "_c
+vnoremap k "_d
 vnoremap x "_x
