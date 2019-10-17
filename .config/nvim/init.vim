@@ -38,7 +38,7 @@ set listchars=tab:▸·,trail:·
 set ruler
 set scrolloff=99
 set showcmd
-set textwidth=80
+set textwidth=100
 
 " tabs
 set expandtab
@@ -54,7 +54,7 @@ autocmd FileType html.handlebars setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
 autocmd FileType markdown let g:AutoPairs = {}
-autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'} | setlocal textwidth=80
+autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'}
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 autocmd FileType haskell setlocal shiftwidth=2 tabstop=2
 
