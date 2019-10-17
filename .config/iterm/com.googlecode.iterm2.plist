@@ -1093,7 +1093,7 @@
 	<key>NoSyncLastTipTime</key>
 	<real>588591376.13807797</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>15</integer>
+	<integer>16</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1916,7 +1916,7 @@
 	<key>TerminalMargin</key>
 	<integer>10</integer>
 	<key>TerminalVMargin</key>
-	<integer>10</integer>
+	<integer>5</integer>
 	<key>UseBorder</key>
 	<false/>
 	<key>UseMetal</key>
