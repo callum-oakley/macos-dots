@@ -38,7 +38,7 @@ set listchars=tab:▸·,trail:·
 set ruler
 set scrolloff=99
 set showcmd
-set textwidth=100
+set textwidth=80
 
 " tabs
 set expandtab
