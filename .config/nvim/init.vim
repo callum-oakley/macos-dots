@@ -150,6 +150,7 @@ nnoremap <leader>fa :setlocal fo+=a<cr>
 nnoremap <leader>ff gqq
 nnoremap <leader>fm :setlocal fo-=a<cr>
 nnoremap <leader>gi :GoImports<cr>
+nnoremap <leader>hp O{-# LANGUAGE  #-}<esc>B<left>i
 nnoremap <leader>hq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 nnoremap <leader>i :BLines<cr>
 nnoremap <leader>n :bn<cr>
