@@ -111,6 +111,7 @@ let g:rustfmt_autosave = 1
 let g:ale_fix_on_save = 1
 let g:ale_linters_explicit = 1
 let g:formatters_python = ['black']
+let g:go_fmt_options = "-s"
 
 " keymaps
 inoremap <home> <esc>I

@@ -12,6 +12,7 @@ alias pi='pip3'
 alias tclip='tee >(pbcopy)'
 alias tree="tree -C -I 'target|node_modules|dist|vendor|deps|_build|cover'"
 alias vi='nvim'
+alias uuid='uuid -v4'
 
 # kubectl goodness
 kube_aliases() {
