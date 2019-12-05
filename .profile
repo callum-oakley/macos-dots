@@ -3,7 +3,7 @@
 alias cat='bat --theme=GitHub -p'
 alias diff='colordiff -u'
 alias disable-prettier="echo '**' > .prettierignore"
-alias ggg='gotta-go-fast'
+alias ggf='gotta-go-fast'
 alias ghci='stack exec -- ghci'
 alias git='hub'
 alias gup='gup -t $GUP_TOKEN'
