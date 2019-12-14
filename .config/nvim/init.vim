@@ -118,9 +118,7 @@ let g:formatters_python = ['black']
 inoremap <home> <esc>I
 
 nmap <leader>c gc
-nmap <leader>c<leader>c gcgc
 vmap <leader>c gc
-vmap <leader>c<leader>c gcgc
 nmap <leader>j :setlocal fo+=a<cr>Go<cr>## <esc><leader>tso<cr>
 
 nnoremap * *N
