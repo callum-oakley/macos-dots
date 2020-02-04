@@ -50,6 +50,24 @@ windowHotkeys = {
     ["0,0 12x12"] = windowHotKeyConf("tab", false, false),
     ["1,0 10x12"] = windowHotKeyConf("delete", false, false),
 
+    ["1,0 5x12"] = windowHotKeyConf("q", false, true),
+    ["0,0 5x12"] = windowHotKeyConf("w", false, true),
+    ["3.5,0 5x12"] = windowHotKeyConf("f", false, true),
+    ["7,0 5x12"] = windowHotKeyConf("p", false, true),
+    ["6,0 5x12"] = windowHotKeyConf("g", false, true),
+
+    ["1,0 7x12"] = windowHotKeyConf("a", false, true),
+    ["0,0 7x12"] = windowHotKeyConf("r", false, true),
+    ["2.5,0 7x12"] = windowHotKeyConf("s", false, true),
+    ["5,0 7x12"] = windowHotKeyConf("t", false, true),
+    ["4,0 7x12"] = windowHotKeyConf("d", false, true),
+
+    ["0,0 9x12"] = windowHotKeyConf("x", false, true),
+    ["1.5,0 9x12"] = windowHotKeyConf("c", false, true),
+    ["3,0 9x12"] = windowHotKeyConf("v", false, true),
+
+    ["0.5,0 11x12"] = windowHotKeyConf("delete", false, true),
+
     ["1,1 4x10"] = windowHotKeyConf("q", true, false),
     ["0,1 4x10"] = windowHotKeyConf("w", true, false),
     ["4,1 4x10"] = windowHotKeyConf("f", true, false),
@@ -68,17 +86,23 @@ windowHotkeys = {
     ["4,1 8x10"] = windowHotKeyConf("v", true, false),
     ["6,1 4x10"] = windowHotKeyConf("b", true, false),
 
-    ["1,0 5x12"] = windowHotKeyConf("q", false, true),
-    ["0,0 5x12"] = windowHotKeyConf("w", false, true),
-    ["3.5,0 5x12"] = windowHotKeyConf("f", false, true),
-    ["7,0 5x12"] = windowHotKeyConf("p", false, true),
-    ["6,0 5x12"] = windowHotKeyConf("g", false, true),
+    ["1,1 5x10"] = windowHotKeyConf("q", true, true),
+    ["0,1 5x10"] = windowHotKeyConf("w", true, true),
+    ["3.5,1 5x10"] = windowHotKeyConf("f", true, true),
+    ["7,1 5x10"] = windowHotKeyConf("p", true, true),
+    ["6,1 5x10"] = windowHotKeyConf("g", true, true),
 
-    ["1,0 7x12"] = windowHotKeyConf("a", false, true),
-    ["0,0 7x12"] = windowHotKeyConf("r", false, true),
-    ["2.5,0 7x12"] = windowHotKeyConf("s", false, true),
-    ["5,0 7x12"] = windowHotKeyConf("t", false, true),
-    ["4,0 7x12"] = windowHotKeyConf("d", false, true),
+    ["1,1 7x10"] = windowHotKeyConf("a", true, true),
+    ["0,1 7x10"] = windowHotKeyConf("r", true, true),
+    ["2.5,1 7x10"] = windowHotKeyConf("s", true, true),
+    ["5,1 7x10"] = windowHotKeyConf("t", true, true),
+    ["4,1 7x10"] = windowHotKeyConf("d", true, true),
+
+    ["0,1 9x10"] = windowHotKeyConf("x", true, true),
+    ["1.5,1 9x10"] = windowHotKeyConf("c", true, true),
+    ["3,1 9x10"] = windowHotKeyConf("v", true, true),
+
+    ["0.5,1 11x10"] = windowHotKeyConf("delete", true, true),
 }
 
 keyDownTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
