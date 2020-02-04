@@ -68,20 +68,17 @@ windowHotkeys = {
     ["4,1 8x10"] = windowHotKeyConf("v", true, false),
     ["6,1 4x10"] = windowHotKeyConf("b", true, false),
 
-    ["1,3 4x6"] = windowHotKeyConf("q", false, true),
-    ["0,3 4x6"] = windowHotKeyConf("w", false, true),
-    ["4,3 4x6"] = windowHotKeyConf("f", false, true),
-    ["8,3 4x6"] = windowHotKeyConf("p", false, true),
-    ["7,3 4x6"] = windowHotKeyConf("g", false, true),
+    ["1,0 5x12"] = windowHotKeyConf("q", false, true),
+    ["0,0 5x12"] = windowHotKeyConf("w", false, true),
+    ["3.5,0 5x12"] = windowHotKeyConf("f", false, true),
+    ["7,0 5x12"] = windowHotKeyConf("p", false, true),
+    ["6,0 5x12"] = windowHotKeyConf("g", false, true),
 
-    ["1,2 6x8"] = windowHotKeyConf("a", false, true),
-    ["0,2 6x8"] = windowHotKeyConf("r", false, true),
-    ["3,2 6x8"] = windowHotKeyConf("s", false, true),
-    ["6,2 6x8"] = windowHotKeyConf("t", false, true),
-    ["5,2 6x8"] = windowHotKeyConf("d", false, true),
-
-    ["2,3 4x6"] = windowHotKeyConf("z", false, true),
-    ["6,3 4x6"] = windowHotKeyConf("b", false, true)
+    ["1,0 7x12"] = windowHotKeyConf("a", false, true),
+    ["0,0 7x12"] = windowHotKeyConf("r", false, true),
+    ["2.5,0 7x12"] = windowHotKeyConf("s", false, true),
+    ["5,0 7x12"] = windowHotKeyConf("t", false, true),
+    ["4,0 7x12"] = windowHotKeyConf("d", false, true),
 }
 
 keyDownTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
