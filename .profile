@@ -18,7 +18,7 @@ alias uuid='uuid -v4'
 # kubectl goodness
 kube_aliases() {
   alias k$1="kubectl --context $2"
-  for namespace in analytics chatkit feeds platform webhooks monitoring; do
+  for namespace in analytics chatkit platform webhooks monitoring istio-system; do
     alias k$1${namespace:0:1}="k$1 -n $namespace"
   done
   alias k$1ac="k$1 -n analytics-chatkit"
@@ -113,4 +113,4 @@ export GPG_TTY=$(tty)
 # opam
 test -r /Users/callum/.opam/opam-init/init.sh && . /Users/callum/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
-export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/helm@2/bin:$PATH"
