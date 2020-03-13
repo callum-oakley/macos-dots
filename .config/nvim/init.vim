@@ -115,7 +115,8 @@ let g:ale_linters_explicit = 1
 let g:formatters_python = ['black']
 
 " keymaps
-inoremap <home> <esc>I
+inoremap <c-a> <esc>I
+inoremap <c-e> <esc>A
 
 nmap <leader>c gc
 vmap <leader>c gc
@@ -124,13 +125,12 @@ nmap <leader>j :setlocal fo+=a<cr>Go<cr>## <esc><leader>tso<cr>
 nnoremap * *N
 nnoremap <PageDown> 9<down>
 nnoremap <PageUp> 9<up>
-nnoremap <c-e> :m+<cr>
-nnoremap <c-i> >>
-nnoremap <c-n> <<
-nnoremap <c-u> :m--<cr>
+nnoremap <c-down> :m+<cr>
+nnoremap <c-up> :m--<cr>
 nnoremap <cr> :
 nnoremap <esc> :noh<cr><esc>
-nnoremap <home> ^
+nnoremap <c-a> ^
+nnoremap <c-e> $
 nnoremap <leader> <nop>
 nnoremap <leader>* g*N
 nnoremap <leader><c-down> ddGp
@@ -179,7 +179,8 @@ nnoremap x "_x
 vnoremap <PageDown> 9<down>
 vnoremap <PageUp> 9<up>
 vnoremap <cr> :
-vnoremap <home> ^
+vnoremap <c-a> ^
+vnoremap <c-e> $
 vnoremap <leader>f gq
 vnoremap <leader>p :! python3 -<cr>
 vnoremap c "_c

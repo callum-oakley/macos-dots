@@ -35,8 +35,6 @@ alias kic='ki -n $(ki get ns | awk "/chatkit/ { print \$1 }")'
 alias kk='KUBECONFIG="$(kind get kubeconfig-path --name="chatkit-acceptance")" kubectl'
 alias kkc='kk -n chatkit-acceptance'
 
-set -o vi
-
 cd() {
   builtin cd "$@" &&
     ls -A &&

@@ -1,6 +1,8 @@
 hs.application.enableSpotlightForNameSearches(true)
 hs.grid.setGrid("12x12").setMargins("20x20")
 hs.window.animationDuration = 0
+hs.alert.defaultStyle.fillColor = { alpha = 0 }
+hs.alert.defaultStyle.strokeColor = { alpha = 0 }
 
 hs.hotkey.bind({"cmd", "ctrl"}, "n",
                function() openForSpace("iTerm", "New Window") end)
@@ -110,14 +112,47 @@ keyDownTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
     local keyCode = e:getKeyCode()
 
     for pos, hotkey in pairs(windowHotkeys) do
-        if keyCode == hotkey.keyCode and not not mods.ctrl == hotkey.mods.ctrl and
-            not not mods.alt == hotkey.mods.alt and not not mods.cmd ==
-            hotkey.mods.cmd and not not mods.shift == hotkey.mods.shift then
+        if keyCode == hotkey.keyCode and
+            not not mods.ctrl == hotkey.mods.ctrl and
+            not not mods.alt == hotkey.mods.alt and
+            not not mods.cmd == hotkey.mods.cmd and
+            not not mods.shift == hotkey.mods.shift then
             hs.grid.set(hs.window.frontmostWindow(), pos)
             return true
         end
     end
+
+    if keyCode == hs.keycodes.map["f11"] then
+        changeVolume(-1)
+        return true
+    end
+
+    if keyCode == hs.keycodes.map["f12"] then
+        changeVolume(1)
+        return true
+    end
 end):start()
+
+targetVolume = nil
+function changeVolume(diff)
+    if targetVolume == nil then
+        targetVolume =
+            math.floor(hs.audiodevice.defaultOutputDevice():volume())
+    end
+    targetVolume = math.min(100, math.max(0, targetVolume + diff))
+    if targetVolume > 0 then
+        hs.audiodevice.defaultOutputDevice():setMuted(false)
+    end
+    hs.alert.closeAll(0.0)
+
+    hs.alert.show(string.rep("\u{25cf}", targetVolume), {
+        textSize = 8,
+        fadeInDuration = 0,
+        fadeOutDuration = 0,
+        atScreenEdge = 2,
+    })
+    hs.audiodevice.defaultOutputDevice():setVolume(targetVolume)
+end
 
 function openForSpace(name, menuItem)
     hs.application.launchOrFocus(name)
