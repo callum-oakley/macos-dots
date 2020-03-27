@@ -40,7 +40,7 @@ set ruler
 set scrolloff=99
 set showcmd
 set textwidth=80
-set formatoptions-=cro
+set formatoptions-=tcro
 
 " tabs
 set expandtab

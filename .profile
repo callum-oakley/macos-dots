@@ -18,7 +18,7 @@ alias uuid='uuid -v4'
 # kubectl goodness
 kube_aliases() {
   alias k$1="kubectl --context $2"
-  for namespace in analytics chatkit platform webhooks monitoring istio-system; do
+  for namespace in analytics chatkit platform webhooks monitoring istio-system kube-system; do
     alias k$1${namespace:0:1}="k$1 -n $namespace"
   done
   alias k$1ac="k$1 -n analytics-chatkit"
@@ -28,6 +28,8 @@ kube_aliases d deneb
 kube_aliases s us1-staging
 kube_aliases p us1
 kube_aliases j iapetus
+kube_aliases g global
+kube_aliases h global-staging
 
 alias ki='kubectl --context integration1'
 alias kic='ki -n $(ki get ns | awk "/chatkit/ { print \$1 }")'

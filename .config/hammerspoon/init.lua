@@ -123,12 +123,28 @@ keyDownTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
     end
 
     if keyCode == hs.keycodes.map["f11"] then
-        changeVolume(-1)
+        if mods.cmd then
+            changeVolume(-8)
+        elseif mods.alt then
+            changeVolume(-4)
+        elseif mods.ctrl then
+            changeVolume(-2)
+        else
+            changeVolume(-1)
+        end
         return true
     end
 
     if keyCode == hs.keycodes.map["f12"] then
-        changeVolume(1)
+        if mods.cmd then
+            changeVolume(8)
+        elseif mods.alt then
+            changeVolume(4)
+        elseif mods.ctrl then
+            changeVolume(2)
+        else
+            changeVolume(1)
+        end
         return true
     end
 end):start()
