@@ -59,7 +59,7 @@ autocmd FileType markdown let g:AutoPairs = {}
 autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'}
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 autocmd FileType haskell setlocal shiftwidth=2 tabstop=2
-autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
+autocmd FileType sh setlocal fo-=t
 
 let g:ale_fixers = {
 \   'haskell': ['hfmt'],
@@ -120,7 +120,6 @@ inoremap <c-e> <esc>A
 
 nmap <leader>c gc
 vmap <leader>c gc
-nmap <leader>j :setlocal fo+=a<cr>Go<cr>## <esc><leader>tso<cr>
 
 nnoremap * *N
 nnoremap <PageDown> 9<down>
