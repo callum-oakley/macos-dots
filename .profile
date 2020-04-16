@@ -10,29 +10,16 @@ alias gup='gup -t $GUP_TOKEN'
 alias ls='ls -G'
 alias pi='pip3'
 alias py='python3'
+alias po='poetry'
+alias pm='po run python manage.py'
 alias tclip='tee >(pbcopy)'
 alias tree="tree -C -I 'target|node_modules|dist|vendor|deps|_build|cover'"
 alias vi='nvim'
 alias uuid='uuid -v4'
 
-# kubectl goodness
-kube_aliases() {
-  alias k$1="kubectl --context $2"
-  for namespace in analytics chatkit platform webhooks monitoring istio-system kube-system; do
-    alias k$1${namespace:0:1}="k$1 -n $namespace"
-  done
-  alias k$1ac="k$1 -n analytics-chatkit"
-}
-
-kube_aliases d deneb
-kube_aliases s us1-staging
-kube_aliases p us1
-kube_aliases j iapetus
-kube_aliases g global
-kube_aliases h global-staging
-
-alias ki='kubectl --context integration1'
-alias kic='ki -n $(ki get ns | awk "/chatkit/ { print \$1 }")'
+for context in mt1 testk8s us1-staging us1 global global-staging; do
+    alias $context="kubectl --context $context"
+done
 
 alias kk='KUBECONFIG="$(kind get kubeconfig-path --name="chatkit-acceptance")" kubectl'
 alias kkc='kk -n chatkit-acceptance'
@@ -101,16 +88,6 @@ export PASSWORD_STORE_DIR="$HOME/.password-store"
 export PS1="\n\[\033[0;\$(ps1_colour)m\]\W\$(branch) $\[\033[0m\] "
 export VAULT_ADDR='https://vault.pusherplatform.io:8200'
 
-# android
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-
 export GPG_TTY=$(tty)
-
-# opam
-test -r /Users/callum/.opam/opam-init/init.sh && . /Users/callum/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/helm@2/bin:$PATH"
