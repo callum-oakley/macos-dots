@@ -31,16 +31,17 @@ call plug#end()
 
 set breakindent
 set clipboard=unnamedplus
+set formatoptions-=tcro
 set guicursor=n-v-c-sm:block,i-ci-ve-r-cr-o:hor20
 set hidden
 set linebreak
 set list
 set listchars=tab:▸·,trail:·
+set nojoinspaces
 set ruler
 set scrolloff=99
 set showcmd
 set textwidth=80
-set formatoptions-=tcro
 
 " tabs
 set expandtab
@@ -51,15 +52,15 @@ set tabstop=4
 " filetype specific settings
 autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType go setlocal noexpandtab listchars=tab:\ \ ,trail:·
+autocmd FileType haskell setlocal shiftwidth=2 tabstop=2
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType html.handlebars setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
 autocmd FileType markdown let g:AutoPairs = {}
 autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'}
-autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
-autocmd FileType haskell setlocal shiftwidth=2 tabstop=2
 autocmd FileType sh setlocal fo-=t
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 
 let g:ale_fixers = {
 \   'haskell': ['hfmt'],

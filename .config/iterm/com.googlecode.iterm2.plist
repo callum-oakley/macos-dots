@@ -239,6 +239,8 @@
 	<string>042147C2-2C1B-4883-9CE6-01CE52526B0C</string>
 	<key>DisableWindowSizeSnap</key>
 	<true/>
+	<key>EnableAPIServer</key>
+	<false/>
 	<key>EnableDivisionView</key>
 	<true/>
 	<key>FocusFollowsMouse</key>
@@ -405,15 +407,15 @@
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>230 856 592 584 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>863 130 833 1180 0 0 2560 1440 </string>
+	<string>1716 20 823 1400 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>1290 20 1250 1400 0 0 2560 1440 </string>
+	<string>20 20 1250 1400 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>223 20 833 1400 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>20 20 1250 1400 0 0 2560 1440 </string>
+	<string>20 20 1676 1400 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>1716 130 823 1180 0 0 2560 1440 </string>
+	<string>1379 -102 833 1400 0 0 2560 1440 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1090,14 +1092,14 @@
 	<array>
 		<string>3.3.6</string>
 		<string>3.3.8</string>
-		<string>3.3.4</string>
+		<string>3.3.0</string>
 		<string>3.3.1</string>
 		<string>3.3.3</string>
 		<string>3.3.7</string>
 		<string>3.3.9</string>
-		<string>3.3.0</string>
-		<string>3.3.2</string>
 		<string>3.2.9</string>
+		<string>3.3.2</string>
+		<string>3.3.4</string>
 	</array>
 	<key>NoSyncBFPFavorites</key>
 	<array>
@@ -1111,6 +1113,13 @@
 		<string>Nitti</string>
 		<string>IBM Plex Mono</string>
 	</array>
+	<key>NoSyncFrame_SessionsPreferences</key>
+	<dict>
+		<key>screenFrame</key>
+		<string>{{0, 0}, {2560, 1440}}</string>
+		<key>topLeft</key>
+		<string>{977, 1209}</string>
+	</dict>
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
@@ -1125,7 +1134,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>1FFF35F1-3D65-45F6-BBD2-E06BEC3C7B93</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>37</integer>
+	<integer>42</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1922,7 +1931,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-03-12T20:17:05Z</date>
+	<date>2020-04-19T18:39:07Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateGroupIdentifier</key>

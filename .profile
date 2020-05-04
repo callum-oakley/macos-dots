@@ -90,4 +90,4 @@ export VAULT_ADDR='https://vault.pusherplatform.io:8200'
 
 export GPG_TTY=$(tty)
 
-export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/helm@2/bin:$PATH"
+export PATH="/Library/Frameworks/Python.framework/Versions/3.8/bin:$HOME/Library/Python/3.8/bin:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/helm@2/bin:$PATH"
