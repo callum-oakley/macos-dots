@@ -24,6 +24,11 @@ done
 alias kk='KUBECONFIG="$(kind get kubeconfig-path --name="chatkit-acceptance")" kubectl'
 alias kkc='kk -n chatkit-acceptance'
 
+# filter noisy log until https://github.com/mpv-player/mpv/issues/7047 is closed
+mpv() {
+    /usr/local/bin/mpv $@ 2>&1 | rg -v _NSLayoutConstraintNumberExceedsLimit
+}
+
 cd() {
   builtin cd "$@" &&
     ls -A &&

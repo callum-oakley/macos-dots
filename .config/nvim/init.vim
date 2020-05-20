@@ -114,6 +114,7 @@ let g:rustfmt_autosave = 1
 let g:ale_fix_on_save = 1
 let g:ale_linters_explicit = 1
 let g:formatters_python = ['black']
+let g:go_fmt_command = "goimports"
 
 " keymaps
 inoremap <c-a> <esc>I
@@ -125,8 +126,6 @@ vmap <leader>c gc
 nnoremap * *N
 nnoremap <PageDown> 9<down>
 nnoremap <PageUp> 9<up>
-nnoremap <c-down> :m+<cr>
-nnoremap <c-up> :m--<cr>
 nnoremap <cr> :
 nnoremap <esc> :noh<cr><esc>
 nnoremap <c-a> ^
@@ -142,14 +141,13 @@ nnoremap <leader>N :bp<cr>
 nnoremap <leader>O O<esc>O
 nnoremap <leader>S :noautocmd w<cr>
 nnoremap <leader>a <nop>
+nnoremap <leader>f gq
 nnoremap <leader>b :Buffer<cr>
 nnoremap <leader>d /<<<<<<<\\|=======\\|\|\|\|\|\|\|\|\\|>>>>>>><cr>
 nnoremap <leader>e :Files<cr>
-nnoremap <leader>f gq
 nnoremap <leader>fa :setlocal fo+=a<cr>
 nnoremap <leader>ff gqq
 nnoremap <leader>fm :setlocal fo-=a<cr>
-nnoremap <leader>gi :GoImports<cr>
 nnoremap <leader>hp O{-# LANGUAGE  #-}<esc>B<left>i
 nnoremap <leader>hq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 nnoremap <leader>i :BLines<cr>

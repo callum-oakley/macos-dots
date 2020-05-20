@@ -22,8 +22,13 @@
 [merge]
     conflictstyle = diff3
 
-[commit]
-    gpgsign = true
+; [commit]
+;     gpgsign = true
 
-[url "git@github.com:"]
-    insteadOf = https://github.com/
+; [url "git@github.com:"]
+;     insteadOf = https://github.com/
+
+[hub]
+    protocol = https
+[diff]
+	submodule = log
