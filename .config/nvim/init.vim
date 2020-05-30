@@ -26,7 +26,7 @@ Plug 'tsiemens/vim-aftercolors'
 Plug 'wellle/targets.vim'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'vue'] }
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'vue', 'html'] }
 call plug#end()
 
 set breakindent
@@ -67,7 +67,7 @@ let g:ale_fixers = {
 \}
 
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.html PrettierAsync
 autocmd BufWritePre *.py :Autoformat
 
 set t_Co=256   " This is may or may not needed.
@@ -106,7 +106,7 @@ let g:mix_format_silent_errors = 1
 let g:prettier#config#arrow_parens = 'avoid'
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'false'
-let g:prettier#config#parser = 'babylon'
+" let g:prettier#config#parser = 'babylon'
 let g:prettier#config#semi = 'false'
 let g:prettier#config#single_quote = 'false'
 let g:prettier#config#trailing_comma = 'all'
