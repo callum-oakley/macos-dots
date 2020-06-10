@@ -26,6 +26,9 @@ hs.hotkey.bind({"cmd", "ctrl"}, "left",
                function() hs.window.filter.defaultCurrentSpace:focusWindowWest(nil,nil,nil) end)
 hs.hotkey.bind({"cmd", "ctrl"}, "right",
                function() hs.window.filter.defaultCurrentSpace:focusWindowEast(nil,nil,nil) end)
+hs.hotkey.bind({"alt"}, "tab",
+               function() hs.window.filter.defaultCurrentSpace:getWindows()[1]:focus() end)
+
 
 function windowHotKeyConf(key, shift, alt)
     return {
