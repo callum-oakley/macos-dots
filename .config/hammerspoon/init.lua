@@ -22,6 +22,10 @@ hs.hotkey.bind({"alt"}, "p",
                function() hs.eventtap.keyStrokes(utf8.char(768)) end)
 hs.hotkey.bind({"alt"}, "u",
                function() hs.eventtap.keyStrokes(utf8.char(776)) end)
+hs.hotkey.bind({"cmd", "ctrl"}, "left",
+               function() hs.window.filter.defaultCurrentSpace:focusWindowWest(nil,nil,nil) end)
+hs.hotkey.bind({"cmd", "ctrl"}, "right",
+               function() hs.window.filter.defaultCurrentSpace:focusWindowEast(nil,nil,nil) end)
 
 function windowHotKeyConf(key, shift, alt)
     return {

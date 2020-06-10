@@ -32,3 +32,6 @@
     protocol = https
 [diff]
 	submodule = log
+[filesystem "N/A|13.0.2|/dev/disk1s2"]
+	timestampResolution = 6000 nanoseconds
+	minRacyThreshold = 0 nanoseconds

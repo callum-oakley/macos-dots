@@ -84,10 +84,10 @@ export PS1_COLOUR='31'
 export FZF_DEFAULT_COMMAND='fd -t f'
 export FZF_DEFAULT_OPTS='--reverse --height 16 --color light'
 export GOPATH="$HOME/code/go"
-export PASSWORD_STORE_DIR="$HOME/.password-store"
 export PS1="\n\[\033[0;\$(ps1_colour)m\]\W\$(branch) $\[\033[0m\] "
 export VAULT_ADDR='https://vault.pusherplatform.io:8200'
+export QMK_HOME="$HOME/code/qmk_firmware"
 
 export GPG_TTY=$(tty)
 
-export PATH="/Library/Frameworks/Python.framework/Versions/3.8/bin:$HOME/Library/Python/3.8/bin:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/helm@2/bin:$PATH"
+export PATH="$HOME/.poetry/bin:/Library/Frameworks/Python.framework/Versions/3.8/bin:$HOME/Library/Python/3.8/bin:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/helm@2/bin:$PATH"
