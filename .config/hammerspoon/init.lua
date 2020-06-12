@@ -1,165 +1,151 @@
+GRID_W = 12
+GRID_H = 12
+
 hs.application.enableSpotlightForNameSearches(true)
-hs.grid.setGrid("12x12").setMargins("20x20")
+hs.grid.setGrid(hs.geometry(nil, nil, GRID_W, GRID_H)).setMargins("20x20")
 hs.window.animationDuration = 0
 hs.alert.defaultStyle.fillColor = { alpha = 0 }
 hs.alert.defaultStyle.strokeColor = { alpha = 0 }
 
-hs.hotkey.bind({"cmd", "ctrl"}, "n",
-               function() openForSpace("iTerm", "New Window") end)
-hs.hotkey.bind({"cmd", "ctrl"}, "e",
-               function() openForSpace("Safari", "New Window") end)
-hs.hotkey.bind({"cmd", "ctrl"}, "i",
-               function() openForSpace("iA Writer", "New in Library") end)
-hs.hotkey.bind({"cmd", "ctrl"}, "o",
-               function() openForSpace("Things", "New Things Window") end)
-hs.hotkey.bind({"alt"}, "q",
-               function() hs.eventtap.keyStrokes(utf8.char(772)) end)
-hs.hotkey.bind({"alt"}, "w",
-               function() hs.eventtap.keyStrokes(utf8.char(769)) end)
-hs.hotkey.bind({"alt"}, "f",
-               function() hs.eventtap.keyStrokes(utf8.char(780)) end)
-hs.hotkey.bind({"alt"}, "p",
-               function() hs.eventtap.keyStrokes(utf8.char(768)) end)
-hs.hotkey.bind({"alt"}, "u",
-               function() hs.eventtap.keyStrokes(utf8.char(776)) end)
-
-function windowHotKeyConf(key, shift, alt)
-    return {
-        keyCode = hs.keycodes.map[key],
-        mods = {cmd = true, alt = alt, ctrl = true, shift = shift}
-    }
-end
-
-windowHotkeys = {
-    ["1,0 4x12"] = windowHotKeyConf("q", false, false),
-    ["0,0 4x12"] = windowHotKeyConf("w", false, false),
-    ["4,0 4x12"] = windowHotKeyConf("f", false, false),
-    ["8,0 4x12"] = windowHotKeyConf("p", false, false),
-    ["7,0 4x12"] = windowHotKeyConf("g", false, false),
-
-    ["1,0 6x12"] = windowHotKeyConf("a", false, false),
-    ["0,0 6x12"] = windowHotKeyConf("r", false, false),
-    ["3,0 6x12"] = windowHotKeyConf("s", false, false),
-    ["6,0 6x12"] = windowHotKeyConf("t", false, false),
-    ["5,0 6x12"] = windowHotKeyConf("d", false, false),
-
-    ["2,0 4x12"] = windowHotKeyConf("z", false, false),
-    ["0,0 8x12"] = windowHotKeyConf("x", false, false),
-    ["2,0 8x12"] = windowHotKeyConf("c", false, false),
-    ["4,0 8x12"] = windowHotKeyConf("v", false, false),
-    ["6,0 4x12"] = windowHotKeyConf("b", false, false),
-
-    ["0,0 12x12"] = windowHotKeyConf("tab", false, false),
-    ["1,0 10x12"] = windowHotKeyConf("delete", false, false),
-
-    ["1,0 5x12"] = windowHotKeyConf("q", false, true),
-    ["0,0 5x12"] = windowHotKeyConf("w", false, true),
-    ["3.5,0 5x12"] = windowHotKeyConf("f", false, true),
-    ["7,0 5x12"] = windowHotKeyConf("p", false, true),
-    ["6,0 5x12"] = windowHotKeyConf("g", false, true),
-
-    ["1,0 7x12"] = windowHotKeyConf("a", false, true),
-    ["0,0 7x12"] = windowHotKeyConf("r", false, true),
-    ["2.5,0 7x12"] = windowHotKeyConf("s", false, true),
-    ["5,0 7x12"] = windowHotKeyConf("t", false, true),
-    ["4,0 7x12"] = windowHotKeyConf("d", false, true),
-
-    ["0,0 9x12"] = windowHotKeyConf("x", false, true),
-    ["1.5,0 9x12"] = windowHotKeyConf("c", false, true),
-    ["3,0 9x12"] = windowHotKeyConf("v", false, true),
-
-    ["0.5,0 11x12"] = windowHotKeyConf("delete", false, true),
-
-    ["1,1 4x10"] = windowHotKeyConf("q", true, false),
-    ["0,1 4x10"] = windowHotKeyConf("w", true, false),
-    ["4,1 4x10"] = windowHotKeyConf("f", true, false),
-    ["8,1 4x10"] = windowHotKeyConf("p", true, false),
-    ["7,1 4x10"] = windowHotKeyConf("g", true, false),
-
-    ["1,1 6x10"] = windowHotKeyConf("a", true, false),
-    ["0,1 6x10"] = windowHotKeyConf("r", true, false),
-    ["3,1 6x10"] = windowHotKeyConf("s", true, false),
-    ["6,1 6x10"] = windowHotKeyConf("t", true, false),
-    ["5,1 6x10"] = windowHotKeyConf("d", true, false),
-
-    ["2,1 4x10"] = windowHotKeyConf("z", true, false),
-    ["0,1 8x10"] = windowHotKeyConf("x", true, false),
-    ["2,1 8x10"] = windowHotKeyConf("c", true, false),
-    ["4,1 8x10"] = windowHotKeyConf("v", true, false),
-    ["6,1 4x10"] = windowHotKeyConf("b", true, false),
-
-    ["1,1 5x10"] = windowHotKeyConf("q", true, true),
-    ["0,1 5x10"] = windowHotKeyConf("w", true, true),
-    ["3.5,1 5x10"] = windowHotKeyConf("f", true, true),
-    ["7,1 5x10"] = windowHotKeyConf("p", true, true),
-    ["6,1 5x10"] = windowHotKeyConf("g", true, true),
-
-    ["1,1 7x10"] = windowHotKeyConf("a", true, true),
-    ["0,1 7x10"] = windowHotKeyConf("r", true, true),
-    ["2.5,1 7x10"] = windowHotKeyConf("s", true, true),
-    ["5,1 7x10"] = windowHotKeyConf("t", true, true),
-    ["4,1 7x10"] = windowHotKeyConf("d", true, true),
-
-    ["0,1 9x10"] = windowHotKeyConf("x", true, true),
-    ["1.5,1 9x10"] = windowHotKeyConf("c", true, true),
-    ["3,1 9x10"] = windowHotKeyConf("v", true, true),
-
-    ["0.5,1 11x10"] = windowHotKeyConf("delete", true, true),
+hotKeys = {
+    { { "cmd" }, "tab", function() focusMRU() end },
+    { { "cmd", "ctrl" }, "n", function() hs.grid.pushWindowLeft() end },
+    { { "cmd", "ctrl" }, "i", function() hs.grid.pushWindowRight() end },
+    { { "cmd", "ctrl" }, "u", function() hs.grid.pushWindowUp() end },
+    { { "cmd", "ctrl" }, "e", function() hs.grid.pushWindowDown() end },
+    { { "cmd", "ctrl" }, "l", function() throwWindowLeft() end },
+    { { "cmd", "ctrl" }, "y", function() throwWindowRight() end },
+    { { "cmd", "ctrl" }, "m", function() throwWindowDown() end },
+    { { "cmd", "ctrl" }, ",", function() throwWindowUp() end },
+    { { "cmd", "ctrl" }, "o", function() hs.window.focusedWindow():centerOnScreen() end },
+    { { "cmd", "ctrl" }, "r", function() hs.grid.resizeWindowThinner() end },
+    { { "cmd", "ctrl" }, "t", function() hs.grid.resizeWindowWider() end },
+    { { "cmd", "ctrl" }, "f", function() hs.grid.resizeWindowShorter() end },
+    { { "cmd", "ctrl" }, "s", function() hs.grid.resizeWindowTaller() end },
+    { { "cmd", "ctrl" }, "w", function() halfWindowWidth() end },
+    { { "cmd", "ctrl" }, "p", function() doubleWindowWidth() end },
+    { { "cmd", "ctrl" }, "v", function() doubleWindowHeight() end },
+    { { "cmd", "ctrl" }, "c", function() halfWindowHeight() end },
+    { { "cmd", "ctrl" }, "q", function() hs.grid.maximizeWindow() end },
+    { { "cmd", "ctrl" }, "a", function() hs.grid.snap(hs.window.focusedWindow()) end },
+    { {}, "f11", function() changeVolume(-1) end },
+    { { "ctrl" }, "f11", function() changeVolume(-2) end },
+    { { "alt" }, "f11", function() changeVolume(-4) end },
+    { { "cmd" }, "f11", function() changeVolume(-8) end },
+    { {}, "f12", function() changeVolume(1) end },
+    { { "ctrl" }, "f12", function() changeVolume(2) end },
+    { { "alt" }, "f12", function() changeVolume(4) end },
+    { { "cmd" }, "f12", function() changeVolume(8) end },
+    { { "ctrl" }, "5", function() openForSpace("iTerm", "New Window") end },
+    { { "ctrl" }, "6", function() openForSpace("Safari", "New Window") end },
+    { { "alt" }, "q", function() hs.eventtap.keyStrokes(utf8.char(772)) end },
+    { { "alt" }, "w", function() hs.eventtap.keyStrokes(utf8.char(769)) end },
+    { { "alt" }, "f", function() hs.eventtap.keyStrokes(utf8.char(780)) end },
+    { { "alt" }, "p", function() hs.eventtap.keyStrokes(utf8.char(768)) end },
+    { { "alt" }, "v", function() hs.eventtap.keyStrokes(utf8.char(252)) end },
+    { { "alt", "shift" }, "v", function() hs.eventtap.keyStrokes(utf8.char(220)) end },
 }
+
+hotKeysExpanded = {}
+for _, hotKey in ipairs(hotKeys) do
+    mods = {}
+    for _, mod in ipairs(hotKey[1]) do
+        if mod == "cmd" then
+            mods.cmd = true
+        elseif mod == "alt" then
+            mods.alt = true
+        elseif mod == "ctrl" then
+            mods.ctrl = true
+        elseif mod == "shift" then
+            mods.shift = true
+        end
+    end
+    table.insert(hotKeysExpanded, {
+        mods = mods,
+        keyCode = hs.keycodes.map[hotKey[2]],
+        f = hotKey[3],
+    })
+end
 
 keyDownTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
     local mods = hs.eventtap.checkKeyboardModifiers()
-    local keyCode = e:getKeyCode()
 
-    for pos, hotkey in pairs(windowHotkeys) do
-        if keyCode == hotkey.keyCode and
-            not not mods.ctrl == hotkey.mods.ctrl and
-            not not mods.alt == hotkey.mods.alt and
-            not not mods.cmd == hotkey.mods.cmd and
-            not not mods.shift == hotkey.mods.shift then
-            hs.grid.set(hs.window.frontmostWindow(), pos)
+    for _, hotKey in ipairs(hotKeysExpanded) do
+        if e:getKeyCode() == hotKey.keyCode and
+            mods.cmd == hotKey.mods.cmd and
+            mods.alt == hotKey.mods.alt and
+            mods.ctrl == hotKey.mods.ctrl and
+            mods.shift == hotKey.mods.shift then
+            hotKey.f()
             return true
         end
     end
-
-    if mods.cmd and keyCode == hs.keycodes.map["tab"] then
-        -- super simple cmd-tab behaviour: focus the most recently used window
-        -- among the currently unfocused windows in the current space
-        for i, window in ipairs(hs.window.filter.defaultCurrentSpace:getWindows()) do
-            if window ~= hs.window.focusedWindow() then
-                window:focus()
-                break
-            end
-        end
-        return true
-    end
-
-    if keyCode == hs.keycodes.map["f11"] then
-        if mods.cmd then
-            changeVolume(-8)
-        elseif mods.alt then
-            changeVolume(-4)
-        elseif mods.ctrl then
-            changeVolume(-2)
-        else
-            changeVolume(-1)
-        end
-        return true
-    end
-
-    if keyCode == hs.keycodes.map["f12"] then
-        if mods.cmd then
-            changeVolume(8)
-        elseif mods.alt then
-            changeVolume(4)
-        elseif mods.ctrl then
-            changeVolume(2)
-        else
-            changeVolume(1)
-        end
-        return true
-    end
 end):start()
+
+function focusMRU()
+    for _, window in ipairs(hs.window.filter.defaultCurrentSpace:getWindows()) do
+        if window ~= hs.window.focusedWindow() then
+            window:focus()
+            return
+        end
+    end
+end
+
+function throwWindowLeft()
+    hs.grid.adjustWindow(function(cell)
+        cell.x = 0
+    end)
+end
+
+function throwWindowRight()
+    hs.grid.adjustWindow(function(cell)
+        cell.x = GRID_W - cell.w
+    end)
+end
+
+function throwWindowUp()
+    hs.grid.adjustWindow(function(cell)
+        cell.y = 0
+    end)
+end
+
+function throwWindowDown()
+    hs.grid.adjustWindow(function(cell)
+        cell.y = GRID_H - cell.h
+    end)
+end
+
+function halfWindowWidth()
+    hs.grid.adjustWindow(function(cell)
+        cell.w = cell.w // 2
+    end)
+end
+
+function doubleWindowWidth()
+    hs.grid.adjustWindow(function(cell)
+        cell.w = 2 * cell.w
+        cell.x = math.min(cell.x, GRID_W - cell.w)
+    end)
+end
+
+function halfWindowHeight()
+    hs.grid.adjustWindow(function(cell)
+        cell.h = cell.h // 2
+    end)
+end
+
+function doubleWindowHeight()
+    hs.grid.adjustWindow(function(cell)
+        cell.h = 2 * cell.h
+        cell.y = math.min(cell.y, GRID_H - cell.h)
+    end)
+end
+
+function openForSpace(name, menuItem)
+    hs.application.launchOrFocus(name)
+    local app = hs.application.find(name)
+    if #app:visibleWindows() == 0 then app:selectMenuItem(menuItem) end
+end
 
 targetVolume = nil
 function changeVolume(diff)
@@ -180,14 +166,6 @@ function changeVolume(diff)
         atScreenEdge = 2,
     })
     hs.audiodevice.defaultOutputDevice():setVolume(targetVolume)
-end
-
-function openForSpace(name, menuItem)
-    hs.application.launchOrFocus(name)
-
-    local app = hs.application.find(name)
-
-    if #app:visibleWindows() == 0 then app:selectMenuItem(menuItem) end
 end
 
 hs.loadSpoon("ReloadConfiguration")
