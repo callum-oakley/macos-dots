@@ -122,6 +122,18 @@ keyDownTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
         end
     end
 
+    if mods.cmd and keyCode == hs.keycodes.map["tab"] then
+        -- super simple cmd-tab behaviour: focus the most recently used window
+        -- among the currently unfocused windows in the current space
+        for i, window in ipairs(hs.window.filter.defaultCurrentSpace:getWindows()) do
+            if window ~= hs.window.focusedWindow() then
+                window:focus()
+                break
+            end
+        end
+        return true
+    end
+
     if keyCode == hs.keycodes.map["f11"] then
         if mods.cmd then
             changeVolume(-8)
