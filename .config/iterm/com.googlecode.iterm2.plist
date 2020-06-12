@@ -404,14 +404,20 @@
 	</dict>
 	<key>NSWindow Frame NSNavPanelAutosaveName</key>
 	<string>1046 173 799 448 0 0 2560 1440 </string>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>970 786 620 392 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>223 17 833 1400 0 0 2560 1440 </string>
+	<string>25 325 650 623 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>223 17 833 1400 0 0 2560 1440 </string>
+	<string>223 130 833 1180 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>863 130 833 1180 0 0 2560 1440 </string>
+	<string>863 20 833 1400 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>20 17 823 1400 0 0 2560 1440 </string>
+	<string>1716 20 823 1400 0 0 2560 1440 </string>
+	<key>NSWindow Frame iTerm Window 4</key>
+	<string>406 117 660 623 0 0 2560 1440 </string>
+	<key>NSWindow Frame iTerm Window 5</key>
+	<string>427 94 660 623 0 0 2560 1440 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1089,6 +1095,7 @@
 	<key>NoSyncAllAppVersions</key>
 	<array>
 		<string>3.3.9</string>
+		<string>3.3.11</string>
 	</array>
 	<key>NoSyncFrame_SessionsPreferences</key>
 	<dict>
@@ -1109,15 +1116,17 @@
 	<key>NoSyncInstallationId</key>
 	<string>CA5B171D-8F18-4A6E-A7CD-E9013EF96355</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>2</integer>
+	<integer>8</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
 	<integer>0</integer>
 	<key>NoSyncNextAnnoyanceTime</key>
-	<real>611236308.54663801</real>
+	<real>612906278.32104802</real>
 	<key>NoSyncOnboardingWindowHasBeenShown</key>
 	<true/>
+	<key>NoSyncPermissionToShowTip</key>
+	<false/>
 	<key>NoSyncRecordedVariables</key>
 	<dict>
 		<key>0</key>
@@ -1878,8 +1887,12 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-06-02T09:25:35Z</date>
+	<date>2020-06-12T18:59:53Z</date>
 	<key>SUSendProfileInfo</key>
+	<false/>
+	<key>SUUpdateGroupIdentifier</key>
+	<integer>2221667039</integer>
+	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>Selection Respects Soft Boundaries</key>
 	<true/>
@@ -1896,7 +1909,7 @@
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>5</integer>
 	<key>TerminalMargin</key>
-	<integer>10</integer>
+	<integer>5</integer>
 	<key>TerminalVMargin</key>
 	<integer>5</integer>
 	<key>UseBorder</key>
@@ -1912,6 +1925,6 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.3.9</string>
+	<string>3.3.11</string>
 </dict>
 </plist>

@@ -1,0 +1,39 @@
+#! /usr/bin/env bash
+
+now_playing() {
+    artist=$(osascript -e 'tell application "Spotify" to artist of current track as string')
+    album=$(osascript -e 'tell application "Spotify" to album of current track as string')
+    track=$(osascript -e 'tell application "Spotify" to name of current track as string')
+    echo "$artist | $album | $track"
+}
+
+desktop() {
+    case $(cat ~/.desktop) in
+        1)
+            echo "[1u] 2u  3u  4u  1s  2s  3s  4s "
+            ;;
+        2)
+            echo " 1u [2u] 3u  4u  1s  2s  3s  4s "
+            ;;
+        3)
+            echo " 1u  2u [3u] 4u  1s  2s  3s  4s "
+            ;;
+        4)
+            echo " 1u  2u  3u [4u] 1s  2s  3s  4s "
+            ;;
+        5)
+            echo " 1u  2u  3u  4u [1s] 2s  3s  4s "
+            ;;
+        6)
+            echo " 1u  2u  3u  4u  1s [2s] 3s  4s "
+            ;;
+        7)
+            echo " 1u  2u  3u  4u  1s  2s [3s] 4s "
+            ;;
+        8)
+            echo " 1u  2u  3u  4u  1s  2s  3s [4s]"
+            ;;
+    esac
+}
+
+echo "$(desktop) <> $(date '+%a %d %b %R') <> $(now_playing)    vol: $(cat ~/.volume)% "

@@ -2,13 +2,21 @@ GRID_W = 12
 GRID_H = 12
 
 hs.application.enableSpotlightForNameSearches(true)
-hs.grid.setGrid(hs.geometry(nil, nil, GRID_W, GRID_H)).setMargins("20x20")
+hs.grid.setGrid(hs.geometry(nil, nil, GRID_W, GRID_H)).setMargins("25x25")
 hs.window.animationDuration = 0
 hs.alert.defaultStyle.fillColor = { alpha = 0 }
 hs.alert.defaultStyle.strokeColor = { alpha = 0 }
 
 hotKeys = {
     { { "cmd" }, "tab", function() focusMRU() end },
+    { { "ctrl" }, "1", function() changeDesktop(1) end, true },
+    { { "ctrl" }, "2", function() changeDesktop(2) end, true },
+    { { "ctrl" }, "3", function() changeDesktop(3) end, true },
+    { { "ctrl" }, "4", function() changeDesktop(4) end, true },
+    { { "ctrl", "shift" }, "1", function() changeDesktop(5) end, true },
+    { { "ctrl", "shift" }, "2", function() changeDesktop(6) end, true },
+    { { "ctrl", "shift" }, "3", function() changeDesktop(7) end, true },
+    { { "ctrl", "shift" }, "4", function() changeDesktop(8) end, true },
     { { "cmd", "ctrl" }, "n", function() hs.grid.pushWindowLeft() end },
     { { "cmd", "ctrl" }, "i", function() hs.grid.pushWindowRight() end },
     { { "cmd", "ctrl" }, "u", function() hs.grid.pushWindowUp() end },
@@ -64,6 +72,7 @@ for _, hotKey in ipairs(hotKeys) do
         mods = mods,
         keyCode = hs.keycodes.map[hotKey[2]],
         f = hotKey[3],
+        done = not hotKey[4],
     })
 end
 
@@ -77,7 +86,7 @@ keyDownTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
             mods.ctrl == hotKey.mods.ctrl and
             mods.shift == hotKey.mods.shift then
             hotKey.f()
-            return true
+            return hotKey.done
         end
     end
 end):start()
@@ -89,6 +98,11 @@ function focusMRU()
             return
         end
     end
+end
+
+function changeDesktop(desktop)
+    hs.execute("echo " .. desktop .. " > ~/.desktop")
+    reloadBar()
 end
 
 function throwWindowLeft()
@@ -157,15 +171,16 @@ function changeVolume(diff)
     if targetVolume > 0 then
         hs.audiodevice.defaultOutputDevice():setMuted(false)
     end
-    hs.alert.closeAll(0.0)
-
-    hs.alert.show(string.rep("\u{25cf}", targetVolume), {
-        textSize = 8,
-        fadeInDuration = 0,
-        fadeOutDuration = 0,
-        atScreenEdge = 2,
-    })
     hs.audiodevice.defaultOutputDevice():setVolume(targetVolume)
+
+    hs.execute("echo " .. targetVolume .. " > ~/.volume")
+    reloadBar()
+end
+
+function reloadBar()
+    hs.execute(
+        "osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"bar-jsx\"'"
+    )
 end
 
 hs.loadSpoon("ReloadConfiguration")
