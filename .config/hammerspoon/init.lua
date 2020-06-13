@@ -26,14 +26,6 @@ hotKeys = {
     { { "cmd", "ctrl" }, "c", function() halfWindowHeight() end },
     { { "cmd", "ctrl" }, "q", function() hs.grid.maximizeWindow() end },
     { { "cmd", "ctrl" }, "a", function() hs.grid.snap(hs.window.focusedWindow()) end },
-    { {}, "f11", function() changeVolume(-1) end },
-    { { "ctrl" }, "f11", function() changeVolume(-2) end },
-    { { "alt" }, "f11", function() changeVolume(-4) end },
-    { { "cmd" }, "f11", function() changeVolume(-8) end },
-    { {}, "f12", function() changeVolume(1) end },
-    { { "ctrl" }, "f12", function() changeVolume(2) end },
-    { { "alt" }, "f12", function() changeVolume(4) end },
-    { { "cmd" }, "f12", function() changeVolume(8) end },
     { { "ctrl" }, "5", function() openForSpace("iTerm", "New Window") end },
     { { "ctrl" }, "6", function() openForSpace("Safari", "New Window") end },
     { { "alt" }, "q", function() hs.eventtap.keyStrokes(utf8.char(772)) end },
@@ -143,19 +135,6 @@ function openForSpace(name, menuItem)
     hs.application.launchOrFocus(name)
     local app = hs.application.find(name)
     if #app:visibleWindows() == 0 then app:selectMenuItem(menuItem) end
-end
-
-targetVolume = nil
-function changeVolume(diff)
-    if targetVolume == nil then
-        targetVolume =
-            math.floor(hs.audiodevice.defaultOutputDevice():volume())
-    end
-    targetVolume = math.min(100, math.max(0, targetVolume + diff))
-    if targetVolume > 0 then
-        hs.audiodevice.defaultOutputDevice():setMuted(false)
-    end
-    hs.audiodevice.defaultOutputDevice():setVolume(targetVolume)
 end
 
 hs.loadSpoon("ReloadConfiguration")
