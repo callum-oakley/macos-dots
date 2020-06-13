@@ -6,7 +6,8 @@ hs.grid.setGrid(hs.geometry(nil, nil, GRID_W, GRID_H)).setMargins("20x20")
 hs.window.animationDuration = 0
 
 hotKeys = {
-    { { "cmd" }, "tab", function() focusMRU() end },
+    { { "cmd" }, "tab", function() changeFocus(hs.window.filter.sortByFocusedLast) end },
+    { { "cmd", "shift" }, "tab", function() changeFocus(hs.window.filter.sortByFocused) end },
     { { "cmd", "ctrl" }, "n", function() hs.grid.pushWindowLeft() end },
     { { "cmd", "ctrl" }, "i", function() hs.grid.pushWindowRight() end },
     { { "cmd", "ctrl" }, "u", function() hs.grid.pushWindowUp() end },
@@ -74,8 +75,8 @@ keyDownTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
     end
 end):start()
 
-function focusMRU()
-    for _, window in ipairs(hs.window.filter.defaultCurrentSpace:getWindows()) do
+function changeFocus(sortOrder)
+    for _, window in ipairs(hs.window.filter.defaultCurrentSpace:getWindows(sortOrder)) do
         if window ~= hs.window.focusedWindow() then
             window:focus()
             return
