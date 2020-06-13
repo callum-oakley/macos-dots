@@ -34,11 +34,14 @@ hotKeys = {
     { { "alt" }, "p", function() hs.eventtap.keyStrokes(utf8.char(768)) end },
     { { "alt" }, "v", function() hs.eventtap.keyStrokes(utf8.char(252)) end },
     { { "alt", "shift" }, "v", function() hs.eventtap.keyStrokes(utf8.char(220)) end },
+    -- For volume control on gamepad
+    { {}, "f11", function() volumeDown() end },
+    { {}, "f12", function() volumeUp() end },
 }
 
 hotKeysExpanded = {}
 for _, hotKey in ipairs(hotKeys) do
-    mods = {}
+    local mods = {}
     for _, mod in ipairs(hotKey[1]) do
         if mod == "cmd" then
             mods.cmd = true
@@ -59,7 +62,6 @@ end
 
 keyDownTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
     local mods = hs.eventtap.checkKeyboardModifiers()
-
     for _, hotKey in ipairs(hotKeysExpanded) do
         if e:getKeyCode() == hotKey.keyCode and
             mods.cmd == hotKey.mods.cmd and
@@ -135,6 +137,16 @@ function openForSpace(name, menuItem)
     hs.application.launchOrFocus(name)
     local app = hs.application.find(name)
     if #app:visibleWindows() == 0 then app:selectMenuItem(menuItem) end
+end
+
+function volumeDown()
+    hs.eventtap.event.newSystemKeyEvent("SOUND_DOWN", true):post()
+    hs.eventtap.event.newSystemKeyEvent("SOUND_DOWN", false):post()
+end
+
+function volumeUp()
+    hs.eventtap.event.newSystemKeyEvent("SOUND_UP", true):post()
+    hs.eventtap.event.newSystemKeyEvent("SOUND_UP", false):post()
 end
 
 hs.loadSpoon("ReloadConfiguration")
