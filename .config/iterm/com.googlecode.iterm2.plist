@@ -23,7 +23,7 @@
 	<key>AutoHideTmuxClientSession</key>
 	<true/>
 	<key>Command</key>
-	<string>/usr/local/bin/bash</string>
+	<string></string>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>papercolor-light</key>
@@ -407,7 +407,7 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>970 786 620 392 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>25 325 650 623 0 0 2560 1440 </string>
+	<string>225 133 828 1175 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>223 130 833 1180 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -1116,7 +1116,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>CA5B171D-8F18-4A6E-A7CD-E9013EF96355</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>8</integer>
+	<integer>9</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1909,7 +1909,7 @@
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>5</integer>
 	<key>TerminalMargin</key>
-	<integer>5</integer>
+	<integer>10</integer>
 	<key>TerminalVMargin</key>
 	<integer>5</integer>
 	<key>UseBorder</key>
