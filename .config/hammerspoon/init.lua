@@ -35,9 +35,6 @@ hotKeys = {
     { { "alt" }, "p", function() hs.eventtap.keyStrokes(utf8.char(768)) end },
     { { "alt" }, "v", function() hs.eventtap.keyStrokes(utf8.char(252)) end },
     { { "alt", "shift" }, "v", function() hs.eventtap.keyStrokes(utf8.char(220)) end },
-    -- For volume control on gamepad
-    { {}, "f11", function() volumeDown() end },
-    { {}, "f12", function() volumeUp() end },
 }
 
 hotKeysExpanded = {}
