@@ -77,7 +77,7 @@ end):start()
 
 function changeFocus(sortOrder)
     for _, window in ipairs(hs.window.filter.defaultCurrentSpace:getWindows(sortOrder)) do
-        if window ~= hs.window.focusedWindow() then
+        if window:isStandard() and window ~= hs.window.focusedWindow() then
             window:focus()
             return
         end
