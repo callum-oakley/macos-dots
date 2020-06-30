@@ -1,0 +1,25 @@
+/* hide promoted content on reddit */
+.promotedlink {
+  display: none !important;
+}
+
+/* hide ads on duckduckgo */
+#ads {
+  display: none !important;
+}
+
+/* limit the max width of wikipedia */
+#mw-page-base {
+  display: none !important;
+}
+.mw-body {
+  max-width: 50rem !important;
+  border: none !important;
+  margin: auto !important;
+}
+#mw-navigation {
+  display: none !important;
+}
+.mw-footer {
+  display: none !important;
+}

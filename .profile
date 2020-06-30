@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 alias cat='bat --theme=GitHub -p'
 alias diff='colordiff -u'
@@ -62,11 +62,6 @@ fdt() {
 export BASH_COMPLETION_COMPAT_DIR='/usr/local/etc/bash_completion.d'
 [ -f /usr/local/etc/profile.d/bash_completion.sh ] && source /usr/local/etc/profile.d/bash_completion.sh
 
-# put current directory in iterm tab title
-if [ $ITERM_SESSION_ID ]; then
-  export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007"; ':"$PROMPT_COMMAND";
-fi
-
 # history config
 shopt -s histappend
 shopt -s cmdhist
@@ -74,7 +69,12 @@ shopt -s globstar
 export HISTSIZE=1000000
 export HISTFILESIZE="$HISTSIZE"
 export HISTCONTROL=ignoreboth
-export PROMPT_COMMAND="$PROMPT_COMMAND; history -a"
+export PROMPT_COMMAND='history -a'
+
+# put current directory in iterm tab title
+if [ $ITERM_SESSION_ID ]; then
+  export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007";'"$PROMPT_COMMAND"
+fi
 
 # nvim best vim
 export VISUAL='nvim'
