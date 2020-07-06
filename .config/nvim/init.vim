@@ -1,5 +1,4 @@
 call plug#begin('~/.config/nvim/plugged')
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'cespare/vim-toml'
 Plug 'chiel92/vim-autoformat'
 Plug 'dense-analysis/ale'
@@ -22,7 +21,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'tsiemens/vim-aftercolors'
 Plug 'wellle/targets.vim'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
@@ -41,7 +39,8 @@ set nojoinspaces
 set ruler
 set scrolloff=99
 set showcmd
-set textwidth=80
+set cinoptions=(4,m1
+
 
 " tabs
 set expandtab
@@ -70,33 +69,14 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.html PrettierAsync
 autocmd BufWritePre *.py :Autoformat
 
-set t_Co=256   " This is may or may not needed.
+colorscheme rubric
 
-set background=light
-let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \     'default': {
-  \       'transparent_background': 1
-  \     }
-  \   }
-  \ }
-colorscheme PaperColor
-
-let mapleader=" "
-
-" Search for selected text, forwards or backwards.
+" search for selected text
 vnoremap <silent> * :<C-U>
   \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
   \gvy/<C-R><C-R>=substitute(
   \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gV:call setreg('"', old_reg, old_regtype)<CR>N
-
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
 
 " plugin options
 let g:fzf_layout = { 'down': '~16' }
@@ -116,20 +96,22 @@ let g:ale_linters_explicit = 1
 let g:formatters_python = ['black']
 let g:go_fmt_command = "goimports"
 
+" adapted from https://github.com/junegunn/fzf.vim/blob/2bf85d25e203a536edb2c072c0d41b29e8e4cc1b/plugin/fzf.vim#L60
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --colors 'path:none' --colors 'line:none' --smart-case -- ".shellescape(<q-args>), 1, {}, <bang>0)
+
 " keymaps
-inoremap <c-a> <esc>I
-inoremap <c-e> <esc>A
+let mapleader=" "
 
 nmap <leader>c gc
 vmap <leader>c gc
+
+inoremap <m-bs> <c-w>
 
 nnoremap * *N
 nnoremap <PageDown> 9<down>
 nnoremap <PageUp> 9<up>
 nnoremap <cr> :
 nnoremap <esc> :noh<cr><esc>
-nnoremap <c-a> ^
-nnoremap <c-e> $
 nnoremap <leader> <nop>
 nnoremap <leader>* g*N
 nnoremap <leader><c-down> ddGp
@@ -177,8 +159,6 @@ nnoremap x "_x
 vnoremap <PageDown> 9<down>
 vnoremap <PageUp> 9<up>
 vnoremap <cr> :
-vnoremap <c-a> ^
-vnoremap <c-e> $
 vnoremap <leader>f gq
 vnoremap <leader>p :! python3 -<cr>
 vnoremap c "_c

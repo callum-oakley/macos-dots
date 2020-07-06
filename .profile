@@ -1,6 +1,5 @@
 #! /usr/bin/env bash
 
-alias cat='bat --theme=GitHub -p'
 alias diff='colordiff -u'
 alias disable-prettier="echo '**' > .prettierignore"
 alias ggf='gotta-go-fast'
@@ -13,9 +12,10 @@ alias py='python3'
 alias po='poetry'
 alias pm='po run python manage.py'
 alias tclip='tee >(pbcopy)'
-alias tree="tree -C -I 'target|node_modules|dist|vendor|deps|_build|cover'"
+alias tree="tree -I 'target|node_modules|dist|vendor|deps|_build|cover'"
 alias vi='nvim'
 alias uuid='uuid -v4'
+alias rg="rg --colors 'path:none' --colors 'line:none'"
 
 for context in mt1 testk8s us1-staging us1 global global-staging; do
     alias $context="kubectl --context $context"
@@ -71,18 +71,20 @@ export HISTFILESIZE="$HISTSIZE"
 export HISTCONTROL=ignoreboth
 export PROMPT_COMMAND='history -a'
 
-# put current directory in iterm tab title
-if [ $ITERM_SESSION_ID ]; then
-  export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007";'"$PROMPT_COMMAND"
+# put current directory in kitty tab title
+if [ $KITTY_WINDOW_ID ]; then
+  export PROMPT_COMMAND='kitty @ set-tab-title "${PWD##*/}";'"$PROMPT_COMMAND"
 fi
 
 # nvim best vim
 export VISUAL='nvim'
 export EDITOR="$VISUAL"
 
+export LSCOLORS='AxBxcxdxbxegedabagacad'
+export LS_COLORS="fi=30:di=30;1:ex=31:pi=30:so=30:bd=30:cd=30:ln=30:or=30"
 export PS1_COLOUR='31'
 export FZF_DEFAULT_COMMAND='fd -t f'
-export FZF_DEFAULT_OPTS='--reverse --height 16 --color light'
+export FZF_DEFAULT_OPTS='--reverse --height 16 --color "fg:0,bg:15,preview-fg:0,preview-bg:15,hl:1,fg+:0,bg+:7,gutter:15,hl+:1,info:0,border:15,prompt:0,pointer:0,spinner:0"'
 export GOPATH="$HOME/code/go"
 export PS1="\n\[\033[0;\$(ps1_colour)m\]\W\$(branch) $\[\033[0m\] "
 export VAULT_ADDR='https://vault.pusherplatform.io:8200'
