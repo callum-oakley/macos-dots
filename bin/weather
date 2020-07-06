@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+
+curl -s wttr.in/London?0qT |
+    python3 -c 'l = input(); input(); c = input()[15:]; t = input()[15:]; print(f"{t.strip()}, {c.strip()} ({l.strip()})")'
