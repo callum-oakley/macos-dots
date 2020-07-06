@@ -106,12 +106,16 @@ nmap <leader>c gc
 vmap <leader>c gc
 
 inoremap <m-bs> <c-w>
+inoremap <home> <esc>I
+inoremap <end> <esc>A
 
 nnoremap * *N
 nnoremap <PageDown> 9<down>
 nnoremap <PageUp> 9<up>
 nnoremap <cr> :
+nnoremap <end> $
 nnoremap <esc> :noh<cr><esc>
+nnoremap <home> ^
 nnoremap <leader> <nop>
 nnoremap <leader>* g*N
 nnoremap <leader><c-down> ddGp
@@ -123,16 +127,17 @@ nnoremap <leader>N :bp<cr>
 nnoremap <leader>O O<esc>O
 nnoremap <leader>S :noautocmd w<cr>
 nnoremap <leader>a <nop>
-nnoremap <leader>f gq
 nnoremap <leader>b :Buffer<cr>
 nnoremap <leader>d /<<<<<<<\\|=======\\|\|\|\|\|\|\|\|\\|>>>>>>><cr>
 nnoremap <leader>e :Files<cr>
+nnoremap <leader>f gq
 nnoremap <leader>fa :setlocal fo+=a<cr>
 nnoremap <leader>ff gqq
 nnoremap <leader>fm :setlocal fo-=a<cr>
 nnoremap <leader>hp O{-# LANGUAGE  #-}<esc>B<left>i
 nnoremap <leader>hq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 nnoremap <leader>i :BLines<cr>
+nnoremap <leader>l /.\{101,\}<cr>
 nnoremap <leader>n :bn<cr>
 nnoremap <leader>o o<esc>O
 nnoremap <leader>p :.! python3 -<cr>
@@ -147,7 +152,6 @@ nnoremap <leader>tn :set noexpandtab<cr>
 nnoremap <leader>ts mt:r !date<cr>D"_dd`tp
 nnoremap <leader>v <c-v>
 nnoremap <leader>w :bd<cr>
-nnoremap <leader>l /.\{101,\}<cr>
 nnoremap K "_D
 nnoremap U <c-r>
 nnoremap Y y$
@@ -159,6 +163,8 @@ nnoremap x "_x
 vnoremap <PageDown> 9<down>
 vnoremap <PageUp> 9<up>
 vnoremap <cr> :
+vnoremap <end> $
+vnoremap <home> ^
 vnoremap <leader>f gq
 vnoremap <leader>p :! python3 -<cr>
 vnoremap c "_c
