@@ -5,13 +5,66 @@ hs.application.enableSpotlightForNameSearches(true)
 hs.grid.setGrid(hs.geometry(nil, nil, GRID_W, GRID_H)).setMargins("25x25")
 hs.window.animationDuration = 0
 
-function changeFocus(sortOrder)
-    for _, window in ipairs(hs.window.filter.defaultCurrentSpace:getWindows(sortOrder)) do
-        if window:isStandard() and window ~= hs.window.focusedWindow() then
-            window:focus()
-            return
+function indexOf(table, elem)
+    for i, x in ipairs(table) do
+        if x == elem then
+            return i
         end
     end
+    -- we're going to sort with this function, so math.huge ensures elements
+    -- that aren't found get pushed to the end
+    return math.huge
+end
+
+function filter(from, f)
+    local filtered = {}
+    for _, x in ipairs(from) do
+        if f(x) then
+            table.insert(filtered, x)
+        end
+    end
+    return filtered
+end
+
+mruWindows = {}
+
+-- moves to the next (direction=1) or previous (direction=-1) window, in order
+-- of most recent use.
+function changeFocus(direction)
+    -- refresh the window state
+    local windows = filter(
+        hs.window.filter.defaultCurrentSpace:getWindows(),
+        function(window) return window:isStandard() end
+    )
+
+    -- but preserve the order from the last state
+    table.sort(windows, function(a, b)
+        return indexOf(mruWindows, a) < indexOf(mruWindows, b)
+    end)
+    mruWindows = windows
+
+    if #mruWindows == 0 then
+        return
+    end
+
+    local current = indexOf(mruWindows, hs.window.focusedWindow())
+    if current == math.huge then
+        mruWindows[1]:focus()
+    else
+        -- god I hate one indexing...
+        mruWindows[(current + direction - 1) % #mruWindows + 1]:focus()
+    end
+end
+
+-- promotes the currently focussed window to be considered "used" (bump it to
+-- the top of the MRU table)
+function promoteCurrentlyFocusedWindow()
+    local current = indexOf(mruWindows, hs.window.focusedWindow())
+    if current == 1 or current == math.huge then
+        return
+    end
+    window = table.remove(mruWindows, current)
+    table.insert(mruWindows, 1, window)
 end
 
 function centerWindow()
@@ -79,8 +132,8 @@ function openForSpace(name, menuItem)
 end
 
 hotKeys = {
-    { { "cmd" }, "tab", function() changeFocus(hs.window.filter.sortByFocusedLast) end },
-    { { "cmd", "shift" }, "tab", function() changeFocus(hs.window.filter.sortByFocused) end },
+    { { "cmd" }, "tab", function() changeFocus(1) end },
+    { { "cmd", "shift" }, "tab", function() changeFocus(-1) end },
     { { "cmd", "ctrl" }, "n", hs.grid.pushWindowLeft },
     { { "cmd", "ctrl" }, "i", hs.grid.pushWindowRight },
     { { "cmd", "ctrl" }, "u", hs.grid.pushWindowUp },
@@ -132,7 +185,7 @@ for _, hotKey in ipairs(hotKeys) do
 end
 
 keyDownTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
-    local mods = hs.eventtap.checkKeyboardModifiers()
+    local mods = e:getFlags()
     for _, hotKey in ipairs(hotKeysExpanded) do
         if e:getKeyCode() == hotKey.keyCode and
             mods.cmd == hotKey.mods.cmd and
@@ -142,6 +195,16 @@ keyDownTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
             hotKey.f()
             return true
         end
+    end
+end):start()
+
+flagsChangedTap = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(e)
+    if hs.eventtap.checkKeyboardModifiers().cmd ~= e:getFlags().cmd then
+        -- changeFocus(0) has no effect if a window is already focused, but
+        -- serves the purpose here of focusing the most recently used window
+        -- after closing another window with cmd-w
+        changeFocus(0)
+        promoteCurrentlyFocusedWindow()
     end
 end):start()
 
