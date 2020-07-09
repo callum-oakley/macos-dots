@@ -89,6 +89,7 @@ export GOPATH="$HOME/code/go"
 export PS1="\n\[\033[0;\$(ps1_colour)m\]\W\$(branch) $\[\033[0m\] "
 export VAULT_ADDR='https://vault.pusherplatform.io:8200'
 export QMK_HOME="$HOME/code/qmk_firmware"
+export NODE_DISABLE_COLORS=1
 
 export GPG_TTY=$(tty)
 

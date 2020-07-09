@@ -24,7 +24,6 @@ hi markdownLinkText          ctermfg=0    ctermbg=none cterm=italic
 
 " normal red
 hi Comment                   ctermfg=1    ctermbg=none cterm=none
-hi markdownHeadingDelimiter  ctermfg=1    ctermbg=none cterm=none
 hi markdownCodeDelimiter     ctermfg=1    ctermbg=none cterm=none
 hi markdownLinkDelimiter     ctermfg=1    ctermbg=none cterm=none
 hi markdownLinkTextDelimiter ctermfg=1    ctermbg=none cterm=none
@@ -41,6 +40,7 @@ hi SpecialKey                ctermfg=1    ctermbg=none cterm=none
 
 " bold red
 hi Todo                      ctermfg=1    ctermbg=none cterm=bold
+hi markdownHeadingDelimiter  ctermfg=1    ctermbg=none cterm=bold
 
 " italic red
 hi markdownUrl               ctermfg=1    ctermbg=none cterm=italic
