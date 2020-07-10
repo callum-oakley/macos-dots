@@ -27,44 +27,51 @@ function filter(from, f)
 end
 
 mruWindows = {}
+mruWindowIndex = math.huge
 
--- moves to the next (direction=1) or previous (direction=-1) window, in order
--- of most recent use.
-function changeFocus(direction)
-    -- refresh the window state
+-- Syncs up the window state with reality and moves the currently focused
+-- window to the top of the stack. We want to call this on cmd down (about to
+-- start changing focus) and cmd down (finished changing focus).
+function refreshWindowState()
     local windows = filter(
         hs.window.filter.defaultCurrentSpace:getWindows(),
         function(window) return window:isStandard() end
     )
 
-    -- but preserve the order from the last state
+    -- preserve the order from the last state
     table.sort(windows, function(a, b)
         return indexOf(mruWindows, a) < indexOf(mruWindows, b)
     end)
+
     mruWindows = windows
 
+    mruWindowIndex = indexOf(mruWindows, hs.window.focusedWindow())
+
+    if mruWindowIndex == math.huge or mruWindowIndex == 1 then
+        return
+    end
+
+    window = table.remove(mruWindows, mruWindowIndex)
+    table.insert(mruWindows, 1, window)
+
+    mruWindowIndex = 1
+end
+
+-- Changes focus to the next (direction=1) or previous (direction=-1) window,
+-- in order of most recent use.
+function changeFocus(direction)
     if #mruWindows == 0 then
         return
     end
 
-    local current = indexOf(mruWindows, hs.window.focusedWindow())
-    if current == math.huge then
-        mruWindows[1]:focus()
+    if mruWindowIndex == math.huge then
+        mruWindowIndex = 1
     else
         -- god I hate one indexing...
-        mruWindows[(current + direction - 1) % #mruWindows + 1]:focus()
+        mruWindowIndex = (mruWindowIndex + direction - 1) % #mruWindows + 1
     end
-end
 
--- promotes the currently focussed window to be considered "used" (bump it to
--- the top of the MRU table)
-function promoteCurrentlyFocusedWindow()
-    local current = indexOf(mruWindows, hs.window.focusedWindow())
-    if current == 1 or current == math.huge then
-        return
-    end
-    window = table.remove(mruWindows, current)
-    table.insert(mruWindows, 1, window)
+    mruWindows[mruWindowIndex]:focus()
 end
 
 function centerWindow()
@@ -199,12 +206,9 @@ keyDownTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
 end):start()
 
 flagsChangedTap = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(e)
+    -- cmd up or down
     if hs.eventtap.checkKeyboardModifiers().cmd ~= e:getFlags().cmd then
-        -- changeFocus(0) has no effect if a window is already focused, but
-        -- serves the purpose here of focusing the most recently used window
-        -- after closing another window with cmd-w
-        changeFocus(0)
-        promoteCurrentlyFocusedWindow()
+        refreshWindowState()
     end
 end):start()
 
