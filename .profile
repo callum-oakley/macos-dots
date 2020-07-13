@@ -2,20 +2,19 @@
 
 alias diff='colordiff -u'
 alias disable-prettier="echo '**' > .prettierignore"
-alias ggf='gotta-go-fast'
+alias ggf='gotta-go-fast --fg-error=1 --fg-empty=8'
 alias ghci='stack exec -- ghci'
 alias git='hub'
 alias gup='gup -t $GUP_TOKEN'
 alias ls='ls -G'
 alias pi='pip3'
 alias py='python3'
-alias po='poetry'
-alias pm='po run python manage.py'
+alias rg="rg --colors 'path:none' --colors 'line:none'"
 alias tclip='tee >(pbcopy)'
 alias tree="tree -I 'target|node_modules|dist|vendor|deps|_build|cover'"
-alias vi='nvim'
 alias uuid='uuid -v4'
-alias rg="rg --colors 'path:none' --colors 'line:none'"
+alias vi='nvim'
+alias vih="vi +:help +:on"
 
 for context in mt1 testk8s us1-staging us1 global global-staging; do
     alias $context="kubectl --context $context"
@@ -93,4 +92,4 @@ export NODE_DISABLE_COLORS=1
 
 export GPG_TTY=$(tty)
 
-export PATH="$HOME/.poetry/bin:/Library/Frameworks/Python.framework/Versions/3.8/bin:$HOME/Library/Python/3.8/bin:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/helm@2/bin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$HOME/Library/Python/3.8/bin:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:$PATH"
