@@ -6,7 +6,7 @@ alias ggf='gotta-go-fast --fg-error=1 --fg-empty=8'
 alias ghci='stack exec -- ghci'
 alias git='hub'
 alias gup='gup -t $GUP_TOKEN'
-alias ls='ls -G'
+alias ls='ls -G --color'
 alias pi='pip3'
 alias py='python3'
 alias rg="rg --colors 'path:none' --colors 'line:none'"
@@ -79,8 +79,7 @@ fi
 export VISUAL='nvim'
 export EDITOR="$VISUAL"
 
-export LSCOLORS='AxBxcxdxbxegedabagacad'
-export LS_COLORS="fi=30:di=30;1:ex=31:pi=30:so=30:bd=30:cd=30:ln=30:or=30"
+export LS_COLORS="fi=30:di=30;1:ex=31:pi=30:so=30:bd=30:cd=30:ln=31;1:or=30;41;1"
 export PS1_COLOUR='31'
 export FZF_DEFAULT_COMMAND='fd -t f'
 export FZF_DEFAULT_OPTS='--reverse --height 16 --color "fg:0,bg:15,preview-fg:0,preview-bg:15,hl:1,fg+:0,bg+:7,gutter:15,hl+:1,info:0,border:15,prompt:0,pointer:0,spinner:0"'
