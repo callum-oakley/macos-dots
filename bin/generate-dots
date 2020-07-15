@@ -1,0 +1,25 @@
+#! /usr/bin/env bash
+
+# see https://github.com/Hammerspoon/hammerspoon/pull/582
+defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
+
+if [ "$(scutil --get ComputerName)" = "Callum’s MacBook Pro" ]; then
+    kitty_font_size=12
+    kitty_window_margin_width=10
+    hammerspoon_grid_margin=10
+else
+    kitty_font_size=14
+    kitty_window_margin_width=25
+    hammerspoon_grid_margin=25
+fi
+
+sed \
+    -e "s/{{font_size}}/$kitty_font_size/"                     \
+    -e "s/{{window_margin_width}}/$kitty_window_margin_width/" \
+    ~/.config/kitty/kitty.template.conf >                      \
+    ~/.config/kitty/kitty.conf
+
+sed \
+    -e "s/{{grid_margin}}/$hammerspoon_grid_margin/"           \
+    ~/.config/hammerspoon/init.template.lua >                  \
+    ~/.config/hammerspoon/init.lua

@@ -1,8 +1,11 @@
 GRID_W = 12
 GRID_H = 12
 
+GRID_MARGIN = {{grid_margin}}
+
 hs.application.enableSpotlightForNameSearches(true)
-hs.grid.setGrid(hs.geometry(nil, nil, GRID_W, GRID_H)).setMargins("25x25")
+hs.grid.setGrid(hs.geometry(nil, nil, GRID_W, GRID_H))
+    .setMargins({ GRID_MARGIN, GRID_MARGIN })
 hs.window.animationDuration = 0
 
 function indexOf(table, elem)
@@ -149,19 +152,19 @@ hotKeys = {
     { { "cmd", "ctrl" }, "y", throwWindowRight },
     { { "cmd", "ctrl" }, "m", throwWindowDown },
     { { "cmd", "ctrl" }, ",", throwWindowUp },
-    { { "cmd", "ctrl" }, "o", centerWindow },
-    { { "cmd", "ctrl" }, "r", hs.grid.resizeWindowThinner },
-    { { "cmd", "ctrl" }, "t", hs.grid.resizeWindowWider },
-    { { "cmd", "ctrl" }, "f", hs.grid.resizeWindowShorter },
-    { { "cmd", "ctrl" }, "s", hs.grid.resizeWindowTaller },
-    { { "cmd", "ctrl" }, "w", halfWindowWidth },
-    { { "cmd", "ctrl" }, "p", doubleWindowWidth },
-    { { "cmd", "ctrl" }, "v", doubleWindowHeight },
-    { { "cmd", "ctrl" }, "c", halfWindowHeight },
-    { { "cmd", "ctrl" }, "q", hs.grid.maximizeWindow },
-    { { "cmd", "ctrl" }, "a", snapWindow },
-    { { "ctrl" }, "5", function() openForSpace("kitty", "New OS window") end },
-    { { "ctrl" }, "6", function() openForSpace("Safari", "New Window") end },
+    { { "cmd", "ctrl" }, "h", centerWindow },
+    { { "cmd", "ctrl", "shift" }, "space", hs.grid.maximizeWindow },
+    { { "cmd", "ctrl", "shift" }, "n", hs.grid.resizeWindowThinner },
+    { { "cmd", "ctrl", "shift" }, "i", hs.grid.resizeWindowWider },
+    { { "cmd", "ctrl", "shift" }, "u", hs.grid.resizeWindowShorter },
+    { { "cmd", "ctrl", "shift" }, "e", hs.grid.resizeWindowTaller },
+    { { "cmd", "ctrl", "shift" }, "l", halfWindowWidth },
+    { { "cmd", "ctrl", "shift" }, "y", doubleWindowWidth },
+    { { "cmd", "ctrl", "shift" }, "m", doubleWindowHeight },
+    { { "cmd", "ctrl", "shift" }, ",", halfWindowHeight },
+    { { "cmd", "ctrl", "shift" }, "h", snapWindow },
+    { { "ctrl" }, "t", function() openForSpace("kitty", "New OS window") end },
+    { { "ctrl" }, "s", function() openForSpace("Safari", "New Window") end },
     { { "alt" }, "q", function() hs.eventtap.keyStrokes(utf8.char(772)) end },
     { { "alt" }, "w", function() hs.eventtap.keyStrokes(utf8.char(769)) end },
     { { "alt" }, "f", function() hs.eventtap.keyStrokes(utf8.char(780)) end },
