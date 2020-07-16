@@ -14,7 +14,7 @@
     root = rev-parse --show-toplevel
 
 [core]
-    pager = less -x1,5
+    pager = nvim - -R
 
 [http]
     cookiefile = /Users/callum/.gitcookies
@@ -30,8 +30,13 @@
 
 [hub]
     protocol = https
+
 [diff]
-	submodule = log
+    submodule = log
+
 [filesystem "N/A|13.0.2|/dev/disk1s2"]
-	timestampResolution = 6000 nanoseconds
-	minRacyThreshold = 0 nanoseconds
+    timestampResolution = 6000 nanoseconds
+    minRacyThreshold = 0 nanoseconds
+
+[color]
+    diff = never

@@ -16,6 +16,11 @@ hi Type                      ctermfg=0    ctermbg=none cterm=none
 hi Bold                      ctermfg=0    ctermbg=none cterm=bold
 hi Title                     ctermfg=0    ctermbg=none cterm=bold
 hi Directory                 ctermfg=0    ctermbg=none cterm=bold
+hi diffFile                  ctermfg=0    ctermbg=none cterm=bold
+hi diffNewFile               ctermfg=0    ctermbg=none cterm=bold
+hi diffLine                  ctermfg=0    ctermbg=none cterm=bold
+hi diffIndexLine             ctermfg=0    ctermbg=none cterm=bold
+hi diffSubname               ctermfg=0    ctermbg=none cterm=bold
 
 " italic black
 hi Italic                    ctermfg=0    ctermbg=none cterm=italic
@@ -37,6 +42,10 @@ hi htmlArg                   ctermfg=1    ctermbg=none cterm=none
 hi htmlValue                 ctermfg=1    ctermbg=none cterm=none
 hi haskellPragma             ctermfg=1    ctermbg=none cterm=none
 hi SpecialKey                ctermfg=1    ctermbg=none cterm=none
+hi diffRemoved               ctermfg=1    ctermbg=none cterm=none
+
+" normal green
+hi diffAdded                 ctermfg=2    ctermbg=none cterm=none
 
 " bold red
 hi Todo                      ctermfg=1    ctermbg=none cterm=bold
