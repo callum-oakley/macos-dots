@@ -2,7 +2,7 @@
 
 alias diff='colordiff -u'
 alias disable-prettier="echo '**' > .prettierignore"
-alias ggf='gotta-go-fast --fg-error=1 --fg-empty=8'
+alias ggf='gotta-go-fast'
 alias ghci='stack exec -- ghci'
 alias git='hub'
 alias gup='gup -t $GUP_TOKEN'
