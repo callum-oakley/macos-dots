@@ -226,26 +226,6 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "s",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": {
-                                    "key_code": "left_option",
-                                    "modifiers": [
-                                        "control"
-                                    ]
-                                },
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
                                     "key_code": "spacebar",
                                     "modifiers": {
                                         "mandatory": [
