@@ -153,7 +153,7 @@ hotKeys = {
     { { "cmd", "ctrl" }, "m", throwWindowDown },
     { { "cmd", "ctrl" }, ",", throwWindowUp },
     { { "cmd", "ctrl" }, "h", centerWindow },
-    { { "cmd", "ctrl", "shift" }, "space", hs.grid.maximizeWindow },
+    { { "cmd", "ctrl", "shift" }, "return", hs.grid.maximizeWindow },
     { { "cmd", "ctrl", "shift" }, "n", hs.grid.resizeWindowThinner },
     { { "cmd", "ctrl", "shift" }, "i", hs.grid.resizeWindowWider },
     { { "cmd", "ctrl", "shift" }, "u", hs.grid.resizeWindowShorter },
