@@ -34,7 +34,7 @@ mruWindowIndex = math.huge
 
 -- Syncs up the window state with reality and moves the currently focused
 -- window to the top of the stack. We want to call this on cmd down (about to
--- start changing focus) and cmd down (finished changing focus).
+-- start changing focus) and cmd up (finished changing focus).
 function refreshWindowState()
     local windows = filter(
         hs.window.filter.defaultCurrentSpace:getWindows(),
