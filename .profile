@@ -15,7 +15,6 @@ alias tclip='tee >(pbcopy)'
 alias tree="tree -I 'target|node_modules|dist|vendor|deps|_build|cover'"
 alias uuid='uuid -v4'
 alias vi='nvim'
-alias vih="vi +:help +:on"
 
 for context in mt1 testk8s us1-staging us1 global global-staging; do
     alias $context="kubectl --context $context"
@@ -56,6 +55,11 @@ fdt() {
   (fd -t f "$q"; tree $(fd -t d "$q") $@) | rg "$q|$"
 }
 
+
+vih() {
+  vi +":help $@" +:on
+}
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f ~/.config/secrets/env ] && source ~/.config/secrets/env
 
@@ -79,6 +83,9 @@ fi
 # nvim best vim
 export VISUAL='nvim'
 export EDITOR="$VISUAL"
+export PAGER='ansifilter | nvim - -R'
+export MANPAGER='ansifilter | nvim - -R +":setfiletype man"'
+export MANWIDTH=999
 
 export LS_COLORS="fi=30:di=30;1:ex=31:pi=30:so=30:bd=30:cd=30:ln=31;1:or=30;41;1"
 export PS1_COLOUR='31'

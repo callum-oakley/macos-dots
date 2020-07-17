@@ -13,9 +13,6 @@
     publish = "!f() { git commit -m $@ && git tag $@ && git push && git push --tags; }; f"
     root = rev-parse --show-toplevel
 
-[core]
-    pager = nvim - -R
-
 [http]
     cookiefile = /Users/callum/.gitcookies
 
@@ -37,6 +34,3 @@
 [filesystem "N/A|13.0.2|/dev/disk1s2"]
     timestampResolution = 6000 nanoseconds
     minRacyThreshold = 0 nanoseconds
-
-[color]
-    diff = never

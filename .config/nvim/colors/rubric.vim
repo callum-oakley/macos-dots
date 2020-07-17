@@ -21,6 +21,7 @@ hi diffNewFile               ctermfg=0    ctermbg=none cterm=bold
 hi diffLine                  ctermfg=0    ctermbg=none cterm=bold
 hi diffIndexLine             ctermfg=0    ctermbg=none cterm=bold
 hi diffSubname               ctermfg=0    ctermbg=none cterm=bold
+hi manSectionHeading         ctermfg=0    ctermbg=none cterm=bold
 
 " italic black
 hi Italic                    ctermfg=0    ctermbg=none cterm=italic
