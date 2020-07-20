@@ -6,7 +6,7 @@
     default = current
 
 [alias]
-    graph = log --graph --decorate --oneline -10
+    graph = log --graph --decorate --oneline
     hash = rev-parse HEAD
     ignore = "!f() { curl -L -s https://www.gitignore.io/api/$@; }; f"
     lcm = "!f() { echo $(git log -1 | tail -1); }; f"
