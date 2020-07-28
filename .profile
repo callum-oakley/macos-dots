@@ -16,6 +16,12 @@ alias tree="tree -I 'target|node_modules|dist|vendor|deps|_build|cover'"
 alias uuid='uuid -v4'
 alias vi='nvim'
 
+# Passes aliases to root
+alias sudo='sudo '
+
+# Copy terminfo: https://sw.kovidgoyal.net/kitty/faq.html#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer
+alias ssh='kitty +kitten ssh'
+
 for context in mt1 testk8s us1-staging us1 global global-staging; do
     alias $context="kubectl --context $context"
 done
@@ -99,4 +105,4 @@ export NODE_DISABLE_COLORS=1
 
 export GPG_TTY=$(tty)
 
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$HOME/Library/Python/3.8/bin:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:$PATH"

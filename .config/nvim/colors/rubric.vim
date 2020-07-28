@@ -39,6 +39,7 @@ hi htmlTag                   ctermfg=1    ctermbg=none cterm=none
 hi htmlEndTag                ctermfg=1    ctermbg=none cterm=none
 hi htmlString                ctermfg=1    ctermbg=none cterm=none
 hi htmlTagName               ctermfg=1    ctermbg=none cterm=none
+hi htmlSpecialTagName        ctermfg=1    ctermbg=none cterm=none
 hi htmlArg                   ctermfg=1    ctermbg=none cterm=none
 hi htmlValue                 ctermfg=1    ctermbg=none cterm=none
 hi haskellPragma             ctermfg=1    ctermbg=none cterm=none
@@ -54,6 +55,7 @@ hi markdownHeadingDelimiter  ctermfg=1    ctermbg=none cterm=bold
 
 " italic red
 hi markdownUrl               ctermfg=1    ctermbg=none cterm=italic
+hi htmlString                ctermfg=1    ctermbg=none cterm=italic
 
 " other
 hi Visual                    ctermfg=none ctermbg=7    cterm=none
