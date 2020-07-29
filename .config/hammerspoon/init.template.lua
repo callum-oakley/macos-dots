@@ -135,10 +135,32 @@ function doubleWindowHeight()
     end)
 end
 
+maximizedWindows = {}
+
+function isMaximized(window)
+    local windowFrame = window:frame()
+    local screenFrame = hs.screen.mainScreen():frame()
+    return windowFrame.h + 2 * GRID_MARGIN == screenFrame.h and
+        windowFrame.w + 2 * GRID_MARGIN == screenFrame.w
+end
+
+function toggleMaximizeWindow()
+    local window = hs.window.focusedWindow()
+    if isMaximized(window) and maximizedWindows[window:id()] then
+        window:setFrame(maximizedWindows[window:id()])
+        maximizedWindows[window:id()] = nil
+    else
+        maximizedWindows[window:id()] = window:frame()
+        hs.grid.maximizeWindow(window)
+    end
+end
+
 function openForSpace(name, menuItem)
     hs.application.launchOrFocus(name)
     local app = hs.application.find(name)
-    if #app:visibleWindows() == 0 then app:selectMenuItem(menuItem) end
+    if #app:visibleWindows() == 0 then
+        app:selectMenuItem(menuItem)
+    end
 end
 
 hotKeys = {
@@ -153,7 +175,7 @@ hotKeys = {
     { { "cmd", "ctrl" }, "m", throwWindowDown },
     { { "cmd", "ctrl" }, ",", throwWindowUp },
     { { "cmd", "ctrl" }, "o", centerWindow },
-    { { "cmd", "ctrl" }, "tab", hs.grid.maximizeWindow },
+    { { "cmd", "ctrl" }, "tab", toggleMaximizeWindow },
     { { "cmd", "ctrl", "shift" }, "n", hs.grid.resizeWindowThinner },
     { { "cmd", "ctrl", "shift" }, "i", hs.grid.resizeWindowWider },
     { { "cmd", "ctrl", "shift" }, "u", hs.grid.resizeWindowShorter },
