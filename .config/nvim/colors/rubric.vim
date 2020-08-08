@@ -25,6 +25,7 @@ hi manSectionHeading         ctermfg=0    ctermbg=none cterm=bold
 
 " italic black
 hi Italic                    ctermfg=0    ctermbg=none cterm=italic
+hi Underlined                ctermfg=0    ctermbg=none cterm=italic
 hi String                    ctermfg=0    ctermbg=none cterm=italic
 hi markdownLinkText          ctermfg=0    ctermbg=none cterm=italic
 
