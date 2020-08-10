@@ -19,18 +19,11 @@
 [merge]
     conflictstyle = diff3
 
-; [commit]
-;     gpgsign = true
-
 [url "git@github.com:"]
     insteadOf = https://github.com/
 
 [hub]
     protocol = https
 
-[diff]
-    submodule = log
-
-[filesystem "N/A|13.0.2|/dev/disk1s2"]
-    timestampResolution = 6000 nanoseconds
-    minRacyThreshold = 0 nanoseconds
+[pull]
+    ff = only
