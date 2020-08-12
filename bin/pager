@@ -1,0 +1,3 @@
+#! /usr/bin/env bash
+
+ansifilter < "${1:-/dev/stdin}" | nvim - -R

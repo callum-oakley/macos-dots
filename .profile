@@ -89,8 +89,8 @@ fi
 # nvim best vim
 export VISUAL='nvim'
 export EDITOR="$VISUAL"
-export PAGER='ansifilter | nvim - -R'
-export MANPAGER='ansifilter | nvim - -R +":setfiletype man"'
+export PAGER='pager'
+export MANPAGER='manpager'
 export MANWIDTH=80
 
 export LS_COLORS="fi=30:di=30;1:ex=31:pi=30:so=30:bd=30:cd=30:ln=31;1:or=30;41;1"
