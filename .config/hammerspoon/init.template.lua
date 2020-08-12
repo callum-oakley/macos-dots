@@ -202,8 +202,12 @@ function scroll(e)
 end
 
 hotKeys = {
-    { { "cmd" }, "tab", function() changeFocus(1) end },
-    { { "cmd", "shift" }, "tab", function() changeFocus(-1) end },
+    { { "cmd" }, "tab", function()
+        changeFocus(1)
+    end },
+    { { "cmd", "shift" }, "tab", function()
+        changeFocus(-1)
+    end },
     { { "cmd", "ctrl" }, "n", hs.grid.pushWindowLeft },
     { { "cmd", "ctrl" }, "i", hs.grid.pushWindowRight },
     { { "cmd", "ctrl" }, "u", hs.grid.pushWindowUp },
@@ -223,14 +227,33 @@ hotKeys = {
     { { "cmd", "ctrl", "shift" }, "m", doubleWindowHeight },
     { { "cmd", "ctrl", "shift" }, ",", halfWindowHeight },
     { { "cmd", "ctrl", "shift" }, "o", snapWindow },
-    { { "cmd", "ctrl" }, "t", function() openForSpace("kitty", "New OS window") end },
-    { { "cmd", "ctrl" }, "s", function() openForSpace("Safari", "New Window") end },
-    { { "alt" }, "q", function() hs.eventtap.keyStrokes(utf8.char(772)) end },
-    { { "alt" }, "w", function() hs.eventtap.keyStrokes(utf8.char(769)) end },
-    { { "alt" }, "f", function() hs.eventtap.keyStrokes(utf8.char(780)) end },
-    { { "alt" }, "p", function() hs.eventtap.keyStrokes(utf8.char(768)) end },
-    { { "alt" }, "v", function() hs.eventtap.keyStrokes(utf8.char(252)) end },
-    { { "alt", "shift" }, "v", function() hs.eventtap.keyStrokes(utf8.char(220)) end },
+    { { "cmd", "ctrl" }, "t", function()
+        openForSpace("kitty", "New OS window")
+    end },
+    { { "cmd", "ctrl" }, "s", function()
+        openForSpace("Safari", "New Window")
+    end },
+    { { "cmd", "ctrl" }, "r", function()
+        openForSpace("iA Writer", "New in Library")
+    end },
+    { { "alt" }, "q", function()
+        hs.eventtap.keyStrokes(utf8.char(772)) -- ◌̄
+    end },
+    { { "alt" }, "w", function()
+        hs.eventtap.keyStrokes(utf8.char(769)) -- ◌́
+    end },
+    { { "alt" }, "f", function()
+        hs.eventtap.keyStrokes(utf8.char(780)) -- ◌̌
+    end },
+    { { "alt" }, "p", function()
+        hs.eventtap.keyStrokes(utf8.char(768)) -- ◌̀
+    end },
+    { { "alt" }, "v", function()
+        hs.eventtap.keyStrokes(utf8.char(252)) -- ü
+    end },
+    { { "alt", "shift" }, "v", function()
+        hs.eventtap.keyStrokes(utf8.char(220)) -- Ü
+    end },
 }
 
 hotKeysExpanded = {}
