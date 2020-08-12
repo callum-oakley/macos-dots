@@ -22,7 +22,7 @@ alias sudo='sudo '
 # Copy terminfo: https://sw.kovidgoyal.net/kitty/faq.html#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer
 alias ssh='kitty +kitten ssh'
 
-for context in mt1 testk8s us1-staging us1 global global-staging; do
+for context in mt1 testk8s us1-staging us1 global global-staging gemini; do
     alias $context="kubectl --context $context"
 done
 
@@ -91,7 +91,7 @@ export VISUAL='nvim'
 export EDITOR="$VISUAL"
 export PAGER='ansifilter | nvim - -R'
 export MANPAGER='ansifilter | nvim - -R +":setfiletype man"'
-export MANWIDTH=999
+export MANWIDTH=80
 
 export LS_COLORS="fi=30:di=30;1:ex=31:pi=30:so=30:bd=30:cd=30:ln=31;1:or=30;41;1"
 export PS1_COLOUR='31'
