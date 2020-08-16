@@ -1,9 +1,5 @@
 GRID_W = 12
 GRID_H = 12
-SCROLL_SPEED = 4
-
--- luarocks install luasocket
-gettime = require("socket").gettime
 
 GRID_MARGIN = {{grid_margin}}
 
@@ -167,40 +163,6 @@ function openForSpace(name, menuItem)
     end
 end
 
-stickyScroll = false
-bufferedX = 0
-bufferedY = 0
-lastScrollEventTS = 0
-
-function scroll(e)
-  local oldMousePosition = hs.mouse.getAbsolutePosition()
-
-  bufferedX = bufferedX +
-    e:getProperty(hs.eventtap.event.properties["mouseEventDeltaX"])
-  bufferedY = bufferedY +
-    e:getProperty(hs.eventtap.event.properties["mouseEventDeltaY"])
-
-  -- throttle actual scroll events to no more than 60 a second because mouse
-  -- events are significantly more frequent than scrollwheel events, and if you
-  -- send too many scroll events things start to get laggy...
-  local ts = gettime()
-  if ts - lastScrollEventTS > 1 / 60 then
-    local scroll = hs.eventtap.event.newScrollEvent(
-      {bufferedX * SCROLL_SPEED, bufferedY * SCROLL_SPEED},
-      {},
-      "pixel"
-    ):post()
-
-    lastScrollEventTS = ts
-    bufferedX = 0
-    bufferedY = 0
-  end
-
-  hs.mouse.setAbsolutePosition(oldMousePosition)
-
-  return true
-end
-
 hotKeys = {
     { { "cmd" }, "tab", function()
         changeFocus(1)
@@ -296,40 +258,6 @@ flagsChangedTap = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, functi
     if hs.eventtap.checkKeyboardModifiers().cmd ~= e:getFlags().cmd then
         refreshWindowState()
     end
-end):start()
-
-leftMouseDownTap = hs.eventtap.new({
-  hs.eventtap.event.types.leftMouseDown,
-}, function(e)
-  if stickyScroll then
-    stickyScroll = false
-    return true
-  end
-end):start()
-
-rightMouseDownTap = hs.eventtap.new({
-  hs.eventtap.event.types.rightMouseDown,
-}, function(e)
-  if stickyScroll then
-    stickyScroll = false
-    return true
-  end
-end):start()
-
-middleMouseDownTap = hs.eventtap.new({
-  hs.eventtap.event.types.middleMouseDown,
-}, function(e)
-  stickyScroll = not stickyScroll
-  return true
-end):start()
-
-mouseMovedTap = hs.eventtap.new({
-  hs.eventtap.event.types.mouseMoved,
-  hs.eventtap.event.types.leftMouseDragged,
-}, function(e)
-  if stickyScroll then
-    return scroll(e)
-  end
 end):start()
 
 hs.loadSpoon("ReloadConfiguration")
