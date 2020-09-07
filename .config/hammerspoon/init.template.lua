@@ -189,11 +189,14 @@ hotKeys = {
     { { "shift", "ctrl" }, "pagedown", doubleWindowHeight },
     { { "shift", "ctrl" }, "pageup", halfWindowHeight },
     { { "shift", "ctrl" }, "delete", snapWindow },
-    { { "ctrl", "cmd" }, "1", function()
+    { { "cmd", "ctrl" }, "t", function()
         openForSpace("kitty", "New OS window")
     end },
-    { { "ctrl", "cmd" }, "2", function()
+    { { "cmd", "ctrl" }, "s", function()
         openForSpace("Safari", "New Window")
+    end },
+    { { "cmd", "ctrl" }, "r", function()
+        openForSpace("iA Writer", "New in Library")
     end },
     { { "alt" }, "q", function()
         hs.eventtap.keyStrokes(utf8.char(772)) -- ◌̄

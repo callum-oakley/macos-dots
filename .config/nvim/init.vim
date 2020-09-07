@@ -39,8 +39,7 @@ set nojoinspaces
 set ruler
 set scrolloff=99
 set showcmd
-set cinoptions=(4,m1
-
+set cinoptions=(4,m1:0
 
 " tabs
 set expandtab
@@ -56,6 +55,7 @@ autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType html.handlebars setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
+autocmd FileType svg setlocal shiftwidth=2 tabstop=2
 autocmd FileType markdown let g:AutoPairs = {}
 autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'}
 autocmd FileType sh setlocal fo-=t
@@ -67,7 +67,6 @@ let g:ale_fixers = {
 
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.html PrettierAsync
-autocmd BufWritePre *.py :Autoformat
 
 colorscheme rubric
 
@@ -93,7 +92,6 @@ let g:prettier#config#trailing_comma = 'all'
 let g:rustfmt_autosave = 1
 let g:ale_fix_on_save = 1
 let g:ale_linters_explicit = 1
-let g:formatters_python = ['black']
 let g:go_fmt_command = "goimports"
 
 " adapted from https://github.com/junegunn/fzf.vim/blob/2bf85d25e203a536edb2c072c0d41b29e8e4cc1b/plugin/fzf.vim#L60
@@ -120,7 +118,6 @@ nnoremap <leader> <nop>
 nnoremap <leader>* g*N
 nnoremap <leader><c-down> ddGp
 nnoremap <leader><c-up> ddggP
-nnoremap <leader><tab> :b#<cr>
 nnoremap <leader>= <c-w>=
 nnoremap <leader>E :e 
 nnoremap <leader>N :bp<cr>
@@ -137,7 +134,7 @@ nnoremap <leader>fm :setlocal fo-=a<cr>
 nnoremap <leader>hp O{-# LANGUAGE  #-}<esc>B<left>i
 nnoremap <leader>hq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 nnoremap <leader>i :BLines<cr>
-nnoremap <leader>l /.\{101,\}<cr>
+nnoremap <leader>l /.\{81,\}<cr>
 nnoremap <leader>n :bn<cr>
 nnoremap <leader>o o<esc>O
 nnoremap <leader>p :.! python3 -<cr>
@@ -152,6 +149,7 @@ nnoremap <leader>tn :set noexpandtab<cr>
 nnoremap <leader>ts mt:r !date<cr>D"_dd`tp
 nnoremap <leader>v <c-v>
 nnoremap <leader>w :bd<cr>
+nnoremap <tab> :b#<cr>
 nnoremap K "_D
 nnoremap U <c-r>
 nnoremap Y y$

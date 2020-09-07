@@ -1,10 +1,5 @@
-/* hide promoted content on reddit */
-.promotedlink {
-  display: none !important;
-}
-
-/* hide ads on duckduckgo */
-#ads {
+/* hide ads in google results */
+#taw {
   display: none !important;
 }
 

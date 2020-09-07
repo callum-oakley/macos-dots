@@ -76,10 +76,10 @@ export BASH_COMPLETION_COMPAT_DIR='/usr/local/etc/bash_completion.d'
 shopt -s histappend
 shopt -s cmdhist
 shopt -s globstar
-export HISTSIZE=1000000
-export HISTFILESIZE="$HISTSIZE"
-export HISTCONTROL=ignoreboth
-export PROMPT_COMMAND='history -a'
+HISTSIZE=1000000
+HISTFILESIZE="$HISTSIZE"
+HISTCONTROL=ignoredups:erasedups
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
 # put current directory in kitty tab title
 if [ $KITTY_WINDOW_ID ]; then
@@ -106,3 +106,6 @@ export NODE_DISABLE_COLORS=1
 export GPG_TTY=$(tty)
 
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:$PATH"
+
+# ruby config
+eval "$(rbenv init -)"
