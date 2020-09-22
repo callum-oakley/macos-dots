@@ -1,4 +1,5 @@
 call plug#begin('~/.config/nvim/plugged')
+Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'cespare/vim-toml'
 Plug 'chiel92/vim-autoformat'
 Plug 'dense-analysis/ale'
@@ -29,7 +30,7 @@ call plug#end()
 
 set breakindent
 set clipboard=unnamedplus
-set formatoptions-=tcro
+set fo-=tcro
 set guicursor=n-v-c-sm:block,i-ci-ve-r-cr-o:hor20
 set hidden
 set linebreak
@@ -60,6 +61,7 @@ autocmd FileType markdown let g:AutoPairs = {}
 autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'}
 autocmd FileType sh setlocal fo-=t
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
+autocmd FileType * set fo-=o
 
 let g:ale_fixers = {
 \   'haskell': ['hfmt'],
@@ -67,6 +69,7 @@ let g:ale_fixers = {
 
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.html PrettierAsync
+autocmd BufWritePre *.py execute ':Black'
 
 colorscheme rubric
 
@@ -85,14 +88,14 @@ let g:mix_format_silent_errors = 1
 let g:prettier#config#arrow_parens = 'avoid'
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'false'
-" let g:prettier#config#parser = 'babylon'
 let g:prettier#config#semi = 'false'
 let g:prettier#config#single_quote = 'false'
-let g:prettier#config#trailing_comma = 'all'
+let g:prettier#config#trailing_comma = 'es5'
 let g:rustfmt_autosave = 1
 let g:ale_fix_on_save = 1
 let g:ale_linters_explicit = 1
 let g:go_fmt_command = "goimports"
+let g:black_linelength = 80
 
 " adapted from https://github.com/junegunn/fzf.vim/blob/2bf85d25e203a536edb2c072c0d41b29e8e4cc1b/plugin/fzf.vim#L60
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --colors 'path:none' --colors 'line:none' --smart-case -- ".shellescape(<q-args>), 1, {}, <bang>0)
