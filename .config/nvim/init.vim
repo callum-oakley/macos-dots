@@ -6,7 +6,7 @@ Plug 'dense-analysis/ale'
 Plug 'elixir-editors/vim-elixir'
 Plug 'fatih/vim-go'
 Plug 'gutenye/json5.vim'
-Plug 'jiangmiao/auto-pairs'
+Plug 'dimonomid/auto-pairs-gentle'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'keith/swift.vim'
@@ -52,14 +52,15 @@ set tabstop=4
 autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType go setlocal noexpandtab listchars=tab:\ \ ,trail:·
 autocmd FileType haskell setlocal shiftwidth=2 tabstop=2
+autocmd FileType haskell let g:AutoPairs = {'(':')',  '[':']', '{':'}', '"':'"', '`':'`'}
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType html.handlebars setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
-autocmd FileType svg setlocal shiftwidth=2 tabstop=2
 autocmd FileType markdown let g:AutoPairs = {}
 autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'}
 autocmd FileType sh setlocal fo-=t
+autocmd FileType svg setlocal shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 autocmd FileType * set fo-=o
 
@@ -96,6 +97,7 @@ let g:ale_fix_on_save = 1
 let g:ale_linters_explicit = 1
 let g:go_fmt_command = "goimports"
 let g:black_linelength = 80
+let g:AutoPairsUseInsertedCount = 1
 
 " adapted from https://github.com/junegunn/fzf.vim/blob/2bf85d25e203a536edb2c072c0d41b29e8e4cc1b/plugin/fzf.vim#L60
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --colors 'path:none' --colors 'line:none' --smart-case -- ".shellescape(<q-args>), 1, {}, <bang>0)
