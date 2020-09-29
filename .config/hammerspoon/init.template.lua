@@ -163,6 +163,21 @@ function openForSpace(name, menuItem)
     end
 end
 
+-- Quickly set music to half volume so I can hear sound from other applications
+-- with music still on in the background.
+function toggleHalfVolumeSpotify()
+    hs.osascript.applescript([[
+        tell application "Spotify"
+            set vol to get sound volume
+            if vol < 100 then
+                set sound volume to 100
+            else
+                set sound volume to 50
+            end if
+        end tell
+    ]])
+end
+
 hotKeys = {
     { { "cmd" }, "tab", function()
         changeFocus(1)
@@ -189,6 +204,7 @@ hotKeys = {
     { { "shift", "ctrl" }, "pagedown", doubleWindowHeight },
     { { "shift", "ctrl" }, "pageup", halfWindowHeight },
     { { "shift", "ctrl" }, "delete", snapWindow },
+    { { "cmd", "ctrl" }, "h", toggleHalfVolumeSpotify },
     { { "cmd", "ctrl" }, "t", function()
         openForSpace("kitty", "New OS window")
     end },
