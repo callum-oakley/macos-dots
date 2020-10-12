@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+
+pwd |
+    awk -F/ '{
+        if ($0 == "/Users/callum") {
+            print "~"
+        } else {
+            print $NF
+        }
+    }'

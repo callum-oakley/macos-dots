@@ -30,40 +30,41 @@ alias kk='KUBECONFIG="$(kind get kubeconfig-path --name="chatkit-acceptance")" k
 alias kkc='kk -n chatkit-acceptance'
 
 cd() {
-  builtin cd "$@" &&
-    ls -A &&
-    pwd | rg -q '^/Users/callum/' &&
-    { pwd | sed -e s:/Users/callum/::; cat ~/.dir-history; } | sponge ~/.dir-history &&
-    nub < ~/.dir-history | sponge ~/.dir-history
+    builtin cd "$@" &&
+        ls -A &&
+        pwd | rg -q '^/Users/callum/' &&
+        { pwd | sed -e s:/Users/callum/::; cat ~/.dir-history; } |
+            sponge ~/.dir-history &&
+            nub < ~/.dir-history | sponge ~/.dir-history
 }
 
 h() {
-  dir=$(cat ~/.dir-history | fzf) &&
-  cd ~/"$dir"
+    dir=$(cat ~/.dir-history | fzf) &&
+        cd ~/"$dir"
 }
 
 b() {
-  branch=$(git branch | awk '!/\*/'| fzf)
-  git checkout $branch
+    branch=$(git branch | awk '!/\*/'| fzf)
+    git checkout $branch
 }
 
 branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
 ps1_colour() {
-  echo $PS1_COLOUR
+    echo $PS1_COLOUR
 }
 
 fdt() {
-  q=$1
-  shift
-  (fd -t f "$q"; tree $(fd -t d "$q") $@) | rg "$q|$"
+    q=$1
+    shift
+    (fd -t f "$q"; tree $(fd -t d "$q") $@) | rg "$q|$"
 }
 
 
 vih() {
-  vi +":help $@" +:on
+    vi +":help $@" +:on
 }
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
@@ -83,7 +84,7 @@ PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; h
 
 # put current directory in kitty tab title
 if [ $KITTY_WINDOW_ID ]; then
-  export PROMPT_COMMAND='kitty @ set-tab-title "${PWD##*/}";'"$PROMPT_COMMAND"
+    export PROMPT_COMMAND='kitty @ set-tab-title "$(tab-title)";'"$PROMPT_COMMAND"
 fi
 
 # nvim best vim
