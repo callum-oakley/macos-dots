@@ -56,6 +56,7 @@ autocmd FileType haskell let g:AutoPairs = {'(':')',  '[':']', '{':'}', '"':'"',
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType html.handlebars setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
 autocmd FileType markdown let g:AutoPairs = {}
 autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'}
@@ -86,7 +87,7 @@ let g:fzf_layout = { 'down': '~16' }
 let g:haskell_indent_disable = 1
 let g:mix_format_on_save = 1
 let g:mix_format_silent_errors = 1
-let g:prettier#config#arrow_parens = 'avoid'
+let g:prettier#config#arrow_parens = 'always'
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'false'
 let g:prettier#config#semi = 'false'
