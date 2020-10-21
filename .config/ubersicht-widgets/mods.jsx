@@ -24,15 +24,19 @@ const on = css`
 `
 export const render = ({ output }) => {
   const mods = JSON.parse(output)
-  const leftLights = ["shift", "ctrl", "alt", "cmd"].map((key) => (
-    <span className={mods[key] === "down" ? on : off}>·</span>
-  ))
-  const rightLights = leftLights.reduce((acc, x) => [x, ...acc], [])
   return (
     <pre className={preCss}>
-      {leftLights}
+      {["shift", "ctrl", "alt", "cmd"].map((key, i) => (
+        <span key={i} className={mods[key] === "down" ? on : off}>
+          ·
+        </span>
+      ))}
       <span> </span>
-      {rightLights}
+      {["cmd", "alt", "ctrl", "shift"].map((key, i) => (
+        <span key={i + 4} className={mods[key] === "down" ? on : off}>
+          ·
+        </span>
+      ))}
     </pre>
   )
 }
