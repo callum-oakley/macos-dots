@@ -178,6 +178,20 @@ function toggleHalfVolumeSpotify()
     ]])
 end
 
+-- See ~/.config/ubersicht-widgets/mods.jsx
+function refreshModsWidget(mods)
+    hs.json.write({
+        cmd = mods.cmd and "down" or "up",
+        alt = mods.alt and "down" or "up",
+        ctrl = mods.ctrl and "down" or "up",
+        shift = mods.shift and "down" or "up"
+    }, "~/.mods.json", false, true)
+
+    hs.osascript.applescript([[
+        tell application id "tracesOf.Uebersicht" to refresh widget id "mods-jsx"
+    ]])
+end
+
 hotKeys = {
     { { "cmd" }, "tab", function()
         changeFocus(1)
@@ -274,6 +288,8 @@ flagsChangedTap = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, functi
     if hs.eventtap.checkKeyboardModifiers().cmd ~= e:getFlags().cmd then
         refreshWindowState()
     end
+
+    refreshModsWidget(e:getFlags())
 end):start()
 
 hs.loadSpoon("ReloadConfiguration")
