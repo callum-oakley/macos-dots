@@ -178,18 +178,15 @@ function toggleHalfVolumeSpotify()
     ]])
 end
 
--- See ~/.config/ubersicht-widgets/mods.jsx
+-- See ~/.config/ubersicht-widgets
 function refreshModsWidget(mods)
-    hs.json.write({
-        cmd = mods.cmd and "down" or "up",
-        alt = mods.alt and "down" or "up",
-        ctrl = mods.ctrl and "down" or "up",
-        shift = mods.shift and "down" or "up"
-    }, "~/.mods.json", false, true)
-
-    hs.osascript.applescript([[
-        tell application id "tracesOf.Uebersicht" to refresh widget id "mods-jsx"
-    ]])
+    hs.http.asyncPost("http://localhost:13748/in", string.format(
+        '{ "shift": %s, "ctrl": %s, "alt": %s, "cmd": %s }',
+        not not mods.shift,
+        not not mods.ctrl,
+        not not mods.alt,
+        not not mods.cmd
+    ), nil, function () end)
 end
 
 hotKeys = {
