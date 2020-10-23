@@ -180,13 +180,12 @@ end
 
 -- See ~/.config/ubersicht-widgets
 function refreshModsWidget(mods)
-    hs.http.asyncPost("http://localhost:13748/in", string.format(
-        '{ "shift": %s, "ctrl": %s, "alt": %s, "cmd": %s }',
-        not not mods.shift,
-        not not mods.ctrl,
-        not not mods.alt,
-        not not mods.cmd
-    ), nil, function () end)
+    hs.http.asyncPost("http://localhost:13748", hs.json.encode({
+        shift = not not mods.shift,
+        ctrl = not not mods.ctrl,
+        alt = not not mods.alt,
+        cmd = not not mods.cmd
+    }), nil, function () end)
 end
 
 hotKeys = {

@@ -15,52 +15,41 @@ export const errCss = css`
   font-size: 12pt;
 `
 
-const off = css`
+const black = css`
   color: #222;
 `
 
-const on = css`
+const white = css`
   color: #fff;
 `
 
-export const init = async (dispatch) => {
+export const init = (dispatch) => {
+  console.log("starting ws-pipe")
   run(
-    "/usr/local/bin/deno run --allow-net file:///Users/callum/.config/ubersicht-widgets/ws-pipe.ts"
-  ).catch((error) => {
-    if (!error.message.match(/AddrInUse/)) {
-      dispatch({ error })
-    }
-  })
-
-  setTimeout(
-    () =>
-      new WebSocket("ws://localhost:13748/out").addEventListener(
-        "message",
-        (event) => dispatch({ output: JSON.parse(event.data) })
-      ),
-    1000
+    "/usr/local/bin/deno run --allow-net file:///Users/callum/.config/ubersicht-widgets/ws-pipe.ts &>/dev/null || true"
   )
+
+  setTimeout(() => {
+    console.log("establishing websocket")
+    const ws = new WebSocket("ws://localhost:13748")
+    ws.addEventListener("message", (event) => {
+      dispatch({ output: JSON.parse(event.data) })
+    })
+  }, 1000)
 }
 
-export const initialState = { output: {} }
+export const render = ({ output: { shift, ctrl, alt, cmd } }) => (
+  <pre className={preCss}>
+    <Light key="0" on={shift}></Light>
+    <Light key="1" on={ctrl}></Light>
+    <Light key="2" on={alt}></Light>
+    <Light key="3" on={cmd}></Light>
+    <span key="4"> </span>
+    <Light key="5" on={cmd}></Light>
+    <Light key="6" on={alt}></Light>
+    <Light key="7" on={ctrl}></Light>
+    <Light key="8" on={shift}></Light>
+  </pre>
+)
 
-export const render = ({ output, error }) => {
-  if (error) {
-    return <pre className={errCss}>{error.toString()}</pre>
-  }
-  return (
-    <pre className={preCss}>
-      {["shift", "ctrl", "alt", "cmd"].map((key, i) => (
-        <span key={i} className={output[key] ? on : off}>
-          ·
-        </span>
-      ))}
-      <span key="4"> </span>
-      {["cmd", "alt", "ctrl", "shift"].map((key, i) => (
-        <span key={i + 5} className={output[key] ? on : off}>
-          ·
-        </span>
-      ))}
-    </pre>
-  )
-}
+const Light = ({ on }) => <span className={on ? white : black}>·</span>

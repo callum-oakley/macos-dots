@@ -4,30 +4,38 @@ import {
   WebSocket,
 } from "https://deno.land/std@0.74.0/ws/mod.ts"
 import { decode } from "https://deno.land/std@0.74.0/encoding/utf8.ts"
+import { v4 } from "https://deno.land/std@0.67.0/uuid/mod.ts"
 
-let sink: WebSocket | undefined = undefined
+const subscribers: Record<string, WebSocket> = {}
 
 for await (const req of serve(":13748")) {
-  switch (req.url) {
-    case "/out":
-      sink = await acceptWebSocket({
+  switch (req.method) {
+    case "GET": {
+      const id = v4.generate()
+      console.log(`adding subscriber ${id}`)
+      subscribers[id] = await acceptWebSocket({
         conn: req.conn,
         bufReader: req.r,
         bufWriter: req.w,
         headers: req.headers,
       })
       break
-    case "/in":
-      if (sink) {
+    }
+    case "POST": {
+      const message = decode(await Deno.readAll(req.body))
+      console.log(
+        `sending ${message} to ${Object.keys(subscribers).length} subscribers`
+      )
+      Object.entries(subscribers).map(async ([id, ws]) => {
         try {
-          // TODO Is there some unnecessary copying going on here? Can we wire
-          // up some appropriate readers and writers instead?
-          await sink.send(decode(await Deno.readAll(req.body)))
-          req.respond({})
-        } catch (err) {
-          // Nobody is listening; no matter.
+          await ws.send(message)
+        } catch (error) {
+          console.log(`removing subscriber ${id}`)
+          delete subscribers[id]
         }
-      }
+      })
+      req.respond({})
       break
+    }
   }
 }
