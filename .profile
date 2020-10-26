@@ -22,12 +22,7 @@ alias sudo='sudo '
 # Copy terminfo: https://sw.kovidgoyal.net/kitty/faq.html#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer
 alias ssh='kitty +kitten ssh'
 
-for context in mt1 testk8s us1-staging us1 global global-staging gemini; do
-    alias $context="kubectl --context $context"
-done
-
-alias kk='KUBECONFIG="$(kind get kubeconfig-path --name="chatkit-acceptance")" kubectl'
-alias kkc='kk -n chatkit-acceptance'
+alias kc='kubectl --context'
 
 cd() {
     builtin cd "$@" &&
