@@ -1,19 +1,20 @@
 #! /usr/bin/env bash
 
+alias cp='cp -riv'
 alias diff='colordiff -u'
 alias disable-prettier="echo '**' > .prettierignore"
 alias ggf='gotta-go-fast'
 alias ghci='stack exec -- ghci'
 alias git='hub'
-alias gup='gup -t $GUP_TOKEN'
 alias less='nvim - -R'
 alias ls='ls -G --color'
+alias mkdir='mkdir -vp'
+alias mv='mv -iv'
 alias pi='pip3'
 alias py='python3'
 alias rg="rg --colors 'path:none' --colors 'line:none'"
 alias tclip='tee >(pbcopy)'
 alias tree="tree -I 'target|node_modules|dist|vendor|deps|_build|cover'"
-alias uuid='uuid -v4'
 alias vi='nvim'
 
 # Passes aliases to root
