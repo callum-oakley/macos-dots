@@ -1,12 +1,11 @@
 call plug#begin('~/.config/nvim/plugged')
-Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'cespare/vim-toml'
 Plug 'chiel92/vim-autoformat'
 Plug 'dense-analysis/ale'
 Plug 'elixir-editors/vim-elixir'
 Plug 'fatih/vim-go'
+Plug 'guns/vim-sexp'
 Plug 'gutenye/json5.vim'
-Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'keith/swift.vim'
@@ -16,20 +15,24 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'mxw/vim-jsx'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'pangloss/vim-javascript'
+Plug 'prettier/vim-prettier'
+Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'rust-lang/rust.vim'
+Plug 'tpope/vim-classpath'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-surround'
 Plug 'wellle/targets.vim'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'vue', 'html'] }
 call plug#end()
 
 set breakindent
+set cinoptions=(4,m1:0
 set clipboard=unnamedplus
+set expandtab
 set fo-=tcro
 set guicursor=n-v-c-sm:block,i-ci-ve-r-cr-o:hor20
 set hidden
@@ -39,54 +42,40 @@ set listchars=tab:▸·,trail:·
 set nojoinspaces
 set ruler
 set scrolloff=99
-set showcmd
-set cinoptions=(4,m1:0
-
-" tabs
-set expandtab
 set shiftwidth=4
+set showcmd
 set smarttab
 set tabstop=4
 
-" filetype specific settings
+colorscheme rubric
+
+autocmd FileType * set fo-=o
 autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType go setlocal noexpandtab listchars=tab:\ \ ,trail:·
 autocmd FileType haskell setlocal shiftwidth=2 tabstop=2
-autocmd FileType haskell let g:AutoPairs = {'(':')',  '[':']', '{':'}', '"':'"', '`':'`'}
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType html.handlebars setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
-autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
-autocmd FileType markdown let g:AutoPairs = {}
-autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'}
 autocmd FileType sh setlocal fo-=t
 autocmd FileType svg setlocal shiftwidth=2 tabstop=2
+autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
-autocmd FileType * set fo-=o
 
-let g:ale_fixers = {
-\   'haskell': ['hfmt'],
-\}
-
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.html PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.graphql,*.html PrettierAsync
 autocmd BufWritePre *.py execute ':Black'
 
-colorscheme rubric
-
-" search for selected text
-vnoremap <silent> * :<C-U>
-  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-  \gvy/<C-R><C-R>=substitute(
-  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-  \gV:call setreg('"', old_reg, old_regtype)<CR>N
-
-" plugin options
+let g:ale_fix_on_save = 1
+let g:ale_fixers = { 'haskell': ['hfmt'] }
+let g:ale_linters_explicit = 1
+let g:black_linelength = 80
+let g:cli_fmt_autosave = 1
 let g:fzf_layout = { 'down': '~16' }
+let g:go_fmt_command = "goimports"
 let g:haskell_indent_disable = 1
 let g:mix_format_on_save = 1
 let g:mix_format_silent_errors = 1
+let g:prettier#autoformat = 0
 let g:prettier#config#arrow_parens = 'always'
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'false'
@@ -94,11 +83,17 @@ let g:prettier#config#semi = 'false'
 let g:prettier#config#single_quote = 'false'
 let g:prettier#config#trailing_comma = 'es5'
 let g:rustfmt_autosave = 1
-let g:ale_fix_on_save = 1
-let g:ale_linters_explicit = 1
-let g:go_fmt_command = "goimports"
-let g:black_linelength = 80
-let g:AutoPairsUseInsertedCount = 1
+
+" implements https://tonsky.me/blog/clojurefmt
+let g:clojure_fuzzy_indent = 1
+let g:clojure_fuzzy_indent_patterns = ['.']
+
+" search for selected text
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>N
 
 " adapted from https://github.com/junegunn/fzf.vim/blob/2bf85d25e203a536edb2c072c0d41b29e8e4cc1b/plugin/fzf.vim#L60
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --colors 'path:none' --colors 'line:none' --smart-case -- ".shellescape(<q-args>), 1, {}, <bang>0)
@@ -131,6 +126,8 @@ nnoremap <leader>O O<esc>O
 nnoremap <leader>S :noautocmd w<cr>
 nnoremap <leader>a <nop>
 nnoremap <leader>b :Buffer<cr>
+nnoremap <leader>ce :CljEval<cr>
+nnoremap <leader>cs :CljsEval<cr>
 nnoremap <leader>d /<<<<<<<\\|=======\\|\|\|\|\|\|\|\|\\|>>>>>>><cr>
 nnoremap <leader>e :Files<cr>
 nnoremap <leader>f gq
