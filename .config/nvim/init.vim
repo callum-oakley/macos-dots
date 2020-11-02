@@ -6,6 +6,7 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'fatih/vim-go'
 Plug 'guns/vim-sexp'
 Plug 'gutenye/json5.vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'keith/swift.vim'
@@ -50,13 +51,17 @@ set tabstop=4
 colorscheme rubric
 
 autocmd FileType * set fo-=o
+autocmd FileType clojure let g:AutoPairs = {} " let sexp handle it
 autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType go setlocal noexpandtab listchars=tab:\ \ ,trail:·
+autocmd FileType haskell let g:AutoPairs = {'(':')',  '[':']', '{':'}', '"':'"', '`':'`'}
 autocmd FileType haskell setlocal shiftwidth=2 tabstop=2
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType html.handlebars setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
+autocmd FileType markdown let g:AutoPairs = {}
+autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'}
 autocmd FileType sh setlocal fo-=t
 autocmd FileType svg setlocal shiftwidth=2 tabstop=2
 autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
