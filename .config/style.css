@@ -1,8 +1,3 @@
-/* hide ads in google results */
-#taw {
-  display: none !important;
-}
-
 /* limit the max width of wikipedia */
 #mw-page-base {
   display: none !important;
@@ -16,5 +11,15 @@
   display: none !important;
 }
 .mw-footer {
+  display: none !important;
+}
+
+/* hide ads in google results */
+#taw {
+  display: none !important;
+}
+
+/* hide ads on reddit */
+.promotedlink {
   display: none !important;
 }
