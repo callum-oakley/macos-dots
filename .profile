@@ -1,5 +1,7 @@
 #! /usr/bin/env bash
 
+set -o vi
+
 alias cp='cp -riv'
 alias diff='colordiff -u'
 alias disable-prettier="echo '**' > .prettierignore"
@@ -19,9 +21,6 @@ alias vi='nvim'
 
 # Passes aliases to root
 alias sudo='sudo '
-
-# Copy terminfo: https://sw.kovidgoyal.net/kitty/faq.html#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer
-alias ssh='kitty +kitten ssh'
 
 alias kc='kubectl --context'
 
@@ -78,17 +77,17 @@ HISTFILESIZE="$HISTSIZE"
 HISTCONTROL=ignoredups:erasedups
 PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
-# put current directory in kitty tab title
 if [ $KITTY_WINDOW_ID ]; then
+    # put current directory in kitty tab title
     export PROMPT_COMMAND='kitty @ set-tab-title "$(tab-title)";'"$PROMPT_COMMAND"
+
+    # Copy terminfo: https://sw.kovidgoyal.net/kitty/faq.html#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer
+    alias ssh='kitty +kitten ssh'
 fi
 
 # nvim best vim
 export VISUAL='nvim'
 export EDITOR="$VISUAL"
-export PAGER='pager'
-export MANPAGER='manpager'
-export MANWIDTH=80
 
 export LS_COLORS="fi=30:di=30;1:ex=31:pi=30:so=30:bd=30:cd=30:ln=31;1:or=30;41;1"
 export PS1_COLOUR='31'
@@ -97,7 +96,6 @@ export FZF_DEFAULT_OPTS='--reverse --height 16 --color "fg:0,bg:15,preview-fg:0,
 export GOPATH="$HOME/code/go"
 export PS1="\n\[\033[0;\$(ps1_colour)m\]\W\$(branch) $\[\033[0m\] "
 export VAULT_ADDR='https://vault.pusherplatform.io:8200'
-export QMK_HOME="$HOME/code/qmk_firmware"
 export NODE_DISABLE_COLORS=1
 
 export GPG_TTY=$(tty)

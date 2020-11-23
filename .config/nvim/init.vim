@@ -86,37 +86,27 @@ command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-hea
 " keymaps
 let mapleader=" "
 
-nmap <leader>c gc
-vmap <leader>c gc
-
 inoremap <m-bs> <c-w>
-inoremap <home> <esc>I
-inoremap <end> <esc>A
 
-nnoremap * *N
-nnoremap <PageDown> 9<down>
-nnoremap <PageUp> 9<up>
-nnoremap <cr> :
-nnoremap <end> $
 nnoremap <esc> :noh<cr><esc>
-nnoremap <home> ^
 nnoremap <leader> <nop>
-nnoremap <leader>E :e 
+nnoremap <leader><tab> :b#<cr>
+nnoremap <leader>H H
+nnoremap <leader>J J
+nnoremap <leader>K K
+nnoremap <leader>L L
 nnoremap <leader>N :bp<cr>
 nnoremap <leader>O O<esc>O
-nnoremap <leader>a <nop>
 nnoremap <leader>b :Buffer<cr>
 nnoremap <leader>d /<<<<<<<\\|=======\\|\|\|\|\|\|\|\|\\|>>>>>>><cr>
 nnoremap <leader>e :Files<cr>
-nnoremap <leader>f gq
-nnoremap <leader>ff gqq
-nnoremap <leader>hp O{-# LANGUAGE  #-}<esc>B<left>i
+nnoremap <leader>f :Rg<cr>
 nnoremap <leader>hq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
+nnoremap <leader>j *N
 nnoremap <leader>l /.\{81,\}<cr>
 nnoremap <leader>n :bn<cr>
 nnoremap <leader>o o<esc>O
 nnoremap <leader>q :q<cr>
-nnoremap <leader>r :Rg<cr>
 nnoremap <leader>s :w<cr>
 nnoremap <leader>t <nop>
 nnoremap <leader>t2 :set shiftwidth=2<cr>:set tabstop=2<cr>
@@ -125,24 +115,21 @@ nnoremap <leader>te :set expandtab<cr>
 nnoremap <leader>tn :set noexpandtab<cr>
 nnoremap <leader>v <c-v>
 nnoremap <leader>w :bd<cr>
-nnoremap <leader><tab> :b#<cr>
+nnoremap H ^
+nnoremap J 9<down>
+nnoremap K 9<up>
+nnoremap L $
 nnoremap U <c-r>
-nnoremap Y y$
-nnoremap k "_d
-nnoremap kk "_dd
 nnoremap x "_x
 
-vnoremap <PageDown> 9<down>
-vnoremap <PageUp> 9<up>
-vnoremap <cr> :
-vnoremap <end> $
-vnoremap <home> ^
-vnoremap <leader>f gq
-vnoremap k "_d
+vnoremap H ^
+vnoremap J 9<down>
+vnoremap K 9<up>
+vnoremap L $
 vnoremap x "_x
 
 " search for selected text
-vnoremap <silent> * :<C-U>
+vnoremap <silent> <leader>j :<C-U>
   \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<cr>
   \gvy/<C-R><C-R>=substitute(
   \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<cr><cr>

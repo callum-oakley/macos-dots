@@ -163,31 +163,6 @@ function openForSpace(name, menuItem)
     end
 end
 
--- Quickly set music to half volume so I can hear sound from other applications
--- with music still on in the background.
-function toggleHalfVolumeSpotify()
-    hs.osascript.applescript([[
-        tell application "Spotify"
-            set vol to get sound volume
-            if vol < 100 then
-                set sound volume to 100
-            else
-                set sound volume to 50
-            end if
-        end tell
-    ]])
-end
-
--- See ~/.config/ubersicht-widgets
-function refreshModsWidget(mods)
-    hs.http.asyncPost("http://localhost:13748", hs.json.encode({
-        shift = not not mods.shift,
-        ctrl = not not mods.ctrl,
-        alt = not not mods.alt,
-        cmd = not not mods.cmd
-    }), nil, function () end)
-end
-
 hotKeys = {
     { { "cmd" }, "tab", function()
         changeFocus(1)
@@ -195,33 +170,32 @@ hotKeys = {
     { { "cmd", "shift" }, "tab", function()
         changeFocus(-1)
     end },
-    { { "ctrl" }, "left", hs.grid.pushWindowLeft },
-    { { "ctrl" }, "right", hs.grid.pushWindowRight },
-    { { "ctrl" }, "up", hs.grid.pushWindowUp },
-    { { "ctrl" }, "down", hs.grid.pushWindowDown },
-    { { "ctrl", "cmd" }, "left", throwWindowLeft },
-    { { "ctrl", "cmd" }, "right", throwWindowRight },
-    { { "ctrl" }, "pagedown", throwWindowDown },
-    { { "ctrl" }, "pageup", throwWindowUp },
-    { { "ctrl" }, "delete", centerWindow },
-    { { "ctrl" }, "return", toggleMaximizeWindow },
-    { { "shift", "ctrl" }, "left", hs.grid.resizeWindowThinner },
-    { { "shift", "ctrl" }, "right", hs.grid.resizeWindowWider },
-    { { "shift", "ctrl" }, "up", hs.grid.resizeWindowShorter },
-    { { "shift", "ctrl" }, "down", hs.grid.resizeWindowTaller },
-    { { "shift", "ctrl", "cmd" }, "left", halfWindowWidth },
-    { { "shift", "ctrl", "cmd" }, "right", doubleWindowWidth },
-    { { "shift", "ctrl" }, "pagedown", doubleWindowHeight },
-    { { "shift", "ctrl" }, "pageup", halfWindowHeight },
-    { { "shift", "ctrl" }, "delete", snapWindow },
-    { { "cmd", "ctrl" }, "h", toggleHalfVolumeSpotify },
-    { { "cmd", "ctrl" }, "t", function()
+    { { "alt" }, "h", hs.grid.pushWindowLeft },
+    { { "alt" }, "j", hs.grid.pushWindowDown },
+    { { "alt" }, "k", hs.grid.pushWindowUp },
+    { { "alt" }, "l", hs.grid.pushWindowRight },
+    { { "alt" }, ";", centerWindow },
+    { { "alt" }, "y", throwWindowLeft },
+    { { "alt" }, "u", throwWindowDown },
+    { { "alt" }, "i", throwWindowUp },
+    { { "alt" }, "o", throwWindowRight },
+    { { "alt", "cmd" }, "h", hs.grid.resizeWindowThinner },
+    { { "alt", "cmd" }, "j", hs.grid.resizeWindowTaller },
+    { { "alt", "cmd" }, "k", hs.grid.resizeWindowShorter },
+    { { "alt", "cmd" }, "l", hs.grid.resizeWindowWider },
+    { { "alt", "cmd" }, ";", snapWindow },
+    { { "alt", "cmd" }, "y", halfWindowWidth },
+    { { "alt", "cmd" }, "u", doubleWindowHeight },
+    { { "alt", "cmd" }, "i", halfWindowHeight },
+    { { "alt", "cmd" }, "o", doubleWindowWidth },
+    { { "alt" }, "m", toggleMaximizeWindow },
+    { { "alt" }, "t", function()
         openForSpace("kitty", "New OS window")
     end },
-    { { "cmd", "ctrl" }, "s", function()
+    { { "alt" }, "b", function()
         openForSpace("Safari", "New Window")
     end },
-    { { "cmd", "ctrl" }, "r", function()
+    { { "alt", "shift" }, "t", function()
         openForSpace("iA Writer", "New in Library")
     end },
     { { "alt" }, "q", function()
@@ -230,10 +204,10 @@ hotKeys = {
     { { "alt" }, "w", function()
         hs.eventtap.keyStrokes(utf8.char(769)) -- ◌́
     end },
-    { { "alt" }, "f", function()
+    { { "alt" }, "e", function()
         hs.eventtap.keyStrokes(utf8.char(780)) -- ◌̌
     end },
-    { { "alt" }, "p", function()
+    { { "alt" }, "r", function()
         hs.eventtap.keyStrokes(utf8.char(768)) -- ◌̀
     end },
     { { "alt" }, "v", function()
@@ -284,8 +258,6 @@ flagsChangedTap = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, functi
     if hs.eventtap.checkKeyboardModifiers().cmd ~= e:getFlags().cmd then
         refreshWindowState()
     end
-
-    refreshModsWidget(e:getFlags())
 end):start()
 
 hs.loadSpoon("ReloadConfiguration")
