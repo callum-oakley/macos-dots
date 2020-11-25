@@ -163,6 +163,11 @@ function openForSpace(name, menuItem)
     end
 end
 
+function pressSystemKey(key, flags)
+    hs.eventtap.event.newSystemKeyEvent(key, true):setFlags(flags):post()
+    hs.eventtap.event.newSystemKeyEvent(key, false):setFlags(flags):post()
+end
+
 hotKeys = {
     { { "cmd" }, "tab", function()
         changeFocus(1)
@@ -215,6 +220,21 @@ hotKeys = {
     end },
     { { "alt", "shift" }, "v", function()
         hs.eventtap.keyStrokes(utf8.char(220)) -- Ü
+    end },
+    { { "alt" }, "a", function()
+        pressSystemKey("SOUND_DOWN", {})
+    end },
+    { { "alt", "shift" }, "a", function()
+        pressSystemKey("SOUND_DOWN", { alt=true, shift=true })
+    end },
+    { { "alt" }, "s", function()
+        pressSystemKey("SOUND_UP", {})
+    end },
+    { { "alt", "shift" }, "s", function()
+        pressSystemKey("SOUND_UP", { alt=true, shift=true })
+    end },
+    { { "alt" }, "z", function()
+        pressSystemKey("PLAY", {})
     end },
 }
 
