@@ -101,5 +101,3 @@ export NODE_DISABLE_COLORS=1
 export GPG_TTY=$(tty)
 
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:$PATH"
-
-hidutil-swap-keys > /dev/null
