@@ -1,7 +1,5 @@
 #! /usr/bin/env bash
 
-set -o vi
-
 alias cp='cp -riv'
 alias diff='colordiff -u'
 alias disable-prettier="echo '**' > .prettierignore"
@@ -21,8 +19,6 @@ alias vi='nvim'
 
 # Passes aliases to root
 alias sudo='sudo '
-
-alias kc='kubectl --context'
 
 cd() {
     builtin cd "$@" &&
@@ -63,7 +59,6 @@ vih() {
 }
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-[ -f ~/.config/secrets/env ] && source ~/.config/secrets/env
 
 export BASH_COMPLETION_COMPAT_DIR='/usr/local/etc/bash_completion.d'
 [ -f /usr/local/etc/profile.d/bash_completion.sh ] && source /usr/local/etc/profile.d/bash_completion.sh

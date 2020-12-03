@@ -91,10 +91,6 @@ inoremap <m-bs> <c-w>
 nnoremap <esc> :noh<cr><esc>
 nnoremap <leader> <nop>
 nnoremap <leader><tab> :b#<cr>
-nnoremap <leader>H H
-nnoremap <leader>J J
-nnoremap <leader>K K
-nnoremap <leader>L L
 nnoremap <leader>N :bp<cr>
 nnoremap <leader>O O<esc>O
 nnoremap <leader>b :Buffer<cr>
@@ -115,17 +111,13 @@ nnoremap <leader>te :set expandtab<cr>
 nnoremap <leader>tn :set noexpandtab<cr>
 nnoremap <leader>v <c-v>
 nnoremap <leader>w :bd<cr>
-nnoremap H ^
-nnoremap J 9<down>
-nnoremap K 9<up>
-nnoremap L $
+nnoremap H 9<up>
+nnoremap L 9<down>
 nnoremap U <c-r>
 nnoremap x "_x
 
-vnoremap H ^
-vnoremap J 9<down>
-vnoremap K 9<up>
-vnoremap L $
+vnoremap H 9<up>
+vnoremap L 9<down>
 vnoremap x "_x
 
 " search for selected text
