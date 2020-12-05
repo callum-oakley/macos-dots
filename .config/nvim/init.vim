@@ -43,7 +43,6 @@ set tabstop=4
 colorscheme rubric
 
 autocmd FileType * set fo-=o
-autocmd FileType clojure let g:AutoPairs = {} " let sexp handle it
 autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType go setlocal noexpandtab listchars=tab:\ \ ,trail:·
 autocmd FileType haskell let g:AutoPairs = {'(':')',  '[':']', '{':'}', '"':'"', '`':'`'}
@@ -75,6 +74,7 @@ let g:prettier#config#semi = 'false'
 let g:prettier#config#single_quote = 'false'
 let g:prettier#config#trailing_comma = 'es5'
 let g:rustfmt_autosave = 1
+let g:sexp_enable_insert_mode_mappings = 0
 
 " implements https://tonsky.me/blog/clojurefmt
 let g:clojure_fuzzy_indent = 1
