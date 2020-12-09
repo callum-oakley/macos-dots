@@ -99,6 +99,7 @@ nnoremap <leader>e :Files<cr>
 nnoremap <leader>f :Rg<cr>
 nnoremap <leader>hq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
 nnoremap <leader>j *N
+nnoremap <leader>k "_
 nnoremap <leader>l /.\{81,\}<cr>
 nnoremap <leader>n :bn<cr>
 nnoremap <leader>o o<esc>O
