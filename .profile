@@ -90,9 +90,12 @@ export FZF_DEFAULT_COMMAND='fd -t f'
 export FZF_DEFAULT_OPTS='--reverse --height 16 --color "fg:0,bg:15,preview-fg:0,preview-bg:15,hl:1,fg+:0,bg+:7,gutter:15,hl+:1,info:0,border:15,prompt:0,pointer:0,spinner:0"'
 export GOPATH="$HOME/code/go"
 export PS1="\n\[\033[0;\$(ps1_colour)m\]\W\$(branch) $\[\033[0m\] "
-export VAULT_ADDR='https://vault.pusherplatform.io:8200'
 export NODE_DISABLE_COLORS=1
 
 export GPG_TTY=$(tty)
+
+[ -f ~/.config/secrets/env ] && source ~/.config/secrets/env
+
+eval "$(direnv hook bash)"
 
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:$PATH"

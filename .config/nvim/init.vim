@@ -1,4 +1,5 @@
 call plug#begin('~/.config/nvim/plugged')
+Plug 'Olical/conjure'
 Plug 'cespare/vim-toml'
 Plug 'dense-analysis/ale'
 Plug 'fatih/vim-go'
@@ -13,10 +14,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'prettier/vim-prettier'
 Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'rust-lang/rust.vim'
-Plug 'tpope/vim-classpath'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-surround'
@@ -38,11 +37,13 @@ set scrolloff=99
 set shiftwidth=4
 set showcmd
 set smarttab
+set splitbelow
 set tabstop=4
 
 colorscheme rubric
 
 autocmd FileType * set fo-=o
+autocmd FileType clojure let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"' }
 autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType go setlocal noexpandtab listchars=tab:\ \ ,trail:·
 autocmd FileType haskell let g:AutoPairs = {'(':')',  '[':']', '{':'}', '"':'"', '`':'`'}
@@ -63,6 +64,7 @@ let g:ale_fix_on_save = 1
 let g:ale_fixers = { 'haskell': ['hfmt'] }
 let g:ale_linters_explicit = 1
 let g:black_linelength = 80
+let g:conjure#log#hud#enabled = v:false
 let g:fzf_layout = { 'down': '~16' }
 let g:go_fmt_command = "goimports"
 let g:haskell_indent_disable = 1
@@ -85,12 +87,15 @@ command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-hea
 
 " keymaps
 let mapleader=" "
+let maplocalleader=" l"
 
 inoremap <m-bs> <c-w>
 
+nmap <leader>c <localleader>ls:res 18<cr><c-w>k
+
 nnoremap <esc> :noh<cr><esc>
 nnoremap <leader> <nop>
-nnoremap <leader><tab> :b#<cr>
+nnoremap <leader><tab> <c-w>w
 nnoremap <leader>N :bp<cr>
 nnoremap <leader>O O<esc>O
 nnoremap <leader>b :Buffer<cr>
@@ -100,10 +105,9 @@ nnoremap <leader>f :Rg<cr>
 nnoremap <leader>hq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
 nnoremap <leader>j *N
 nnoremap <leader>k "_
-nnoremap <leader>l /.\{81,\}<cr>
 nnoremap <leader>n :bn<cr>
 nnoremap <leader>o o<esc>O
-nnoremap <leader>q :q<cr>
+nnoremap <leader>q :q!<cr>
 nnoremap <leader>s :w<cr>
 nnoremap <leader>t <nop>
 nnoremap <leader>t2 :set shiftwidth=2<cr>:set tabstop=2<cr>
