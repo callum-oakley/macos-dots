@@ -1,5 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'Olical/conjure'
+Plug 'bakpakin/fennel.vim'
 Plug 'cespare/vim-toml'
 Plug 'dense-analysis/ale'
 Plug 'fatih/vim-go'
@@ -77,10 +78,15 @@ let g:prettier#config#single_quote = 'false'
 let g:prettier#config#trailing_comma = 'es5'
 let g:rustfmt_autosave = 1
 let g:sexp_enable_insert_mode_mappings = 0
+let g:sexp_filetypes = 'clojure,scheme,lisp,timl,fennel'
 
 " implements https://tonsky.me/blog/clojurefmt
+let g:clojure_align_multiline_strings = 1
 let g:clojure_fuzzy_indent = 1
 let g:clojure_fuzzy_indent_patterns = ['.']
+let g:fennel_align_multiline_strings = 1
+let g:fennel_fuzzy_indent = 1
+let g:fennel_fuzzy_indent_patterns = ['.']
 
 " adapted from https://github.com/junegunn/fzf.vim/blob/2bf85d25e203a536edb2c072c0d41b29e8e4cc1b/plugin/fzf.vim#L60
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --colors 'path:none' --colors 'line:none' --smart-case -- ".shellescape(<q-args>), 1, {}, <bang>0)
@@ -91,7 +97,8 @@ let maplocalleader=" l"
 
 inoremap <m-bs> <c-w>
 
-nmap <leader>c <localleader>ls:res 18<cr><c-w>k
+nmap <leader>r <localleader>ls:res 18<cr><c-w>k
+nmap <leader>c <localleader>lq
 
 nnoremap <esc> :noh<cr><esc>
 nnoremap <leader> <nop>
