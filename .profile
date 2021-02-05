@@ -20,20 +20,6 @@ alias vi='nvim'
 # Passes aliases to root
 alias sudo='sudo '
 
-cd() {
-    builtin cd "$@" &&
-        ls -A &&
-        pwd | rg -q '^/Users/callum/' &&
-        { pwd | sed -e s:/Users/callum/::; cat ~/.dir-history; } |
-            sponge ~/.dir-history &&
-            nub < ~/.dir-history | sponge ~/.dir-history
-}
-
-h() {
-    dir=$(cat ~/.dir-history | fzf) &&
-        cd ~/"$dir"
-}
-
 b() {
     branch=$(git branch | awk '!/\*/'| fzf)
     git checkout $branch
@@ -52,7 +38,6 @@ fdt() {
     shift
     (fd -t f "$q"; tree $(fd -t d "$q") $@) | rg "$q|$"
 }
-
 
 vih() {
     vi +":help $@" +:on
@@ -80,10 +65,8 @@ if [ $KITTY_WINDOW_ID ]; then
     alias ssh='kitty +kitten ssh'
 fi
 
-# nvim best vim
 export VISUAL='nvim'
 export EDITOR="$VISUAL"
-
 export LS_COLORS="fi=30:di=30;1:ex=31:pi=30:so=30:bd=30:cd=30:ln=31;1:or=30;41;1"
 export PS1_COLOUR='31'
 export FZF_DEFAULT_COMMAND='fd -t f'
@@ -91,11 +74,13 @@ export FZF_DEFAULT_OPTS='--reverse --height 16 --color "fg:0,bg:15,preview-fg:0,
 export GOPATH="$HOME/code/go"
 export PS1="\n\[\033[0;\$(ps1_colour)m\]\W\$(branch) $\[\033[0m\] "
 export NODE_DISABLE_COLORS=1
+export _ZO_ECHO=1
 
 export GPG_TTY=$(tty)
 
 [ -f ~/.config/secrets/env ] && source ~/.config/secrets/env
 
 eval "$(direnv hook bash)"
+eval "$(zoxide init --cmd j bash)"
 
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:$PATH"

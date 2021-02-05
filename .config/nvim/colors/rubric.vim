@@ -11,6 +11,11 @@ hi PreProc                   ctermfg=0    ctermbg=none cterm=none
 hi Identifier                ctermfg=0    ctermbg=none cterm=none
 hi Special                   ctermfg=0    ctermbg=none cterm=none
 hi Type                      ctermfg=0    ctermbg=none cterm=none
+hi jsxOpenPunct              ctermfg=0    ctermbg=none cterm=none
+hi jsxClosePunct             ctermfg=0    ctermbg=none cterm=none
+hi jsxOpenString             ctermfg=0    ctermbg=none cterm=none
+hi jsxCloseString            ctermfg=0    ctermbg=none cterm=none
+hi cssHacks                  ctermfg=0    ctermbg=none cterm=none
 
 " bold black
 hi Bold                      ctermfg=0    ctermbg=none cterm=bold

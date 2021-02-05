@@ -1,6 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'Olical/conjure'
-Plug 'bakpakin/fennel.vim'
+Plug 'axvr/org.vim'
 Plug 'cespare/vim-toml'
 Plug 'dense-analysis/ale'
 Plug 'fatih/vim-go'
@@ -9,6 +9,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'pangloss/vim-javascript'
@@ -32,6 +33,7 @@ set hidden
 set linebreak
 set list
 set listchars=tab:▸·,trail:·
+set nofoldenable
 set nojoinspaces
 set ruler
 set scrolloff=99
@@ -40,6 +42,7 @@ set showcmd
 set smarttab
 set splitbelow
 set tabstop=4
+set wrap
 
 colorscheme rubric
 
@@ -112,9 +115,10 @@ nnoremap <leader>f :Rg<cr>
 nnoremap <leader>hq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
 nnoremap <leader>j *N
 nnoremap <leader>k "_
+nnoremap <leader>m :res 99<cr>
 nnoremap <leader>n :bn<cr>
 nnoremap <leader>o o<esc>O
-nnoremap <leader>q :q!<cr>
+nnoremap <leader>q :qa!<cr>
 nnoremap <leader>s :w<cr>
 nnoremap <leader>t <nop>
 nnoremap <leader>t2 :set shiftwidth=2<cr>:set tabstop=2<cr>
