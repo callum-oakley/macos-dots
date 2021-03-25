@@ -57,6 +57,7 @@ hi diffAdded                 ctermfg=2    ctermbg=none cterm=none
 
 " bold red
 hi Todo                      ctermfg=1    ctermbg=none cterm=bold
+hi FennelCommentTodo         ctermfg=1    ctermbg=none cterm=bold
 hi markdownHeadingDelimiter  ctermfg=1    ctermbg=none cterm=bold
 
 " italic red

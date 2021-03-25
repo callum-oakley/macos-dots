@@ -1,8 +1,8 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'Olical/conjure'
 Plug 'axvr/org.vim'
+Plug 'bakpakin/fennel.vim'
 Plug 'cespare/vim-toml'
-Plug 'dense-analysis/ale'
 Plug 'fatih/vim-go'
 Plug 'guns/vim-sexp'
 Plug 'jiangmiao/auto-pairs'
@@ -13,8 +13,6 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'pangloss/vim-javascript'
-Plug 'prettier/vim-prettier'
-Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
@@ -48,6 +46,12 @@ colorscheme rubric
 
 autocmd FileType * set fo-=o
 autocmd FileType clojure let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"' }
+autocmd FileType clojure setlocal shiftwidth=2 tabstop=2
+autocmd FileType clojure setlocal lispwords+=are,cond,try,finally
+autocmd FileType fennel let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"' }
+autocmd FileType fennel setlocal shiftwidth=2 tabstop=2
+autocmd FileType scheme let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"' }
+autocmd FileType scheme setlocal shiftwidth=2 tabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType go setlocal noexpandtab listchars=tab:\ \ ,trail:·
 autocmd FileType haskell let g:AutoPairs = {'(':')',  '[':']', '{':'}', '"':'"', '`':'`'}
@@ -61,35 +65,24 @@ autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`'
 autocmd FileType sh setlocal fo-=t
 autocmd FileType svg setlocal shiftwidth=2 tabstop=2
 
-autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.graphql,*.html PrettierAsync
-autocmd BufWritePre *.py execute ':Black'
+augroup global_todo
+    au!
+    au Syntax * syn match GlobalTodo /\v<(FIXME|NOTE|TODO|XXX)/
+          \ containedin=.*Comment,vimCommentTitle
+augroup END
+hi def link GlobalTodo Todo
 
-let g:ale_fix_on_save = 1
-let g:ale_fixers = { 'haskell': ['hfmt'] }
-let g:ale_linters_explicit = 1
-let g:black_linelength = 80
 let g:conjure#log#hud#enabled = v:false
 let g:fzf_layout = { 'down': '~16' }
 let g:go_fmt_command = "goimports"
-let g:haskell_indent_disable = 1
-let g:prettier#autoformat = 0
-let g:prettier#config#arrow_parens = 'always'
-let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#jsx_bracket_same_line = 'false'
-let g:prettier#config#semi = 'false'
-let g:prettier#config#single_quote = 'false'
-let g:prettier#config#trailing_comma = 'es5'
 let g:rustfmt_autosave = 1
 let g:sexp_enable_insert_mode_mappings = 0
 let g:sexp_filetypes = 'clojure,scheme,lisp,timl,fennel'
 
-" implements https://tonsky.me/blog/clojurefmt
 let g:clojure_align_multiline_strings = 1
-let g:clojure_fuzzy_indent = 1
-let g:clojure_fuzzy_indent_patterns = ['.']
+let g:clojure_align_subforms = 1
 let g:fennel_align_multiline_strings = 1
-let g:fennel_fuzzy_indent = 1
-let g:fennel_fuzzy_indent_patterns = ['.']
+let g:fennel_align_subforms = 1
 
 " adapted from https://github.com/junegunn/fzf.vim/blob/2bf85d25e203a536edb2c072c0d41b29e8e4cc1b/plugin/fzf.vim#L60
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --colors 'path:none' --colors 'line:none' --smart-case -- ".shellescape(<q-args>), 1, {}, <bang>0)
