@@ -1,5 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'Olical/conjure'
+Plug 'Omer/vim-sparql'
 Plug 'axvr/org.vim'
 Plug 'bakpakin/fennel.vim'
 Plug 'cespare/vim-toml'
@@ -44,10 +45,12 @@ set wrap
 
 colorscheme rubric
 
+autocmd BufNewFile,BufReadPost *.sparql set filetype=sparql
+
 autocmd FileType * set fo-=o
 autocmd FileType clojure let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"' }
 autocmd FileType clojure setlocal shiftwidth=2 tabstop=2
-autocmd FileType clojure setlocal lispwords+=are,cond,try,finally
+autocmd FileType clojure setlocal lispwords+=are,cond,fdef,finally,try
 autocmd FileType fennel let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"' }
 autocmd FileType fennel setlocal shiftwidth=2 tabstop=2
 autocmd FileType scheme let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"' }

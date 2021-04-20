@@ -155,6 +155,48 @@ function toggleMaximizeWindow()
     end
 end
 
+function bind(mods, key, f)
+    hs.hotkey.bind(mods, key, f("press"), f("release"), f("repeat"))
+end
+
+function pressKey(mods, key)
+    return function(case)
+        if case == "press" then
+            return function ()
+                hs.eventtap.event.newKeyEvent(mods, key, true):post()
+            end
+        elseif case == "release" then
+            return function ()
+                hs.eventtap.event.newKeyEvent(mods, key, false):post()
+            end
+        elseif case == "repeat" then
+            return function ()
+                hs.eventtap.event.newKeyEvent(mods, key, true):post()
+            end
+        end
+    end
+end
+
+function onPressOrRepeat(f)
+    return function(case)
+        if case == "press" or case == "repeat" then
+            return f
+        end
+    end
+end
+
+function bindPR(mods, key, f)
+    return bind(mods, key, onPressOrRepeat(f))
+end
+
+function pressSystemKey(key) hs.eventtap.event.newSystemKeyEvent(key, true):post()
+    hs.eventtap.event.newSystemKeyEvent(key, false):post()
+end
+
+function keyStrokes(strokes)
+    hs.eventtap.keyStrokes(strokes)
+end
+
 function openForSpace(name, menuItem)
     hs.application.launchOrFocus(name)
     local app = hs.application.find(name)
@@ -163,112 +205,76 @@ function openForSpace(name, menuItem)
     end
 end
 
-function pressSystemKey(key, flags)
-    hs.eventtap.event.newSystemKeyEvent(key, true):setFlags(flags):post()
-    hs.eventtap.event.newSystemKeyEvent(key, false):setFlags(flags):post()
-end
+bind({"ctrl"}, "h", pressKey(nil, "left"))
+bind({"ctrl"}, "j", pressKey(nil, "down"))
+bind({"ctrl"}, "k", pressKey(nil, "up"))
+bind({"ctrl"}, "l", pressKey(nil, "right"))
+bind({"ctrl"}, "delete", pressKey(nil, "forwarddelete"))
+bind({"ctrl", "cmd"}, "h", pressKey({"cmd"}, "left"))
+bind({"ctrl", "cmd"}, "j", pressKey({"cmd"}, "down"))
+bind({"ctrl", "cmd"}, "k", pressKey({"cmd"}, "up"))
+bind({"ctrl", "cmd"}, "l", pressKey({"cmd"}, "right"))
+bind({"ctrl", "cmd"}, "delete", pressKey({"cmd"}, "forwarddelete"))
+bind({"ctrl", "alt"}, "h", pressKey({"alt"}, "left"))
+bind({"ctrl", "alt"}, "j", pressKey({"alt"}, "down"))
+bind({"ctrl", "alt"}, "k", pressKey({"alt"}, "up"))
+bind({"ctrl", "alt"}, "l", pressKey({"alt"}, "right"))
+bind({"ctrl", "alt"}, "delete", pressKey({"alt"}, "forwarddelete"))
+bind({"ctrl", "shift"}, "h", pressKey({"shift"}, "left"))
+bind({"ctrl", "shift"}, "j", pressKey({"shift"}, "down"))
+bind({"ctrl", "shift"}, "k", pressKey({"shift"}, "up"))
+bind({"ctrl", "shift"}, "l", pressKey({"shift"}, "right"))
+bind({"ctrl", "cmd", "shift"}, "h", pressKey({"cmd", "shift"}, "left"))
+bind({"ctrl", "cmd", "shift"}, "j", pressKey({"cmd", "shift"}, "down"))
+bind({"ctrl", "cmd", "shift"}, "k", pressKey({"cmd", "shift"}, "up"))
+bind({"ctrl", "cmd", "shift"}, "l", pressKey({"cmd", "shift"}, "right"))
+bind({"ctrl", "alt", "shift"}, "h", pressKey({"alt", "shift"}, "left"))
+bind({"ctrl", "alt", "shift"}, "j", pressKey({"alt", "shift"}, "down"))
+bind({"ctrl", "alt", "shift"}, "k", pressKey({"alt", "shift"}, "up"))
+bind({"ctrl", "alt", "shift"}, "l", pressKey({"alt", "shift"}, "right"))
+bindPR({"alt"}, "a", function() pressSystemKey("SOUND_DOWN") end)
+bindPR({"alt"}, "s", function() pressSystemKey("SOUND_UP") end)
+bindPR({"alt"}, "z", function() pressSystemKey("PLAY") end)
+bindPR({"alt"}, "q", function() keyStrokes(utf8.char(772)) end) -- ◌̄
+bindPR({"alt"}, "w", function() keyStrokes(utf8.char(769)) end) -- ◌́
+bindPR({"alt"}, "e", function() keyStrokes(utf8.char(780)) end) -- ◌̌
+bindPR({"alt"}, "r", function() keyStrokes(utf8.char(768)) end) -- ◌̀
+bindPR({"alt"}, "v", function() keyStrokes(utf8.char(252)) end) -- ü
+bindPR({"alt", "shift"}, "v", function() keyStrokes(utf8.char(220)) end) -- Ü
+bindPR({"alt"}, "t", function() openForSpace("kitty", "New OS window") end)
+bindPR({"alt"}, "b", function() openForSpace("Safari", "New Window") end)
+bindPR({"alt"}, "h", hs.grid.pushWindowLeft)
+bindPR({"alt"}, "j", hs.grid.pushWindowDown)
+bindPR({"alt"}, "k", hs.grid.pushWindowUp)
+bindPR({"alt"}, "l", hs.grid.pushWindowRight)
+bindPR({"alt"}, ";", centerWindow)
+bindPR({"alt"}, "y", throwWindowLeft)
+bindPR({"alt"}, "u", throwWindowDown)
+bindPR({"alt"}, "i", throwWindowUp)
+bindPR({"alt"}, "o", throwWindowRight)
+bindPR({"alt", "cmd"}, "h", hs.grid.resizeWindowThinner)
+bindPR({"alt", "cmd"}, "j", hs.grid.resizeWindowTaller)
+bindPR({"alt", "cmd"}, "k", hs.grid.resizeWindowShorter)
+bindPR({"alt", "cmd"}, "l", hs.grid.resizeWindowWider)
+bindPR({"alt", "cmd"}, ";", snapWindow)
+bindPR({"alt", "cmd"}, "y", halfWindowWidth)
+bindPR({"alt", "cmd"}, "u", doubleWindowHeight)
+bindPR({"alt", "cmd"}, "i", halfWindowHeight)
+bindPR({"alt", "cmd"}, "o", doubleWindowWidth)
+bindPR({"alt"}, "m", toggleMaximizeWindow)
 
-hotKeys = {
-    { { "cmd" }, "tab", function()
-        changeFocus(1)
-    end },
-    { { "cmd", "shift" }, "tab", function()
-        changeFocus(-1)
-    end },
-    { { "alt" }, "h", hs.grid.pushWindowLeft },
-    { { "alt" }, "j", hs.grid.pushWindowDown },
-    { { "alt" }, "k", hs.grid.pushWindowUp },
-    { { "alt" }, "l", hs.grid.pushWindowRight },
-    { { "alt" }, ";", centerWindow },
-    { { "alt" }, "y", throwWindowLeft },
-    { { "alt" }, "u", throwWindowDown },
-    { { "alt" }, "i", throwWindowUp },
-    { { "alt" }, "o", throwWindowRight },
-    { { "alt", "cmd" }, "h", hs.grid.resizeWindowThinner },
-    { { "alt", "cmd" }, "j", hs.grid.resizeWindowTaller },
-    { { "alt", "cmd" }, "k", hs.grid.resizeWindowShorter },
-    { { "alt", "cmd" }, "l", hs.grid.resizeWindowWider },
-    { { "alt", "cmd" }, ";", snapWindow },
-    { { "alt", "cmd" }, "y", halfWindowWidth },
-    { { "alt", "cmd" }, "u", doubleWindowHeight },
-    { { "alt", "cmd" }, "i", halfWindowHeight },
-    { { "alt", "cmd" }, "o", doubleWindowWidth },
-    { { "alt" }, "m", toggleMaximizeWindow },
-    { { "alt" }, "t", function()
-        openForSpace("kitty", "New OS window")
-    end },
-    { { "alt" }, "b", function()
-        openForSpace("Safari", "New Window")
-    end },
-    { { "alt", "shift" }, "t", function()
-        openForSpace("iA Writer", "New in Library")
-    end },
-    { { "alt" }, "q", function()
-        hs.eventtap.keyStrokes(utf8.char(772)) -- ◌̄
-    end },
-    { { "alt" }, "w", function()
-        hs.eventtap.keyStrokes(utf8.char(769)) -- ◌́
-    end },
-    { { "alt" }, "e", function()
-        hs.eventtap.keyStrokes(utf8.char(780)) -- ◌̌
-    end },
-    { { "alt" }, "r", function()
-        hs.eventtap.keyStrokes(utf8.char(768)) -- ◌̀
-    end },
-    { { "alt" }, "v", function()
-        hs.eventtap.keyStrokes(utf8.char(252)) -- ü
-    end },
-    { { "alt", "shift" }, "v", function()
-        hs.eventtap.keyStrokes(utf8.char(220)) -- Ü
-    end },
-    { { "alt" }, "a", function()
-        pressSystemKey("SOUND_DOWN", {})
-    end },
-    { { "alt", "shift" }, "a", function()
-        pressSystemKey("SOUND_DOWN", { alt=true, shift=true })
-    end },
-    { { "alt" }, "s", function()
-        pressSystemKey("SOUND_UP", {})
-    end },
-    { { "alt", "shift" }, "s", function()
-        pressSystemKey("SOUND_UP", { alt=true, shift=true })
-    end },
-    { { "alt" }, "z", function()
-        pressSystemKey("PLAY", {})
-    end },
-}
-
-hotKeysExpanded = {}
-for _, hotKey in ipairs(hotKeys) do
-    local mods = {}
-    for _, mod in ipairs(hotKey[1]) do
-        if mod == "cmd" then
-            mods.cmd = true
-        elseif mod == "alt" then
-            mods.alt = true
-        elseif mod == "ctrl" then
-            mods.ctrl = true
-        elseif mod == "shift" then
-            mods.shift = true
-        end
-    end
-    table.insert(hotKeysExpanded, {
-        mods = mods,
-        keyCode = hs.keycodes.map[hotKey[2]],
-        f = hotKey[3],
-    })
-end
-
+-- Can't override cmd-tab with a regular hotkey for some reason
 keyDownTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
-    local mods = e:getFlags()
-    for _, hotKey in ipairs(hotKeysExpanded) do
-        if e:getKeyCode() == hotKey.keyCode and
-            mods.cmd == hotKey.mods.cmd and
-            mods.alt == hotKey.mods.alt and
-            mods.ctrl == hotKey.mods.ctrl and
-            mods.shift == hotKey.mods.shift then
-            hotKey.f()
-            return true
+    if e:getKeyCode() == 48 then -- tab
+        local mods = e:getFlags()
+        if mods.cmd then
+            if mods.shift then
+                changeFocus(-1)
+                return true
+            else
+                changeFocus(1)
+                return true
+            end
         end
     end
 end):start()
