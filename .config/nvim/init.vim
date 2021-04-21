@@ -123,13 +123,17 @@ nnoremap <leader>te :set expandtab<cr>
 nnoremap <leader>tn :set noexpandtab<cr>
 nnoremap <leader>v <c-v>
 nnoremap <leader>w :bd<cr>
-nnoremap H 9<up>
-nnoremap L 9<down>
 nnoremap U <c-r>
 nnoremap x "_x
+nnoremap <up> 9<up>
+nnoremap <down> 9<down>
+nnoremap <left> ^
+nnoremap <right> $
 
-vnoremap H 9<up>
-vnoremap L 9<down>
+vnoremap <up> 9<up>
+vnoremap <down> 9<down>
+vnoremap <left> ^
+vnoremap <right> $
 vnoremap x "_x
 
 " search for selected text
