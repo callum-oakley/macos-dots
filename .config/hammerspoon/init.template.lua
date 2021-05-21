@@ -77,62 +77,8 @@ function changeFocus(direction)
     mruWindows[mruWindowIndex]:focus()
 end
 
-function centerWindow()
-    hs.window.focusedWindow():centerOnScreen()
-end
-
 function snapWindow()
     hs.grid.snap(hs.window.focusedWindow())
-end
-
-function throwWindowLeft()
-    hs.grid.adjustWindow(function(cell)
-        cell.x = 0
-    end)
-end
-
-function throwWindowRight()
-    hs.grid.adjustWindow(function(cell)
-        cell.x = GRID_W - cell.w
-    end)
-end
-
-function throwWindowUp()
-    hs.grid.adjustWindow(function(cell)
-        cell.y = 0
-    end)
-end
-
-function throwWindowDown()
-    hs.grid.adjustWindow(function(cell)
-        cell.y = GRID_H - cell.h
-    end)
-end
-
-function halfWindowWidth()
-    hs.grid.adjustWindow(function(cell)
-        cell.w = cell.w // 2
-    end)
-end
-
-function doubleWindowWidth()
-    hs.grid.adjustWindow(function(cell)
-        cell.w = 2 * cell.w
-        cell.x = math.min(cell.x, GRID_W - cell.w)
-    end)
-end
-
-function halfWindowHeight()
-    hs.grid.adjustWindow(function(cell)
-        cell.h = cell.h // 2
-    end)
-end
-
-function doubleWindowHeight()
-    hs.grid.adjustWindow(function(cell)
-        cell.h = 2 * cell.h
-        cell.y = math.min(cell.y, GRID_H - cell.h)
-    end)
 end
 
 maximizedWindows = {}
@@ -242,25 +188,18 @@ bindPR({"alt"}, "r", function() keyStrokes(utf8.char(768)) end) -- ◌̀
 bindPR({"alt"}, "v", function() keyStrokes(utf8.char(252)) end) -- ü
 bindPR({"alt", "shift"}, "v", function() keyStrokes(utf8.char(220)) end) -- Ü
 bindPR({"alt"}, "t", function() openForSpace("kitty", "New OS window") end)
+bindPR({"alt"}, "g", function() openForSpace("Notes", "New Note") end)
 bindPR({"alt"}, "b", function() openForSpace("Safari", "New Window") end)
 bindPR({"alt"}, "h", hs.grid.pushWindowLeft)
 bindPR({"alt"}, "j", hs.grid.pushWindowDown)
 bindPR({"alt"}, "k", hs.grid.pushWindowUp)
 bindPR({"alt"}, "l", hs.grid.pushWindowRight)
-bindPR({"alt"}, ";", centerWindow)
-bindPR({"alt"}, "y", throwWindowLeft)
-bindPR({"alt"}, "u", throwWindowDown)
-bindPR({"alt"}, "i", throwWindowUp)
-bindPR({"alt"}, "o", throwWindowRight)
+bindPR({"alt"}, ";", function() hs.window.focusedWindow():centerOnScreen() end)
 bindPR({"alt", "cmd"}, "h", hs.grid.resizeWindowThinner)
 bindPR({"alt", "cmd"}, "j", hs.grid.resizeWindowTaller)
 bindPR({"alt", "cmd"}, "k", hs.grid.resizeWindowShorter)
 bindPR({"alt", "cmd"}, "l", hs.grid.resizeWindowWider)
 bindPR({"alt", "cmd"}, ";", snapWindow)
-bindPR({"alt", "cmd"}, "y", halfWindowWidth)
-bindPR({"alt", "cmd"}, "u", doubleWindowHeight)
-bindPR({"alt", "cmd"}, "i", halfWindowHeight)
-bindPR({"alt", "cmd"}, "o", doubleWindowWidth)
 bindPR({"alt"}, "m", toggleMaximizeWindow)
 
 -- Can't override cmd-tab with a regular hotkey for some reason

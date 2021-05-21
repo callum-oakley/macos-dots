@@ -9,8 +9,8 @@ if [ "$(scutil --get ComputerName)" = "Callum’s MacBook Pro" ]; then
     hammerspoon_grid_margin=10
 else
     kitty_font_size=14
-    kitty_window_margin_width=25
-    hammerspoon_grid_margin=25
+    kitty_window_margin_width=20
+    hammerspoon_grid_margin=10
 fi
 
 sed \
@@ -23,3 +23,6 @@ sed \
     -e "s/{{grid_margin}}/$hammerspoon_grid_margin/"           \
     ~/.config/hammerspoon/init.template.lua >                  \
     ~/.config/hammerspoon/init.lua
+
+# 100 characters
+####################################################################################################

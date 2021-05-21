@@ -6,12 +6,9 @@ alias disable-prettier="echo '**' > .prettierignore"
 alias ggf='gotta-go-fast'
 alias ghci='stack exec -- ghci'
 alias git='hub'
-alias less='nvim - -R'
 alias ls='ls -G --color'
 alias mkdir='mkdir -vp'
 alias mv='mv -iv'
-alias pi='pip3'
-alias py='python3'
 alias rg="rg --colors 'path:none' --colors 'line:none'"
 alias tclip='tee >(pbcopy)'
 alias tree="tree -I 'target|node_modules|dist|vendor|deps|_build|cover'"
@@ -43,6 +40,14 @@ vih() {
     vi +":help $@" +:on
 }
 
+pe() {
+    pipenv run python -c "from src.problem_$1 import main; print(main())"
+}
+
+pet() {
+    pipenv run python test.py $@
+}
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export BASH_COMPLETION_COMPAT_DIR='/usr/local/etc/bash_completion.d'
@@ -50,16 +55,16 @@ export BASH_COMPLETION_COMPAT_DIR='/usr/local/etc/bash_completion.d'
 
 # history config
 shopt -s histappend
-shopt -s cmdhist
 shopt -s globstar
-HISTSIZE=1000000
-HISTFILESIZE="$HISTSIZE"
+HISTSIZE=
+HISTFILESIZE=
 HISTCONTROL=ignoredups:erasedups
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+HISTFILE=~/.bash_eternal_history
+PROMPT_COMMAND="history -a"
 
 if [ $KITTY_WINDOW_ID ]; then
     # put current directory in kitty tab title
-    export PROMPT_COMMAND='kitty @ set-tab-title "$(tab-title)";'"$PROMPT_COMMAND"
+    export PROMPT_COMMAND='kitty @ set-tab-title "$(tab-title)"; '"$PROMPT_COMMAND"
 
     # Copy terminfo: https://sw.kovidgoyal.net/kitty/faq.html#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer
     alias ssh='kitty +kitten ssh'
@@ -81,6 +86,7 @@ export GPG_TTY=$(tty)
 [ -f ~/.config/secrets/env ] && source ~/.config/secrets/env
 
 eval "$(direnv hook bash)"
-eval "$(zoxide init --cmd j bash)"
+eval "$(zoxide init bash)"
+alias j='z'
 
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/python@3.9/libexec/bin:/usr/local/opt/coreutils/libexec/gnubin:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:$PATH"

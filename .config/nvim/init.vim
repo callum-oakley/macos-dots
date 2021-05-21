@@ -4,6 +4,7 @@ Plug 'Omer/vim-sparql'
 Plug 'axvr/org.vim'
 Plug 'bakpakin/fennel.vim'
 Plug 'cespare/vim-toml'
+Plug 'dense-analysis/ale'
 Plug 'fatih/vim-go'
 Plug 'guns/vim-sexp'
 Plug 'jiangmiao/auto-pairs'
@@ -49,13 +50,11 @@ autocmd BufNewFile,BufReadPost *.sparql set filetype=sparql
 
 autocmd FileType * set fo-=o
 autocmd FileType clojure let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"' }
-autocmd FileType clojure setlocal shiftwidth=2 tabstop=2
 autocmd FileType clojure setlocal lispwords+=are,cond,fdef,finally,try
+autocmd FileType clojure setlocal shiftwidth=2 tabstop=2
+autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType fennel let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"' }
 autocmd FileType fennel setlocal shiftwidth=2 tabstop=2
-autocmd FileType scheme let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"' }
-autocmd FileType scheme setlocal shiftwidth=2 tabstop=2
-autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType go setlocal noexpandtab listchars=tab:\ \ ,trail:·
 autocmd FileType haskell let g:AutoPairs = {'(':')',  '[':']', '{':'}', '"':'"', '`':'`'}
 autocmd FileType haskell setlocal shiftwidth=2 tabstop=2
@@ -64,17 +63,25 @@ autocmd FileType html.handlebars setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
 autocmd FileType markdown let g:AutoPairs = {}
+autocmd FileType python map <localleader>e :!python %<cr>
 autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'}
+autocmd FileType scheme let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"' }
+autocmd FileType scheme setlocal shiftwidth=2 tabstop=2
 autocmd FileType sh setlocal fo-=t
 autocmd FileType svg setlocal shiftwidth=2 tabstop=2
 
 augroup global_todo
     au!
-    au Syntax * syn match GlobalTodo /\v<(FIXME|NOTE|TODO|XXX)/
+    au Syntax * syn match GlobalTodo /\v\C<(FIXME|NOTE|TODO|XXX)/
           \ containedin=.*Comment,vimCommentTitle
 augroup END
 hi def link GlobalTodo Todo
 
+let g:ale_set_signs = 0
+let g:ale_linters = {'clojure': ['clj-kondo']}
+let g:ale_fixers = {'javascript': ['deno'], 'python': ['black']}
+let g:ale_python_black_options = '--line-length 80'
+let g:ale_fix_on_save = 1
 let g:conjure#log#hud#enabled = v:false
 let g:fzf_layout = { 'down': '~16' }
 let g:go_fmt_command = "goimports"
@@ -99,11 +106,16 @@ inoremap <m-bs> <c-w>
 nmap <leader>r <localleader>ls:res 18<cr><c-w>k
 nmap <leader>c <localleader>lq
 
+nnoremap / /\v
+nnoremap ? ?\v
+nnoremap <down> 9<down>
 nnoremap <esc> :noh<cr><esc>
 nnoremap <leader> <nop>
 nnoremap <leader><tab> <c-w>w
 nnoremap <leader>N :bp<cr>
 nnoremap <leader>O O<esc>O
+nnoremap <leader>aj :ALENextWrap<cr>
+nnoremap <leader>ak :ALEPreviousWrap<cr>
 nnoremap <leader>b :Buffer<cr>
 nnoremap <leader>d /<<<<<<<\\|=======\\|\|\|\|\|\|\|\|\\|>>>>>>><cr>
 nnoremap <leader>e :Files<cr>
@@ -123,12 +135,11 @@ nnoremap <leader>te :set expandtab<cr>
 nnoremap <leader>tn :set noexpandtab<cr>
 nnoremap <leader>v <c-v>
 nnoremap <leader>w :bd<cr>
-nnoremap U <c-r>
-nnoremap x "_x
-nnoremap <up> 9<up>
-nnoremap <down> 9<down>
 nnoremap <left> ^
 nnoremap <right> $
+nnoremap <up> 9<up>
+nnoremap U <c-r>
+nnoremap x "_x
 
 vnoremap <up> 9<up>
 vnoremap <down> 9<down>

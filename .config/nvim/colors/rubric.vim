@@ -72,6 +72,8 @@ hi NonText                   ctermfg=7    ctermbg=none cterm=none
 hi Search                    ctermfg=0    ctermbg=9    cterm=none
 hi IncSearch                 ctermfg=0    ctermbg=9    cterm=none
 hi MatchParen                ctermfg=0    ctermbg=7    cterm=none
+hi ALEError                  ctermfg=0    ctermbg=13   cterm=none
+hi ALEWarning                ctermfg=0    ctermbg=14   cterm=none
 hi fzf1                      ctermfg=none ctermbg=7    cterm=none
 hi fzf2                      ctermfg=none ctermbg=7    cterm=none
 hi fzf3                      ctermfg=none ctermbg=7    cterm=none
