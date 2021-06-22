@@ -9,7 +9,7 @@ if [ "$(scutil --get ComputerName)" = "Callum’s MacBook Pro" ]; then
     hammerspoon_grid_margin=10
 else
     kitty_font_size=14
-    kitty_window_margin_width=20
+    kitty_window_margin_width=10
     hammerspoon_grid_margin=10
 fi
 

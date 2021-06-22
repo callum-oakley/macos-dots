@@ -89,4 +89,4 @@ eval "$(direnv hook bash)"
 eval "$(zoxide init bash)"
 alias j='z'
 
-export PATH="/usr/local/opt/python@3.9/libexec/bin:/usr/local/opt/coreutils/libexec/gnubin:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/python@3.9/libexec/bin:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:$PATH"
