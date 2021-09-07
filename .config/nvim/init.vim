@@ -1,10 +1,8 @@
 call plug#begin('~/.config/nvim/plugged')
-Plug 'Olical/conjure'
 Plug 'Omer/vim-sparql'
 Plug 'axvr/org.vim'
 Plug 'bakpakin/fennel.vim'
 Plug 'cespare/vim-toml'
-Plug 'dense-analysis/ale'
 Plug 'fatih/vim-go'
 Plug 'guns/vim-sexp'
 Plug 'jiangmiao/auto-pairs'
@@ -50,7 +48,7 @@ autocmd BufNewFile,BufReadPost *.sparql set filetype=sparql
 
 autocmd FileType * set fo-=o
 autocmd FileType clojure let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"' }
-autocmd FileType clojure setlocal lispwords+=are,cond,fdef,finally,try,doto-wait
+autocmd FileType clojure setlocal lispwords+=are,cond,fdef,finally,try,doto-wait,do
 autocmd FileType clojure setlocal shiftwidth=2 tabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType fennel let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"' }
@@ -63,7 +61,6 @@ autocmd FileType html.handlebars setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
 autocmd FileType markdown let g:AutoPairs = {}
-autocmd FileType python map <localleader>e :!python %<cr>
 autocmd FileType rust let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"', '`':'`'}
 autocmd FileType scheme let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"' }
 autocmd FileType scheme setlocal shiftwidth=2 tabstop=2
@@ -77,12 +74,6 @@ augroup global_todo
 augroup END
 hi def link GlobalTodo Todo
 
-let g:ale_set_signs = 0
-let g:ale_linters = {'clojure': ['clj-kondo']}
-let g:ale_fixers = {'javascript': ['deno'], 'python': ['black']}
-let g:ale_python_black_options = '--line-length 80'
-let g:ale_fix_on_save = 1
-let g:conjure#log#hud#enabled = v:false
 let g:fzf_layout = { 'down': '~16' }
 let g:go_fmt_command = "goimports"
 let g:rustfmt_autosave = 1
@@ -103,11 +94,7 @@ let maplocalleader=" l"
 
 inoremap <m-bs> <c-w>
 
-nmap <leader>r <localleader>ls:res 18<cr><c-w>k
-nmap <leader>c <localleader>lq
-
 nnoremap / /\v
-nnoremap ? ?\v
 nnoremap <down> 9<down>
 nnoremap <esc> :noh<cr><esc>
 nnoremap <leader> <nop>
@@ -126,6 +113,7 @@ nnoremap <leader>k "_
 nnoremap <leader>m :res 99<cr>
 nnoremap <leader>n :bn<cr>
 nnoremap <leader>o o<esc>O
+nnoremap <leader>p :let @+ = expand("%")<cr>
 nnoremap <leader>q :qa!<cr>
 nnoremap <leader>s :w<cr>
 nnoremap <leader>t <nop>
@@ -138,6 +126,7 @@ nnoremap <leader>w :bd<cr>
 nnoremap <left> ^
 nnoremap <right> $
 nnoremap <up> 9<up>
+nnoremap ? ?\v
 nnoremap U <c-r>
 nnoremap x "_x
 

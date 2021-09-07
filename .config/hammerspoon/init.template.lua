@@ -187,7 +187,7 @@ bindPR({"alt"}, "e", function() keyStrokes(utf8.char(780)) end) -- ◌̌
 bindPR({"alt"}, "r", function() keyStrokes(utf8.char(768)) end) -- ◌̀
 bindPR({"alt"}, "v", function() keyStrokes(utf8.char(252)) end) -- ü
 bindPR({"alt", "shift"}, "v", function() keyStrokes(utf8.char(220)) end) -- Ü
-bindPR({"alt"}, "t", function() openForSpace("kitty", "New OS window") end)
+bindPR({"alt"}, "t", function() openForSpace("kitty", "New OS Window") end)
 bindPR({"alt"}, "g", function() openForSpace("Notes", "New Note") end)
 bindPR({"alt"}, "b", function() openForSpace("Safari", "New Window") end)
 bindPR({"alt"}, "h", hs.grid.pushWindowLeft)

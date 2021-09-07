@@ -48,6 +48,10 @@ pet() {
     pipenv run python test.py $@
 }
 
+spell() {
+    cat $@ | ispell -l | sort | uniq
+}
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export BASH_COMPLETION_COMPAT_DIR='/usr/local/etc/bash_completion.d'
