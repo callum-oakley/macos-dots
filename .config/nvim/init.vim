@@ -48,7 +48,7 @@ autocmd BufNewFile,BufReadPost *.sparql set filetype=sparql
 
 autocmd FileType * set fo-=o
 autocmd FileType clojure let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"' }
-autocmd FileType clojure setlocal lispwords+=are,cond,fdef,finally,try,doto-wait,do
+autocmd FileType clojure setlocal lispwords+=are,cond,fdef,finally,try,doto-wait,do,with-out-str,with-in-str,go-loop
 autocmd FileType clojure setlocal shiftwidth=2 tabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType fennel let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"' }
