@@ -101,8 +101,7 @@ nnoremap <leader> <nop>
 nnoremap <leader><tab> <c-w>w
 nnoremap <leader>N :bp<cr>
 nnoremap <leader>O O<esc>O
-nnoremap <leader>aj :ALENextWrap<cr>
-nnoremap <leader>ak :ALEPreviousWrap<cr>
+nnoremap <leader>a :%y<cr>
 nnoremap <leader>b :Buffer<cr>
 nnoremap <leader>d /<<<<<<<\\|=======\\|\|\|\|\|\|\|\|\\|>>>>>>><cr>
 nnoremap <leader>e :Files<cr>

@@ -7,7 +7,6 @@
 
 [alias]
     graph = log --graph --decorate --oneline -10
-    ignore = "!f() { curl -L -s https://www.gitignore.io/api/$@; }; f"
     publish = "!f() { git commit -m $@ && git tag $@ && git push && git push --tags; }; f"
 
 [http]
