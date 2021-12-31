@@ -5,7 +5,6 @@ alias diff='colordiff -u'
 alias disable-prettier="echo '**' > .prettierignore"
 alias ggf='gotta-go-fast'
 alias ghci='stack exec -- ghci'
-alias git='hub'
 alias ls='ls -G --color'
 alias mkdir='mkdir -vp'
 alias mv='mv -iv'
@@ -89,8 +88,8 @@ export GPG_TTY=$(tty)
 
 [ -f ~/.config/secrets/env ] && source ~/.config/secrets/env
 
+export PATH="/usr/local/opt/python@3.9/libexec/bin:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/opt/homebrew/bin:$PATH"
+
 eval "$(direnv hook bash)"
 eval "$(zoxide init bash)"
 alias j='z'
-
-export PATH="/usr/local/opt/python@3.9/libexec/bin:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:$PATH"

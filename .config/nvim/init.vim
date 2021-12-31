@@ -3,7 +3,6 @@ Plug 'Omer/vim-sparql'
 Plug 'axvr/org.vim'
 Plug 'bakpakin/fennel.vim'
 Plug 'cespare/vim-toml'
-Plug 'fatih/vim-go'
 Plug 'guns/vim-sexp'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
@@ -48,7 +47,7 @@ autocmd BufNewFile,BufReadPost *.sparql set filetype=sparql
 
 autocmd FileType * set fo-=o
 autocmd FileType clojure let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"' }
-autocmd FileType clojure setlocal lispwords+=are,cond,fdef,finally,try,doto-wait,do,with-out-str,with-in-str,go-loop
+autocmd FileType clojure setlocal lispwords+=are,cond,fdef,finally,try,doto-wait,do,with-out-str,with-in-str,go-loop,dosync
 autocmd FileType clojure setlocal shiftwidth=2 tabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType fennel let g:AutoPairs = {'(':')', '[':']', '{':'}', '"':'"' }
