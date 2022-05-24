@@ -126,6 +126,8 @@ nnoremap <right> $
 nnoremap <up> 9<up>
 nnoremap ? ?\v
 nnoremap U <c-r>
+nnoremap j gj
+nnoremap k gk
 nnoremap x "_x
 
 vnoremap <up> 9<up>
