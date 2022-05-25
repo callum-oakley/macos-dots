@@ -7,7 +7,6 @@
 
 [alias]
     graph = log --graph --decorate --oneline -10
-    publish = "!f() { git commit -m $@ && git tag $@ && git push && git push --tags; }; f"
 
 [http]
     cookiefile = /Users/callum/.gitcookies
@@ -20,5 +19,6 @@
 
 [pull]
     ff = only
+
 [init]
-	defaultBranch = main
+    defaultBranch = main
