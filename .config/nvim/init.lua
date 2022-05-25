@@ -6,6 +6,7 @@ require("packer").startup(function()
     "nvim-telescope/telescope.nvim",
      requires = { { "nvim-lua/plenary.nvim" } }
   }
+  use { "nvim-telescope/telescope-file-browser.nvim" }
 end)
 
 -- options --------------------------------------------------------------------
@@ -20,12 +21,6 @@ vim.opt.expandtab = true
 vim.opt.scrolloff = 999
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
-
--- save, close, quit ----------------------------------------------------------
-
-vim.keymap.set("n", "<leader>s", ":w<cr>")
-vim.keymap.set("n", "<leader>w", ":bd<cr>")
-vim.keymap.set("n", "<leader>q", ":q!<cr>")
 
 -- search ---------------------------------------------------------------------
 
@@ -56,14 +51,25 @@ vim.keymap.set("n", "<esc>", ":noh<cr><esc>")
 
 -- telescope ------------------------------------------------------------------
 
-require("telescope").setup({ defaults = {
-  layout_config = { vertical = { height = 999, width = 999 } },
-  layout_strategy = "vertical",
-  mappings = { i = { ["<esc>"] = require("telescope.actions").close } },
-} })
+require("telescope").setup({
+  defaults = {
+    layout_config = {
+      vertical = { width = 999, height = 999, preview_cutoff = 0 },
+    },
+    layout_strategy = "vertical",
+  },
+  extensions = {
+    file_browser = {
+      dir_icon = "»",
+    },
+  },
+})
+
+require("telescope").load_extension("file_browser")
 
 -- files
 vim.keymap.set("n", "<leader>e", ":Telescope find_files<cr>")
+vim.keymap.set("n", "<leader>E", ":Telescope file_browser<cr>")
 
 -- buffers
 vim.keymap.set("n", "<leader>b", function()
@@ -94,3 +100,10 @@ vim.keymap.set("n", "<leader>h", ":Telescope help_tags<cr>")
 
 -- resume
 vim.keymap.set("n", "<leader>.", ":Telescope resume<cr>")
+
+-- misc -----------------------------------------------------------------------
+
+vim.keymap.set("n", "<leader>q", ":q!<cr>")
+vim.keymap.set("n", "<leader>s", ":w<cr>")
+vim.keymap.set("n", "<leader>w", ":bd<cr>")
+vim.keymap.set("n", "U", "<c-r>")
