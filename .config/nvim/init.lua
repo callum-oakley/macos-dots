@@ -2,16 +2,14 @@
 
 require("packer").startup(function()
   use "wbthomason/packer.nvim"
-  use {
-    "nvim-telescope/telescope.nvim",
-     requires = { { "nvim-lua/plenary.nvim" } }
-  }
-  use { "nvim-telescope/telescope-file-browser.nvim" }
+  use { "nvim-telescope/telescope.nvim", requires = "nvim-lua/plenary.nvim" }
+  use "nvim-telescope/telescope-file-browser.nvim"
 end)
 
 -- options --------------------------------------------------------------------
 
-vim.cmd("autocmd FileType * set fo-=o")
+vim.cmd("au FileType * set fo-=o")
+vim.cmd("au TextYankPost * lua vim.highlight.on_yank({ higroup = 'Visual' })")
 vim.cmd("colorscheme rubric")
 vim.g.clojure_align_multiline_strings = 1
 vim.g.clojure_align_subforms = 1
