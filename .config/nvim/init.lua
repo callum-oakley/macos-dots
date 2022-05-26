@@ -8,7 +8,13 @@ end)
 
 -- options --------------------------------------------------------------------
 
+local lispwords = table.concat({
+  "are", "cond", "do", "dosync", "doto-wait", "fdef", "finally", "go-loop",
+  "try", "with-in-str", "with-out-str",
+}, ",")
+
 vim.cmd("au FileType * set fo-=o")
+vim.cmd("au FileType clojure setlocal lispwords+=" .. lispwords)
 vim.cmd("au TextYankPost * lua vim.highlight.on_yank({ higroup = 'Visual' })")
 vim.cmd("colorscheme rubric")
 vim.g.clojure_align_multiline_strings = 1
@@ -40,7 +46,8 @@ vim.keymap.set("v", "<leader>j", function()
   vim.api.nvim_input("oy")
   -- wait a moment for the above, since it's async
   vim.defer_fn(function()
-    vim.api.nvim_input("/" .. vim.fn.getreg('"') .. "<cr>N")
+    local s = vim.fn.getreg('"'):gsub("[/\\.*^$~[]", "\\%0"):gsub("<", "<lt>")
+    vim.api.nvim_input("/" .. s .. "<cr>N")
   end, 100)
 end)
 
@@ -105,3 +112,15 @@ vim.keymap.set("n", "<leader>q", ":q!<cr>")
 vim.keymap.set("n", "<leader>s", ":w<cr>")
 vim.keymap.set("n", "<leader>w", ":bd<cr>")
 vim.keymap.set("n", "U", "<c-r>")
+
+-- copy current file name
+vim.keymap.set("n", "<leader>p", function()
+  vim.fn.setreg("+", vim.fn.expand("%"))
+end)
+
+-- remember the content of "+ in some other register
+for c in string.gmatch("abcdefghijklmnopqrstuvwxyz", ".") do
+  vim.keymap.set("n", "<leader>r" .. c, function()
+    vim.fn.setreg(c, vim.fn.getreg("+"), vim.fn.getregtype("+"))
+  end)
+end
