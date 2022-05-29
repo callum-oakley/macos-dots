@@ -4,6 +4,7 @@ require("packer").startup(function()
   use "wbthomason/packer.nvim"
   use { "nvim-telescope/telescope.nvim", requires = "nvim-lua/plenary.nvim" }
   use "nvim-telescope/telescope-file-browser.nvim"
+  use "rust-lang/rust.vim"
 end)
 
 -- options --------------------------------------------------------------------
@@ -20,6 +21,7 @@ vim.cmd("colorscheme rubric")
 vim.g.clojure_align_multiline_strings = 1
 vim.g.clojure_align_subforms = 1
 vim.g.mapleader = " "
+vim.g.rustfmt_autosave = 1
 vim.opt.clipboard = "unnamedplus"
 vim.opt.expandtab = true
 vim.opt.scrolloff = 999
