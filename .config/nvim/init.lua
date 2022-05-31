@@ -97,7 +97,7 @@ end)
 vim.keymap.set("n", "<leader>g", function()
   require("telescope.builtin").grep_string({
     disable_coordinates = true,
-    search = vim.fn.getreg("/"):gsub("\\[<>]", "\\b"),
+    search = vim.fn.getreg("/"):gsub("\\[<>]", "\\b"):gsub("\\/", "/"),
     use_regex = true,
   })
 end)
