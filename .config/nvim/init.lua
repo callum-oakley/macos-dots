@@ -24,6 +24,8 @@ vim.g.mapleader = " "
 vim.g.rustfmt_autosave = 1
 vim.opt.clipboard = "unnamedplus"
 vim.opt.expandtab = true
+vim.opt.list = true
+vim.opt.listchars = { tab = "▸·", trail = "·" }
 vim.opt.scrolloff = 999
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
