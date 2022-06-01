@@ -88,7 +88,7 @@ export GPG_TTY=$(tty)
 
 [ -f ~/.config/secrets/env ] && source ~/.config/secrets/env
 
-export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:/usr/local/opt/python@3.10/libexec/bin:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/opt/homebrew/bin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:/usr/local/opt/python@3.10/libexec/bin:/opt/homebrew/opt/python@3.10/libexec/bin:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/opt/homebrew/bin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 
 eval "$(zoxide init bash)"
 alias j='z'
