@@ -29,6 +29,7 @@ hi Italic                    ctermfg=0    ctermbg=none cterm=none
 hi Underlined                ctermfg=0    ctermbg=none cterm=none
 hi String                    ctermfg=0    ctermbg=none cterm=none
 hi markdownLinkText          ctermfg=0    ctermbg=none cterm=none
+hi markdownError             ctermfg=0    ctermbg=none cterm=none
 
 " red
 hi Comment                   ctermfg=1    ctermbg=none cterm=none
