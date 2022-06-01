@@ -128,3 +128,10 @@ for c in string.gmatch("abcdefghijklmnopqrstuvwxyz", ".") do
     vim.fn.setreg(c, vim.fn.getreg("+"), vim.fn.getregtype("+"))
   end)
 end
+
+-- print highlight groups under cursor
+vim.keymap.set(
+  "n",
+  "<leader>h",
+  [[:echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<cr>]]
+)
