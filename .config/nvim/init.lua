@@ -10,12 +10,13 @@ end)
 -- options --------------------------------------------------------------------
 
 local lispwords = table.concat({
-  "are", "cond", "do", "dosync", "doto-wait", "fdef", "finally", "go-loop",
-  "try", "with-in-str", "with-out-str",
+  "are", "cond", "def", "do", "dosync", "doto-wait", "fdef", "finally", "fn",
+  "go-loop", "try", "with-in-str", "with-out-str",
 }, ",")
 
+vim.cmd("au BufRead,BufNewFile *.bao set filetype=scheme")
 vim.cmd("au FileType * set fo-=o")
-vim.cmd("au FileType clojure setlocal lispwords+=" .. lispwords)
+vim.cmd("au FileType clojure,scheme setlocal lispwords+=" .. lispwords)
 vim.cmd("au TextYankPost * lua vim.highlight.on_yank({ higroup = 'Visual' })")
 vim.cmd("colorscheme rubric")
 vim.g.clojure_align_multiline_strings = 1
@@ -132,6 +133,6 @@ end
 -- print highlight groups under cursor
 vim.keymap.set(
   "n",
-  "<leader>h",
+  "<leader>H",
   [[:echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<cr>]]
 )
