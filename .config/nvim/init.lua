@@ -136,3 +136,10 @@ vim.keymap.set(
   "<leader>H",
   [[:echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<cr>]]
 )
+
+-- search for git diff markers
+vim.keymap.set("n", "<leader>d", [[/<lt><lt><lt><lt><lt><lt><lt>\||||||||\|=======\|>>>>>>><cr>]])
+
+-- next/prev
+vim.keymap.set("n", "<leader>n", ":next<cr>")
+vim.keymap.set("n", "<leader>N", ":prev<cr>")
