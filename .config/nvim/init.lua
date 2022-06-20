@@ -16,6 +16,7 @@ local lispwords = table.concat({
 
 vim.cmd("au BufRead,BufNewFile *.bao set filetype=scheme")
 vim.cmd("au FileType * set fo-=o")
+vim.cmd("au FileType c,cpp setlocal sw=4 ts=4")
 vim.cmd("au FileType clojure,scheme setlocal lispwords+=" .. lispwords)
 vim.cmd("au TextYankPost * lua vim.highlight.on_yank({ higroup = 'Visual' })")
 vim.cmd("colorscheme rubric")
@@ -23,6 +24,7 @@ vim.g.clojure_align_multiline_strings = 1
 vim.g.clojure_align_subforms = 1
 vim.g.mapleader = " "
 vim.g.rustfmt_autosave = 1
+vim.opt.cinoptions = "(4,m1l1"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.expandtab = true
 vim.opt.list = true
@@ -48,10 +50,11 @@ end)
 
 -- search for selection
 vim.keymap.set("v", "<leader>j", function()
-  vim.api.nvim_input("oy")
+  vim.api.nvim_input("y")
   -- wait a moment for the above, since it's async
   vim.defer_fn(function()
-    local s = vim.fn.getreg('"'):gsub("[/\\.*^$~[]", "\\%0"):gsub("<", "<lt>")
+    local s = vim.fn.getreg('"')
+      :gsub("[/\\.*^$~[]", "\\%0"):gsub("\n", "\\n"):gsub("<", "<lt>")
     vim.api.nvim_input("/" .. s .. "<cr>N")
   end, 100)
 end)
