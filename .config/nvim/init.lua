@@ -24,7 +24,7 @@ vim.g.clojure_align_multiline_strings = 1
 vim.g.clojure_align_subforms = 1
 vim.g.mapleader = " "
 vim.g.rustfmt_autosave = 1
-vim.opt.cinoptions = "(4,m1l1"
+vim.opt.cinoptions = "(s,m1,l1"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.expandtab = true
 vim.opt.list = true
@@ -103,7 +103,8 @@ end)
 vim.keymap.set("n", "<leader>g", function()
   require("telescope.builtin").grep_string({
     disable_coordinates = true,
-    search = vim.fn.getreg("/"):gsub("\\[<>]", "\\b"):gsub("\\/", "/"),
+    search = vim.fn.getreg("/")
+      :gsub("[?]", "\\%0"):gsub("\\[<>]", "\\b"):gsub("\\/", "/"),
     use_regex = true,
   })
 end)
@@ -146,3 +147,11 @@ vim.keymap.set("n", "<leader>d", [[/<lt><lt><lt><lt><lt><lt><lt>\||||||||\|=====
 -- next/prev
 vim.keymap.set("n", "<leader>n", ":next<cr>")
 vim.keymap.set("n", "<leader>N", ":prev<cr>")
+
+-- half page down/up which plays more nicely with scrolloff 999
+vim.keymap.set("n", "<c-d>", function()
+  vim.api.nvim_input(vim.api.nvim_win_get_height(0) / 2 - 1 .. "j")
+end)
+vim.keymap.set("n", "<c-u>", function()
+  vim.api.nvim_input(vim.api.nvim_win_get_height(0) / 2 - 1 .. "k")
+end)
