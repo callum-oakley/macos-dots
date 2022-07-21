@@ -24,6 +24,7 @@ vim.g.clojure_align_multiline_strings = 1
 vim.g.clojure_align_subforms = 1
 vim.g.mapleader = " "
 vim.g.rustfmt_autosave = 1
+vim.opt.breakindent = true
 vim.opt.cinoptions = "(s,m1,l1"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.expandtab = true
