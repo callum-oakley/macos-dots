@@ -151,8 +151,8 @@ vim.keymap.set("n", "<leader>N", ":prev<cr>")
 
 -- half page down/up which plays more nicely with scrolloff 999
 vim.keymap.set("n", "<c-d>", function()
-  vim.api.nvim_input(vim.api.nvim_win_get_height(0) / 2 - 1 .. "j")
+  vim.api.nvim_input(math.floor(vim.api.nvim_win_get_height(0) / 2) - 1 .. "j")
 end)
 vim.keymap.set("n", "<c-u>", function()
-  vim.api.nvim_input(vim.api.nvim_win_get_height(0) / 2 - 1 .. "k")
+  vim.api.nvim_input(math.floor(vim.api.nvim_win_get_height(0) / 2) - 1 .. "k")
 end)
