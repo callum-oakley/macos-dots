@@ -10,6 +10,7 @@ alias mkdir='mkdir -vp'
 alias mv='mv -iv'
 alias rg="rg --colors 'path:none' --colors 'line:none'"
 alias tclip='tee >(pbcopy)'
+alias todo='vi ~/notes/todo.md'
 alias tree="tree -I 'target|node_modules|dist|vendor|deps|_build|cover'"
 alias vi='nvim'
 

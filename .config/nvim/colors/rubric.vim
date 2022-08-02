@@ -67,3 +67,9 @@ hi StatusLineNC              ctermfg=none ctermbg=7    cterm=none
 hi MatchParen                ctermfg=0    ctermbg=7    cterm=none
 hi Search                    ctermfg=0    ctermbg=9    cterm=none
 hi IncSearch                 ctermfg=0    ctermbg=9    cterm=none
+
+" bold
+hi markdownH1                ctermfg=0    ctermbg=none cterm=bold
+hi markdownH2                ctermfg=0    ctermbg=none cterm=bold
+hi markdownH3                ctermfg=0    ctermbg=none cterm=bold
+hi markdownH4                ctermfg=0    ctermbg=none cterm=bold

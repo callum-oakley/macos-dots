@@ -6,7 +6,7 @@
     default = current
 
 [alias]
-    graph = log --graph --decorate --oneline -10
+    graph = log --graph --decorate --oneline
 
 [http]
     cookiefile = /Users/callum/.gitcookies
