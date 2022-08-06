@@ -8,9 +8,9 @@ alias ghci='stack exec -- ghci'
 alias ls='ls -G --color'
 alias mkdir='mkdir -vp'
 alias mv='mv -iv'
+alias notes='vi ~/notes/notes.md'
 alias rg="rg --colors 'path:none' --colors 'line:none'"
 alias tclip='tee >(pbcopy)'
-alias todo='vi ~/notes/todo.md'
 alias tree="tree -I 'target|node_modules|dist|vendor|deps|_build|cover'"
 alias vi='nvim'
 
